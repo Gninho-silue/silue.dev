@@ -2,9 +2,9 @@ import CursorWrapper from '@/components/ui/CursorWrapper';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
 
 const PLACEHOLDERS = [
-  { id: 'about', label: 'About Section' },
   { id: 'stack', label: 'Stack Section' },
   { id: 'projects', label: 'Projects Section' },
   { id: 'experience', label: 'Experience Section' },
@@ -18,6 +18,7 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <AboutSection />
         {PLACEHOLDERS.map(({ id, label }) => (
           <section
             key={id}
