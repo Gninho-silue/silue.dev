@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "about": "About",
+    "stack": "Stack",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "downloadCV": "Download CV"
+  },
+  "hero": {
+    "available": "Available July 2026",
+    "titles": ["Full-Stack Developer", "Cloud-Native Architect", "AI Enthusiast"],
+    "tagline": "I build high-performance distributed systems and modern web applications.",
+    "cta": {
+      "contact": "Contact me",
+      "projects": "View my work"
+    }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Passionate developer based in Casablanca",
+    "bio1": "Full-Stack Developer passionate about distributed architectures and modern technologies. I build robust, scalable and high-performance systems.",
+    "bio2": "Curious by nature, I love solving complex problems with elegant solutions. From Java/Spring Boot backend to React frontend, through Docker/Kubernetes containerization.",
+    "bio3": "Currently on my final year internship at TechPal, working on an Odoo 17 e-commerce platform with a Flutter application. Available for remote opportunities from July 2026.",
+    "location": "Casablanca, Morocco",
+    "status": "Available — July 2026",
+    "remote": "Open to remote"
+  },
+  "stack": {
+    "title": "Tech Stack",
+    "subtitle": "Technologies I work with",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "devops": "DevOps",
+      "database": "Database",
+      "mobile": "Mobile",
+      "ai": "AI / ML"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "What I've built",
+    "viewAll": "View all projects",
+    "viewCode": "Code",
+    "viewLive": "Live demo",
+    "inProgress": "In progress",
+    "devscope": {
+      "title": "DevScope",
+      "description": "GitHub profile analyzer powered by Groq AI. Generates detailed reports on a developer's skills, activity and technologies from their GitHub profile."
+    },
+    "bankingMs": {
+      "title": "Banking Microservices",
+      "description": "Complete banking microservices architecture with Spring Cloud, Kafka, Kubernetes and Docker. Account management, transactions, real-time notifications."
+    },
+    "taskpro": {
+      "title": "TaskPro",
+      "description": "Collaborative task management application with WebSocket for real-time updates, JWT authentication and modern React interface."
+    },
+    "smartcollab": {
+      "title": "SmartCollab",
+      "description": "Real-time team collaboration platform with Socket.io, Redis for session management and event-driven Node.js architecture."
+    },
+    "pfeTechpal": {
+      "title": "PFE TechPal",
+      "description": "E-commerce platform built on Odoo 17 with Python, paired with a Flutter mobile application. Final year project in progress."
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My professional journey",
+    "present": "Present",
+    "techpal": {
+      "role": "Full-Stack Developer",
+      "description": "Development and maintenance of custom Odoo 17 modules in Python. PostgreSQL database management, REST API creation and third-party system integration."
+    },
+    "isbMaroc": {
+      "role": "Frontend Developer",
+      "description": "Development of modern user interfaces with React and JavaScript. REST API integration, responsive design and performance optimization."
+    },
+    "pfeTechpal": {
+      "role": "Full-Stack Developer Intern (Final Year)",
+      "description": "Design and development of a complete e-commerce platform on Odoo 17 with Python, paired with a cross-platform Flutter mobile application. Final year internship."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's work together",
+    "intro": "I'm open to remote work opportunities. Feel free to reach out to discuss your projects.",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "subject": "Subject",
+      "message": "Your message",
+      "send": "Send",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "An error occurred. Please try again."
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with"
+  }
+}

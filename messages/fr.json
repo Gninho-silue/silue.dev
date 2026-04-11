@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "about": "À propos",
+    "stack": "Stack",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "downloadCV": "Télécharger CV"
+  },
+  "hero": {
+    "available": "Disponible Juillet 2026",
+    "titles": ["Développeur Full-Stack", "Architecte Cloud-Native", "Passionné d'IA"],
+    "tagline": "Je construis des systèmes distribués performants et des applications web modernes.",
+    "cta": {
+      "contact": "Me contacter",
+      "projects": "Voir mes projets"
+    }
+  },
+  "about": {
+    "title": "À Propos",
+    "subtitle": "Développeur passionné basé à Casablanca",
+    "bio1": "Développeur Full-Stack passionné par les architectures distribuées et les technologies modernes. Je construis des systèmes robustes, scalables et performants.",
+    "bio2": "Curieux de nature, j'aime résoudre des problèmes complexes avec des solutions élégantes. Du backend Java/Spring Boot au frontend React, en passant par la conteneurisation Docker/Kubernetes.",
+    "bio3": "Actuellement en stage de fin d'études chez TechPal, je travaille sur une plateforme e-commerce Odoo 17 avec une application Flutter. Disponible pour des opportunités remote à partir de Juillet 2026.",
+    "location": "Casablanca, Maroc",
+    "status": "Disponible — Juillet 2026",
+    "remote": "Ouvert au remote"
+  },
+  "stack": {
+    "title": "Stack Technique",
+    "subtitle": "Les technologies que je maîtrise",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "devops": "DevOps",
+      "database": "Base de données",
+      "mobile": "Mobile",
+      "ai": "IA / ML"
+    }
+  },
+  "projects": {
+    "title": "Projets",
+    "subtitle": "Ce que j'ai construit",
+    "viewAll": "Voir tous les projets",
+    "viewCode": "Code",
+    "viewLive": "Demo live",
+    "inProgress": "En cours",
+    "devscope": {
+      "title": "DevScope",
+      "description": "Analyseur de profils GitHub propulsé par l'IA Groq. Génère des rapports détaillés sur les compétences, l'activité et les technologies d'un développeur à partir de son profil GitHub."
+    },
+    "bankingMs": {
+      "title": "Banking Microservices",
+      "description": "Architecture microservices bancaire complète avec Spring Cloud, Kafka, Kubernetes et Docker. Gestion de comptes, transactions, notifications en temps réel."
+    },
+    "taskpro": {
+      "title": "TaskPro",
+      "description": "Application de gestion de tâches collaborative avec WebSocket pour les mises à jour en temps réel, authentification JWT et interface React moderne."
+    },
+    "smartcollab": {
+      "title": "SmartCollab",
+      "description": "Plateforme de collaboration d'équipe en temps réel avec Socket.io, Redis pour la gestion des sessions et architecture event-driven Node.js."
+    },
+    "pfeTechpal": {
+      "title": "PFE TechPal",
+      "description": "Plateforme e-commerce développée sur Odoo 17 avec Python, couplée à une application mobile Flutter. Projet de fin d'études en cours."
+    }
+  },
+  "experience": {
+    "title": "Expérience",
+    "subtitle": "Mon parcours professionnel",
+    "present": "Présent",
+    "techpal": {
+      "role": "Développeur Full-Stack",
+      "description": "Développement et maintenance de modules Odoo 17 personnalisés en Python. Gestion de la base de données PostgreSQL, création d'APIs REST et intégration de systèmes tiers."
+    },
+    "isbMaroc": {
+      "role": "Développeur Frontend",
+      "description": "Développement d'interfaces utilisateur modernes avec React et JavaScript. Intégration d'APIs REST, responsive design et optimisation des performances."
+    },
+    "pfeTechpal": {
+      "role": "Stagiaire Développeur Full-Stack (PFE)",
+      "description": "Conception et développement d'une plateforme e-commerce complète sur Odoo 17 avec Python, couplée à une application mobile cross-platform Flutter. Projet de fin d'études."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Travaillons ensemble",
+    "intro": "Je suis ouvert aux opportunités de travail remote. N'hésitez pas à me contacter pour discuter de vos projets.",
+    "form": {
+      "name": "Votre nom",
+      "email": "Votre email",
+      "subject": "Sujet",
+      "message": "Votre message",
+      "send": "Envoyer",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    }
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "builtWith": "Construit avec"
+  }
+}
