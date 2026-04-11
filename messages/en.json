@@ -14,7 +14,13 @@
     "cta": {
       "contact": "Contact me",
       "projects": "View my work"
-    }
+    },
+    "stats": {
+      "repos": { "value": "28+", "label": "Repositories" },
+      "experience": { "value": "2+", "label": "Years Experience" },
+      "projects": { "value": "5+", "label": "Projects Shipped" }
+    },
+    "scrollDown": "Scroll down"
   },
   "about": {
     "title": "About",

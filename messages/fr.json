@@ -14,7 +14,13 @@
     "cta": {
       "contact": "Me contacter",
       "projects": "Voir mes projets"
-    }
+    },
+    "stats": {
+      "repos": { "value": "28+", "label": "Repositories" },
+      "experience": { "value": "2+", "label": "Ans d'expérience" },
+      "projects": { "value": "5+", "label": "Projets livrés" }
+    },
+    "scrollDown": "Défiler"
   },
   "about": {
     "title": "À Propos",
