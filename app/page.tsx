@@ -1,9 +1,9 @@
 import CursorWrapper from '@/components/ui/CursorWrapper';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import HeroSection from '@/components/sections/HeroSection';
 
-const SECTIONS = [
-  { id: 'hero', label: 'Hero Section' },
+const PLACEHOLDERS = [
   { id: 'about', label: 'About Section' },
   { id: 'stack', label: 'Stack Section' },
   { id: 'projects', label: 'Projects Section' },
@@ -17,7 +17,8 @@ export default function Home() {
       <CursorWrapper />
       <Navbar />
       <main>
-        {SECTIONS.map(({ id, label }) => (
+        <HeroSection />
+        {PLACEHOLDERS.map(({ id, label }) => (
           <section
             key={id}
             id={id}
@@ -27,9 +28,7 @@ export default function Home() {
               <p className="font-mono text-xs text-muted mb-2 uppercase tracking-widest">
                 #{id}
               </p>
-              <h2 className="font-display text-3xl font-bold text-foreground">
-                {label}
-              </h2>
+              <h2 className="font-display text-3xl font-bold text-foreground">{label}</h2>
               <p className="mt-2 text-muted text-sm">Placeholder — coming soon</p>
             </div>
           </section>
