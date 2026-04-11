@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { personal } from '@/content/personal';
 
 // ─── Framer variants ────────────────────────────────────────────────────────
@@ -10,19 +11,22 @@ import { personal } from '@/content/personal';
 const containerVariants: Variants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.18,
-      delayChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const photoVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.92, x: 30 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: 'easeOut' },
+    scale: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: 'easeOut', delay: 0.3 },
   },
 };
 
@@ -40,7 +44,7 @@ const ORB_FLOAT_2 = {
 
 const ORB_PULSE = {
   scale: [1, 1.15, 1] as number[],
-  opacity: [0.18, 0.3, 0.18] as number[],
+  opacity: [0.12, 0.22, 0.12] as number[],
   transition: { duration: 6, repeat: Infinity, ease: 'easeInOut' as const },
 };
 
@@ -52,23 +56,20 @@ function AnimatedTitle() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % titles.length);
-    }, 2500);
+    const id = setInterval(() => setIndex((i) => (i + 1) % titles.length), 2500);
     return () => clearInterval(id);
   }, [titles.length]);
 
   return (
-    <div className="h-14 md:h-20 flex items-center justify-center overflow-hidden">
+    <div className="h-10 md:h-14 flex items-center overflow-hidden">
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={`${index}-${titles[index]}`}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="font-display font-bold text-3xl md:text-5xl gradient-text block text-center"
-          style={{ fontFamily: 'var(--font-syne)' }}
+          exit={{ opacity: 0, y: -18 }}
+          transition={{ duration: 0.38, ease: 'easeInOut' }}
+          className="font-display font-bold text-2xl md:text-4xl gradient-text block"
         >
           {titles[index]}
         </motion.span>
@@ -84,11 +85,11 @@ function ScrollIndicator() {
   const [faded, setFaded] = useState(false);
 
   useEffect(() => {
-    const showTimer = setTimeout(() => setVisible(true), 2000);
+    const timer = setTimeout(() => setVisible(true), 2000);
     const onScroll = () => setFaded(window.scrollY > 80);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
-      clearTimeout(showTimer);
+      clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
@@ -101,7 +102,7 @@ function ScrollIndicator() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
           aria-hidden
         >
           <motion.div
@@ -128,21 +129,63 @@ function ScrollIndicator() {
   );
 }
 
-// ─── Grid overlay ───────────────────────────────────────────────────────────
+// ─── Profile photo ──────────────────────────────────────────────────────────
 
-function GridOverlay() {
+function ProfilePhoto() {
+  const [imgError, setImgError] = useState(false);
+
   return (
-    <div
-      aria-hidden
-      className="absolute inset-0 pointer-events-none"
-      style={{
-        backgroundImage: `
-          linear-gradient(rgba(36,83,211,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(36,83,211,0.04) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px',
-      }}
-    />
+    <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex-shrink-0">
+      {/* Rotating gradient ring — uses CSS class from globals.css */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        className="hero-photo-ring absolute -inset-1.5"
+        aria-hidden
+      />
+
+      {/* Inner container */}
+      <div className="hero-photo-inner relative w-full h-full rounded-full overflow-hidden border-4">
+        {!imgError ? (
+          <Image
+            src="/profile.jpg"
+            alt={`Photo de ${personal.name}`}
+            fill
+            sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
+            className="object-cover object-center"
+            onError={() => setImgError(true)}
+            priority
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2">
+            <span className="font-display font-black text-5xl md:text-6xl gradient-text">
+              GS
+            </span>
+            <span className="hero-photo-initials-sub text-xs font-mono tracking-widest">
+              {personal.firstName.slice(0, 6).toUpperCase()}
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Availability badge on photo */}
+      <div className="hero-photo-badge absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative rounded-full h-1.5 w-1.5 bg-emerald-400" />
+        </span>
+        {personal.availableFrom}
+      </div>
+
+      {/* Glow behind photo */}
+      <div
+        className="absolute inset-0 rounded-full -z-10 blur-2xl opacity-30"
+        aria-hidden
+        style={{
+          background: 'radial-gradient(circle, #2453D3 0%, #00D4FF 60%, transparent 80%)',
+        }}
+      />
+    </div>
   );
 }
 
@@ -156,12 +199,11 @@ export default function HeroSection() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   const stats = [
     { value: t('stats.repos.value'), label: t('stats.repos.label') },
@@ -173,175 +215,155 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ backgroundColor: '#060B18' }}
+      className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
-      {/* ── Gradient orbs ── */}
+      {/* ── Gradient orbs (colors handled by CSS classes) ── */}
       <motion.div
         aria-hidden
         animate={ORB_FLOAT_1}
-        className="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(36,83,211,0.22) 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
+        className="hero-orb-1 absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none"
       />
       <motion.div
         aria-hidden
         animate={ORB_FLOAT_2}
-        className="absolute -top-20 -right-40 w-[460px] h-[460px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(0,212,255,0.18) 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
+        className="hero-orb-2 absolute -top-20 -right-40 w-[440px] h-[440px] rounded-full pointer-events-none"
       />
       <motion.div
         aria-hidden
         animate={ORB_PULSE}
-        className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(36,83,211,0.14) 0%, transparent 70%)',
-          filter: 'blur(50px)',
-        }}
+        className="hero-orb-3 absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[280px] rounded-full pointer-events-none"
       />
 
-      {/* ── Grid ── */}
-      <GridOverlay />
+      {/* ── Grid overlay ── */}
+      <div
+        aria-hidden
+        className="hero-grid absolute inset-0 pointer-events-none"
+      />
 
       {/* ── Content ── */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 flex flex-col items-center text-center"
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20"
       >
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center gap-6"
-        >
-          {/* Available badge */}
-          <motion.div variants={itemVariants}>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium border border-[rgba(36,83,211,0.35)] bg-[rgba(36,83,211,0.08)] text-[#E2E8F0] backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+
+          {/* ── Left: Text content ── */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-start gap-5 lg:max-w-xl xl:max-w-2xl w-full"
+          >
+            {/* Available badge */}
+            <motion.div variants={itemVariants}>
+              <span className="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                </span>
+                {t('available')}
               </span>
-              {t('available')}
-            </span>
-          </motion.div>
+            </motion.div>
 
-          {/* Name */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-display font-black tracking-tight text-5xl md:text-7xl lg:text-8xl text-white leading-none"
-            style={{ fontFamily: 'var(--font-syne)' }}
-          >
-            {personal.firstName}
-            <br />
-            <span className="text-4xl md:text-6xl lg:text-7xl">{personal.lastName.toUpperCase()}</span>
-          </motion.h1>
+            {/* Name — fluid sizing via CSS class, never overflows */}
+            <motion.h1 variants={itemVariants}>
+              <span className="hero-name-first block">{personal.firstName}</span>
+              <span className="hero-name-last block">{personal.lastName.toUpperCase()}</span>
+            </motion.h1>
 
-          {/* Animated cycling title */}
-          <motion.div variants={itemVariants} className="w-full">
-            <AnimatedTitle />
-          </motion.div>
+            {/* Animated cycling title */}
+            <motion.div variants={itemVariants} className="w-full">
+              <AnimatedTitle />
+            </motion.div>
 
-          {/* Tagline */}
-          <motion.p
-            variants={itemVariants}
-            className="text-base md:text-lg max-w-2xl leading-relaxed"
-            style={{ color: '#64748B', fontFamily: 'var(--font-dm-sans)' }}
-          >
-            {t('tagline')}
-          </motion.p>
-
-          {/* CTA buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center gap-3 mt-2"
-          >
-            <button
-              onClick={() => scrollTo('contact')}
-              className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 shadow-lg shadow-[rgba(36,83,211,0.3)]"
-              style={{
-                background: 'linear-gradient(135deg, #2453D3, #00D4FF)',
-              }}
+            {/* Tagline */}
+            <motion.p
+              variants={itemVariants}
+              className="hero-tagline text-base md:text-lg leading-relaxed max-w-lg"
             >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-              {t('cta.contact')}
-            </button>
+              {t('tagline')}
+            </motion.p>
 
-            <button
-              onClick={() => scrollTo('projects')}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105"
-              style={{
-                color: '#E2E8F0',
-                border: '1px solid rgba(36,83,211,0.5)',
-                background: 'rgba(36,83,211,0.08)',
-                backdropFilter: 'blur(8px)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(0,212,255,0.6)';
-                e.currentTarget.style.background = 'rgba(0,212,255,0.06)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(36,83,211,0.5)';
-                e.currentTarget.style.background = 'rgba(36,83,211,0.08)';
-              }}
+            {/* CTA buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-start gap-3 mt-1"
             >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
+              <button
+                type="button"
+                onClick={() => scrollTo('contact')}
+                className="hero-cta-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold"
               >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                <path d="m9 11 3 3L22 4" />
-              </svg>
-              {t('cta.projects')}
-            </button>
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                {t('cta.contact')}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => scrollTo('projects')}
+                className="hero-cta-secondary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold"
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <path d="m9 11 3 3L22 4" />
+                </svg>
+                {t('cta.projects')}
+              </button>
+            </motion.div>
+
+            {/* Stats row */}
+            <motion.div
+              variants={itemVariants}
+              className="hero-stats flex items-stretch rounded-2xl overflow-hidden mt-2"
+            >
+              {stats.map(({ value, label }, i) => (
+                <div
+                  key={label}
+                  className={`flex flex-col items-center px-6 py-4 ${i < stats.length - 1 ? 'hero-stat-divider' : ''}`}
+                >
+                  <span className="font-display font-bold text-xl md:text-2xl gradient-text">
+                    {value}
+                  </span>
+                  <span className="font-sans text-xs text-muted mt-0.5 whitespace-nowrap">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
-          {/* Stats row */}
+          {/* ── Right: Profile photo ── */}
           <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-0 mt-6 rounded-2xl overflow-hidden border border-[rgba(36,83,211,0.2)] bg-[rgba(13,21,38,0.6)] backdrop-blur-md divide-x divide-[rgba(36,83,211,0.2)]"
+            variants={photoVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex-shrink-0 flex items-center justify-center"
           >
-            {stats.map(({ value, label }) => (
-              <div key={label} className="flex flex-col items-center px-8 py-4">
-                <span
-                  className="font-display font-bold text-2xl md:text-3xl gradient-text"
-                  style={{ fontFamily: 'var(--font-syne)' }}
-                >
-                  {value}
-                </span>
-                <span
-                  className="text-xs mt-0.5 whitespace-nowrap"
-                  style={{ color: '#64748B', fontFamily: 'var(--font-dm-sans)' }}
-                >
-                  {label}
-                </span>
-              </div>
-            ))}
+            <ProfilePhoto />
           </motion.div>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* ── Scroll indicator ── */}
