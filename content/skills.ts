@@ -34,6 +34,7 @@ export const skills: Skill[] = [
   { name: 'Redis', level: 65, category: 'database' },
 
   // Mobile
+  { name: 'Android Development Java/Kotlin', level: 45, category: 'mobile' },
   { name: 'Flutter', level: 45, category: 'mobile' },
 
   // AI/ML
