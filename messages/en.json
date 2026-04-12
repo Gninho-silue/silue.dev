@@ -23,14 +23,30 @@
     "scrollDown": "Scroll down"
   },
   "about": {
-    "title": "About",
-    "subtitle": "Passionate developer based in Casablanca",
-    "bio1": "Full-Stack Developer passionate about distributed architectures and modern technologies. I build robust, scalable and high-performance systems.",
-    "bio2": "Curious by nature, I love solving complex problems with elegant solutions. From Java/Spring Boot backend to React frontend, through Docker/Kubernetes containerization.",
-    "bio3": "Currently on my final year internship at TechPal, working on an Odoo 17 e-commerce platform with a Flutter application. Available for remote opportunities from July 2026.",
-    "location": "Casablanca, Morocco",
-    "status": "Available — July 2026",
-    "remote": "Open to remote"
+    "label": "ABOUT ME",
+    "title": "Passionate about systems that scale",
+    "titleHighlight": "systems that scale",
+    "bio1": "Final-year engineering student at ENSA Al Hoceima, I specialize in Cloud-Native architectures and distributed systems. My journey blends academic rigor with real-world experience — from building complex Odoo modules at TechPal to deploying distributed banking systems with Kafka and Kubernetes.",
+    "bio2": "What sets me apart? I don't just code features — I think architecture, scalability, resilience and observability from day one. Available from July 2026 for a junior position or international remote opportunity.",
+    "pills": {
+      "performance": "Performance First",
+      "architecture": "Clean Architecture",
+      "observability": "Observability Minded"
+    },
+    "cta": {
+      "downloadCV": "Download CV",
+      "github": "GitHub"
+    },
+    "card": {
+      "name": "Gninninmaguignon Silué",
+      "title": "Full-Stack Developer",
+      "location": "Casablanca, Morocco",
+      "school": "ENSA Al Hoceima — Computer Science",
+      "diploma": "Degree: July 2026",
+      "openTo": "Open to: Remote / Hybrid",
+      "languages": "French (native), English (fluent)",
+      "available": "Available July 2026"
+    }
   },
   "stack": {
     "title": "Tech Stack",

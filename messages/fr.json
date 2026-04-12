@@ -23,14 +23,30 @@
     "scrollDown": "Défiler"
   },
   "about": {
-    "title": "À Propos",
-    "subtitle": "Développeur passionné basé à Casablanca",
-    "bio1": "Développeur Full-Stack passionné par les architectures distribuées et les technologies modernes. Je construis des systèmes robustes, scalables et performants.",
-    "bio2": "Curieux de nature, j'aime résoudre des problèmes complexes avec des solutions élégantes. Du backend Java/Spring Boot au frontend React, en passant par la conteneurisation Docker/Kubernetes.",
-    "bio3": "Actuellement en stage de fin d'études chez TechPal, je travaille sur une plateforme e-commerce Odoo 17 avec une application Flutter. Disponible pour des opportunités remote à partir de Juillet 2026.",
-    "location": "Casablanca, Maroc",
-    "status": "Disponible — Juillet 2026",
-    "remote": "Ouvert au remote"
+    "label": "À PROPOS",
+    "title": "Passionné par les systèmes qui passent à l'échelle",
+    "titleHighlight": "passent à l'échelle",
+    "bio1": "Étudiant ingénieur en dernière année à l'ENSA Al Hoceima, je me spécialise dans la conception d'architectures Cloud-Native et de systèmes distribués. Mon parcours mêle rigueur académique et expérience terrain — de la conception de modules Odoo complexes chez TechPal à la mise en production de systèmes bancaires distribués avec Kafka et Kubernetes.",
+    "bio2": "Ce qui me différencie ? Je ne me contente pas de coder des features — je pense architecture, scalabilité, résilience et observabilité dès le départ. Disponible à partir de juillet 2026 pour un poste junior ou une opportunité remote internationale.",
+    "pills": {
+      "performance": "Performance First",
+      "architecture": "Clean Architecture",
+      "observability": "Observability Minded"
+    },
+    "cta": {
+      "downloadCV": "Télécharger le CV",
+      "github": "GitHub"
+    },
+    "card": {
+      "name": "Gninninmaguignon Silué",
+      "title": "Développeur Full-Stack",
+      "location": "Casablanca, Maroc",
+      "school": "ENSA Al Hoceima — Génie Informatique",
+      "diploma": "Diplôme: Juillet 2026",
+      "openTo": "Open to: Remote / Hybride",
+      "languages": "Français (natif), Anglais (courant)",
+      "available": "Disponible Juillet 2026"
+    }
   },
   "stack": {
     "title": "Stack Technique",
