@@ -102,20 +102,49 @@
     }
   },
   "experience": {
+    "label": "EXPERIENCE",
+    "sectionTitle": "My journey so far",
     "title": "Experience",
     "subtitle": "My professional journey",
     "present": "Present",
+    "current": "Current",
+    "remote": "Remote",
     "techpal": {
       "role": "Full-Stack Developer",
-      "description": "Development and maintenance of custom Odoo 17 modules in Python. PostgreSQL database management, REST API creation and third-party system integration."
+      "description": "Built an ERP internship management system — 11 data models, 30% performance improvement, automated PDF report generation via QWeb."
     },
     "isbMaroc": {
       "role": "Frontend Developer",
-      "description": "Development of modern user interfaces with React and JavaScript. REST API integration, responsive design and performance optimization."
+      "description": "Designed a modern responsive UI with React. REST API integration, reusable component library, and Agile team collaboration."
     },
     "pfeTechpal": {
       "role": "Full-Stack Developer Intern (Final Year)",
-      "description": "Design and development of a complete e-commerce platform on Odoo 17 with Python, paired with a cross-platform Flutter mobile application. Final year internship."
+      "description": "Building an e-commerce platform on Odoo 17 with 9 custom Python modules, paired with a cross-platform Flutter mobile app. Final year project in progress."
+    },
+    "education": {
+      "title": "Education",
+      "ensa": {
+        "name": "ENSA Al Hoceima",
+        "degree": "State Engineering Degree",
+        "field": "Computer Science — Software Engineering specialization",
+        "graduation": "Expected graduation: July 2026",
+        "years": "2023 — 2026"
+      },
+      "estem": {
+        "name": "ESTEM Casablanca",
+        "degree": "Preparatory Classes (CPGE)",
+        "field": "MP/MPSI stream — Mathematics & Physics",
+        "note": "Admitted to the National Common Entrance Exam (CNC)",
+        "years": "2021 — 2023"
+      }
+    },
+    "certifications": {
+      "title": "Certifications",
+      "oci": "Oracle Cloud Infrastructure 2025",
+      "java": "Java SE 17 Developer",
+      "microservices": "Master Microservices SpringBoot/Docker/K8s",
+      "devops": "Certified DevOps Professional",
+      "python": "Complete Python Training"
     }
   },
   "contact": {

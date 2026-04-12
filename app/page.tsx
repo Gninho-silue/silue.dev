@@ -5,9 +5,9 @@ import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import StackSection from '@/components/sections/StackSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
+import ExperienceSection from '@/components/sections/ExperienceSection';
 
 const PLACEHOLDERS = [
-  { id: 'experience', label: 'Experience Section' },
   { id: 'contact', label: 'Contact Section' },
 ];
 
@@ -21,6 +21,7 @@ export default function Home() {
         <AboutSection />
         <StackSection />
         <ProjectsSection />
+        <ExperienceSection />
         {PLACEHOLDERS.map(({ id, label }) => (
           <section
             key={id}
