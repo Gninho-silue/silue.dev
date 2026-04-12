@@ -148,18 +148,33 @@
     }
   },
   "contact": {
+    "label": "CONTACT",
+    "sectionTitle": "Travaillons ensemble",
     "title": "Contact",
-    "subtitle": "Travaillons ensemble",
+    "subtitle": "Disponible pour des opportunités remote à partir de juillet 2026",
     "intro": "Je suis ouvert aux opportunités de travail remote. N'hésitez pas à me contacter pour discuter de vos projets.",
     "form": {
       "name": "Votre nom",
       "email": "Votre email",
       "subject": "Sujet",
       "message": "Votre message",
-      "send": "Envoyer",
+      "send": "Envoyer le message",
       "sending": "Envoi en cours...",
-      "success": "Message envoyé avec succès !",
-      "error": "Une erreur s'est produite. Veuillez réessayer."
+      "success": "Message envoyé !",
+      "error": "Une erreur s'est produite. Veuillez réessayer.",
+      "errorRequired": "Ce champ est requis.",
+      "errorEmail": "Adresse email invalide."
+    },
+    "info": {
+      "title": "Autres moyens de me contacter",
+      "emailLabel": "Email",
+      "linkedinLabel": "LinkedIn",
+      "githubLabel": "GitHub",
+      "locationLabel": "Localisation",
+      "locationValue": "Casablanca, Maroc — Remote friendly",
+      "availTitle": "Disponible Juillet 2026",
+      "openTo": "Open to: Full-time • Remote • International",
+      "responseTime": "Je réponds généralement sous 24h"
     },
     "social": {
       "github": "GitHub",

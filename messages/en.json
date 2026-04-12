@@ -148,18 +148,33 @@
     }
   },
   "contact": {
+    "label": "CONTACT",
+    "sectionTitle": "Let's work together",
     "title": "Contact",
-    "subtitle": "Let's work together",
+    "subtitle": "Available for remote opportunities from July 2026",
     "intro": "I'm open to remote work opportunities. Feel free to reach out to discuss your projects.",
     "form": {
       "name": "Your name",
       "email": "Your email",
       "subject": "Subject",
       "message": "Your message",
-      "send": "Send",
+      "send": "Send message",
       "sending": "Sending...",
-      "success": "Message sent successfully!",
-      "error": "An error occurred. Please try again."
+      "success": "Message sent!",
+      "error": "An error occurred. Please try again.",
+      "errorRequired": "This field is required.",
+      "errorEmail": "Invalid email address."
+    },
+    "info": {
+      "title": "Other ways to reach me",
+      "emailLabel": "Email",
+      "linkedinLabel": "LinkedIn",
+      "githubLabel": "GitHub",
+      "locationLabel": "Location",
+      "locationValue": "Casablanca, Morocco — Remote friendly",
+      "availTitle": "Available July 2026",
+      "openTo": "Open to: Full-time • Remote • International",
+      "responseTime": "I usually respond within 24h"
     },
     "social": {
       "github": "GitHub",
