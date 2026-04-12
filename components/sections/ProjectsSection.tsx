@@ -60,7 +60,8 @@ function ExternalIcon({ size = 14 }: { size?: number }) {
 
 // ─── Stack badges ─────────────────────────────────────────────────────────────
 
-function StackBadges({ stack, moreTpl }: { stack: string[]; moreTpl: string }) {
+function StackBadges({ stack }: { stack: string[] }) {
+  const t = useTranslations('projects');
   const shown = stack.slice(0, MAX_BADGES);
   const extra = stack.length - MAX_BADGES;
   return (
@@ -72,7 +73,7 @@ function StackBadges({ stack, moreTpl }: { stack: string[]; moreTpl: string }) {
       ))}
       {extra > 0 && (
         <span className="project-tech-badge-extra font-mono text-[11px] px-2 py-0.5 rounded-md">
-          {moreTpl.replace('{n}', String(extra))}
+          {t('moreTech', { n: extra })}
         </span>
       )}
     </div>
@@ -113,6 +114,7 @@ function BrowserMock({
             sizes="(max-width: 1024px) 100vw, 520px"
             className="object-cover object-top"
             onError={() => setImgError(true)}
+            unoptimized
           />
         ) : (
           <div className={`absolute inset-0 bg-linear-to-br ${gradient} opacity-80`}>
@@ -152,6 +154,7 @@ function CardHeader({
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover object-top"
           onError={() => setImgError(true)}
+          unoptimized
         />
       ) : (
         <div className={`absolute inset-0 bg-linear-to-br ${gradient} flex items-center justify-center`}>
@@ -201,7 +204,7 @@ function FeaturedCard({ project }: { project: Project }) {
             </p>
           </div>
 
-          <StackBadges stack={project.stack} moreTpl={t('moreTech')} />
+          <StackBadges stack={project.stack} />
 
           <div className="flex items-center gap-3 mt-1">
             <a
@@ -294,7 +297,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {t(`${tKey}.description` as Parameters<typeof t>[0])}
           </p>
 
-          <StackBadges stack={project.stack} moreTpl={t('moreTech')} />
+          <StackBadges stack={project.stack} />
         </div>
 
         {/* Footer links */}
