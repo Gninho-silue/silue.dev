@@ -671,3 +671,92 @@ label {
   border: 1px solid rgba(245, 158, 11, 0.3);
   color: #F59E0B;
 }
+
+/* ─── Experience section ─── */
+
+.exp-bg-orb {
+  background: radial-gradient(circle, rgba(36, 83, 211, 0.09) 0%, transparent 70%);
+  filter: blur(60px);
+}
+[data-theme="light"] .exp-bg-orb {
+  background: radial-gradient(circle, rgba(36, 83, 211, 0.05) 0%, transparent 70%);
+}
+
+/* Animated timeline line */
+.exp-timeline-line {
+  background: linear-gradient(to bottom, #2453D3, rgba(0, 212, 255, 0.4));
+}
+
+/* Stack tech badges — same style as project badges */
+.exp-tech-badge {
+  background: rgba(36, 83, 211, 0.1);
+  border: 1px solid rgba(36, 83, 211, 0.25);
+  color: var(--text-primary);
+}
+[data-theme="light"] .exp-tech-badge {
+  background: rgba(36, 83, 211, 0.06);
+}
+
+/* Location pill */
+.exp-location-pill {
+  background: rgba(100, 116, 139, 0.1);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  color: var(--text-muted);
+}
+
+/* Remote badge */
+.exp-remote-badge {
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: #00D4FF;
+}
+
+/* Current / active badge */
+.exp-current-badge {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  color: #34D399;
+}
+
+/* Education card */
+.exp-edu-card {
+  background: rgba(13, 21, 38, 0.6);
+  border: 1px solid rgba(30, 45, 74, 0.7);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+[data-theme="light"] .exp-edu-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(226, 232, 240, 0.9);
+}
+
+/* Education icon container */
+.exp-edu-icon {
+  background: rgba(36, 83, 211, 0.1);
+  border: 1px solid rgba(36, 83, 211, 0.2);
+}
+[data-theme="light"] .exp-edu-icon {
+  background: rgba(36, 83, 211, 0.07);
+}
+
+/* Years badge */
+.exp-years-badge {
+  background: rgba(100, 116, 139, 0.1);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  color: var(--text-muted);
+}
+
+/* Certification pill */
+.exp-cert-pill {
+  background: rgba(36, 83, 211, 0.08);
+  border: 1px solid rgba(36, 83, 211, 0.22);
+  color: var(--text-primary);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="light"] .exp-cert-pill {
+  background: rgba(36, 83, 211, 0.05);
+}
+.exp-cert-pill:hover {
+  background: rgba(36, 83, 211, 0.14);
+  border-color: rgba(0, 212, 255, 0.35);
+}

@@ -102,20 +102,49 @@
     }
   },
   "experience": {
+    "label": "EXPÉRIENCE",
+    "sectionTitle": "Mon parcours jusqu'ici",
     "title": "Expérience",
     "subtitle": "Mon parcours professionnel",
     "present": "Présent",
+    "current": "En cours",
+    "remote": "Remote",
     "techpal": {
       "role": "Développeur Full-Stack",
-      "description": "Développement et maintenance de modules Odoo 17 personnalisés en Python. Gestion de la base de données PostgreSQL, création d'APIs REST et intégration de systèmes tiers."
+      "description": "Développement et maintenance d'un système ERP de gestion des stages — 11 modèles de données, amélioration des performances de 30 %, génération automatisée de rapports PDF via QWeb."
     },
     "isbMaroc": {
       "role": "Développeur Frontend",
-      "description": "Développement d'interfaces utilisateur modernes avec React et JavaScript. Intégration d'APIs REST, responsive design et optimisation des performances."
+      "description": "Conception d'une interface utilisateur moderne et responsive avec React. Intégration d'APIs REST, mise en place de composants réutilisables et collaboration en méthodologie Agile."
     },
     "pfeTechpal": {
       "role": "Stagiaire Développeur Full-Stack (PFE)",
-      "description": "Conception et développement d'une plateforme e-commerce complète sur Odoo 17 avec Python, couplée à une application mobile cross-platform Flutter. Projet de fin d'études."
+      "description": "Développement d'une plateforme e-commerce sur Odoo 17 avec 9 modules personnalisés en Python, couplée à une application mobile Flutter cross-platform. Projet de fin d'études en cours."
+    },
+    "education": {
+      "title": "Formation",
+      "ensa": {
+        "name": "ENSA Al Hoceima",
+        "degree": "Diplôme d'Ingénieur d'État",
+        "field": "Génie Informatique — Spécialité Génie Logiciel",
+        "graduation": "Diplôme prévu : Juillet 2026",
+        "years": "2023 — 2026"
+      },
+      "estem": {
+        "name": "ESTEM Casablanca",
+        "degree": "Classes Préparatoires (CPGE)",
+        "field": "Filière MP/MPSI — Mathématiques et Physique",
+        "note": "Admis au Concours National Commun (CNC)",
+        "years": "2021 — 2023"
+      }
+    },
+    "certifications": {
+      "title": "Certifications",
+      "oci": "Oracle Cloud Infrastructure 2025",
+      "java": "Java SE 17 Developer",
+      "microservices": "Master Microservices SpringBoot/Docker/K8s",
+      "devops": "Certified DevOps Professional",
+      "python": "Python Formation Complète"
     }
   },
   "contact": {
