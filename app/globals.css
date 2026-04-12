@@ -559,6 +559,12 @@ label {
   background-size: 28px 28px;
 }
 
+/* Card header — fixed height so Image fill has a sized container */
+.project-card-header {
+  height: 160px;
+  position: relative;
+}
+
 /* Regular project card */
 .project-card {
   background: rgba(13, 21, 38, 0.6);

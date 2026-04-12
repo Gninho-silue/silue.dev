@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import Image from 'next/image';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { projects, type Project, type ProjectCategory } from '@/content/projects';
@@ -80,7 +81,19 @@ function StackBadges({ stack, moreTpl }: { stack: string[]; moreTpl: string }) {
 
 // ─── Mock browser window ──────────────────────────────────────────────────────
 
-function BrowserMock({ gradient, icon }: { gradient: string; icon: string }) {
+function BrowserMock({
+  gradient,
+  icon,
+  image,
+  alt,
+}: {
+  gradient: string;
+  icon: string;
+  image: string;
+  alt: string;
+}) {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <div className="project-browser w-full rounded-xl overflow-hidden shadow-2xl">
       {/* Chrome bar */}
@@ -91,14 +104,60 @@ function BrowserMock({ gradient, icon }: { gradient: string; icon: string }) {
         <div className="project-browser-url ml-3 flex-1 h-4 rounded-full" />
       </div>
       {/* Viewport */}
-      <div className={`relative aspect-video bg-linear-to-br ${gradient} opacity-80`}>
-        {/* Grid overlay */}
-        <div aria-hidden className="project-browser-grid absolute inset-0 opacity-20" />
-        {/* Center glyph */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-5xl opacity-50" aria-hidden>{icon}</span>
-        </div>
+      <div className="relative aspect-video">
+        {!imgError ? (
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 520px"
+            className="object-cover object-top"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className={`absolute inset-0 bg-linear-to-br ${gradient} opacity-80`}>
+            <div aria-hidden className="project-browser-grid absolute inset-0 opacity-20" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-5xl opacity-50" aria-hidden>{icon}</span>
+            </div>
+          </div>
+        )}
       </div>
+    </div>
+  );
+}
+
+// ─── Project card header — screenshot or gradient fallback ───────────────────
+
+function CardHeader({
+  image,
+  alt,
+  gradient,
+  icon,
+}: {
+  image: string;
+  alt: string;
+  gradient: string;
+  icon: string;
+}) {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <div className="relative project-card-header overflow-hidden">
+      {!imgError ? (
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover object-top"
+          onError={() => setImgError(true)}
+        />
+      ) : (
+        <div className={`absolute inset-0 bg-linear-to-br ${gradient} flex items-center justify-center`}>
+          <span className="text-3xl opacity-60" aria-hidden>{icon}</span>
+        </div>
+      )}
     </div>
   );
 }
@@ -170,7 +229,12 @@ function FeaturedCard({ project }: { project: Project }) {
 
         {/* Right: mock browser */}
         <div className="w-full lg:w-120 xl:w-130 shrink-0">
-          <BrowserMock gradient={catStyle.gradient} icon={catStyle.icon} />
+          <BrowserMock
+            gradient={catStyle.gradient}
+            icon={catStyle.icon}
+            image={project.image}
+            alt={project.id}
+          />
         </div>
       </div>
     </motion.div>
@@ -205,10 +269,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {...handlers}
         className="project-card project-tilt-card h-full rounded-xl overflow-hidden flex flex-col"
       >
-        {/* Gradient header */}
-        <div className={`project-card-header bg-linear-to-br ${catStyle.gradient} flex items-center justify-center py-8`}>
-          <span className="text-3xl" aria-hidden>{catStyle.icon}</span>
-        </div>
+        {/* Card header — screenshot or gradient fallback */}
+        <CardHeader
+          image={project.image}
+          alt={project.id}
+          gradient={catStyle.gradient}
+          icon={catStyle.icon}
+        />
 
         {/* Body */}
         <div className="flex flex-col flex-1 gap-3 p-5">
