@@ -49,15 +49,21 @@
     }
   },
   "stack": {
-    "title": "Stack Technique",
-    "subtitle": "Les technologies que je maîtrise",
-    "categories": {
+    "label": "STACK TECHNIQUE",
+    "title": "Technologies que je maîtrise",
+    "subtitle": "De l'architecture backend aux interfaces modernes — chaque barre reflète une expérience réelle.",
+    "tabs": {
+      "all": "Tout",
       "backend": "Backend",
       "frontend": "Frontend",
       "devops": "DevOps",
       "database": "Base de données",
       "mobile": "Mobile",
       "ai": "IA / ML"
+    },
+    "levelLabel": "Niveau",
+    "tools": {
+      "title": "Outils & Autres"
     }
   },
   "projects": {

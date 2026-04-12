@@ -49,15 +49,21 @@
     }
   },
   "stack": {
-    "title": "Tech Stack",
-    "subtitle": "Technologies I work with",
-    "categories": {
+    "label": "TECH STACK",
+    "title": "Technologies I work with",
+    "subtitle": "From backend architecture to modern interfaces — each bar reflects real-world experience.",
+    "tabs": {
+      "all": "All",
       "backend": "Backend",
       "frontend": "Frontend",
       "devops": "DevOps",
       "database": "Database",
       "mobile": "Mobile",
       "ai": "AI / ML"
+    },
+    "levelLabel": "Level",
+    "tools": {
+      "title": "Tools & Others"
     }
   },
   "projects": {
