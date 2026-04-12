@@ -67,12 +67,19 @@
     }
   },
   "projects": {
-    "title": "Projets",
-    "subtitle": "Ce que j'ai construit",
+    "label": "PROJETS",
+    "title": "Ce que j'ai construit",
+    "subtitle": "Des systèmes distribués aux applications propulsées par l'IA",
+    "featured": "Projet Vedette",
     "viewAll": "Voir tous les projets",
     "viewCode": "Code",
     "viewLive": "Demo live",
     "inProgress": "En cours",
+    "moreTech": "+{n} autres",
+    "cta": {
+      "title": "Voir plus ?",
+      "button": "Voir tout sur GitHub"
+    },
     "devscope": {
       "title": "DevScope",
       "description": "Analyseur de profils GitHub propulsé par l'IA Groq. Génère des rapports détaillés sur les compétences, l'activité et les technologies d'un développeur à partir de son profil GitHub."
