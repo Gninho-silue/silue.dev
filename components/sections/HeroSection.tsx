@@ -148,7 +148,7 @@ function ProfilePhoto() {
       <div className="hero-photo-inner relative w-full h-full rounded-full overflow-hidden border-4">
         {!imgError ? (
           <Image
-            src="/profile.jpg"
+            src="/profile.png"
             alt={`Photo de ${personal.name}`}
             fill
             sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
