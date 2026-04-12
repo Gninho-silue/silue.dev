@@ -67,12 +67,19 @@
     }
   },
   "projects": {
-    "title": "Projects",
-    "subtitle": "What I've built",
+    "label": "PROJECTS",
+    "title": "Things I've built",
+    "subtitle": "From distributed systems to AI-powered apps",
+    "featured": "Featured Project",
     "viewAll": "View all projects",
     "viewCode": "Code",
     "viewLive": "Live demo",
     "inProgress": "In progress",
+    "moreTech": "+{n} more",
+    "cta": {
+      "title": "Want to see more?",
+      "button": "View all on GitHub"
+    },
     "devscope": {
       "title": "DevScope",
       "description": "GitHub profile analyzer powered by Groq AI. Generates detailed reports on a developer's skills, activity and technologies from their GitHub profile."

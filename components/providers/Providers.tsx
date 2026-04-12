@@ -54,7 +54,7 @@ export default function Providers({ children }: { children: ReactNode }) {
         enableSystem
         disableTransitionOnChange={false}
       >
-        <NextIntlClientProvider locale="fr" messages={frMessages}>
+        <NextIntlClientProvider locale="fr" messages={frMessages} timeZone="Africa/Casablanca">
           {children}
         </NextIntlClientProvider>
       </ThemeProvider>
@@ -69,7 +69,7 @@ export default function Providers({ children }: { children: ReactNode }) {
         enableSystem
         disableTransitionOnChange={false}
       >
-        <NextIntlClientProvider locale={locale} messages={messages[locale]}>
+        <NextIntlClientProvider locale={locale} messages={messages[locale]} timeZone="Africa/Casablanca">
           {children}
         </NextIntlClientProvider>
       </ThemeProvider>

@@ -500,3 +500,174 @@ label {
   border-color: rgba(36, 83, 211, 0.4);
   background: rgba(36, 83, 211, 0.06);
 }
+
+/* ─── Projects section ─── */
+
+.project-bg-orb {
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+}
+[data-theme="light"] .project-bg-orb {
+  background: radial-gradient(circle, rgba(36, 83, 211, 0.05) 0%, transparent 70%);
+}
+
+/* Featured card */
+.project-featured-card {
+  background: rgba(13, 21, 38, 0.65);
+  border: 1px solid rgba(30, 45, 74, 0.8);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+[data-theme="light"] .project-featured-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(226, 232, 240, 0.9);
+}
+
+/* Mock browser */
+.project-browser {
+  background: rgba(13, 21, 38, 0.9);
+  border: 1px solid rgba(30, 45, 74, 0.9);
+}
+[data-theme="light"] .project-browser {
+  background: rgba(241, 245, 249, 0.95);
+  border-color: rgba(203, 213, 225, 0.9);
+}
+
+.project-browser-bar {
+  background: rgba(30, 45, 74, 0.6);
+  border-bottom: 1px solid rgba(30, 45, 74, 0.5);
+}
+[data-theme="light"] .project-browser-bar {
+  background: rgba(226, 232, 240, 0.7);
+  border-bottom-color: rgba(203, 213, 225, 0.6);
+}
+
+.project-browser-url {
+  background: rgba(36, 83, 211, 0.12);
+  border: 1px solid rgba(36, 83, 211, 0.18);
+}
+[data-theme="light"] .project-browser-url {
+  background: rgba(226, 232, 240, 0.7);
+  border-color: transparent;
+}
+
+/* Browser viewport grid overlay */
+.project-browser-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Card header — fixed height so Image fill has a sized container */
+.project-card-header {
+  height: 160px;
+  position: relative;
+}
+
+/* Regular project card */
+.project-card {
+  background: rgba(13, 21, 38, 0.6);
+  border: 1px solid rgba(30, 45, 74, 0.7);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease;
+}
+[data-theme="light"] .project-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(226, 232, 240, 0.9);
+}
+.project-card:hover {
+  border-color: rgba(36, 83, 211, 0.45);
+}
+[data-theme="light"] .project-card:hover {
+  border-color: rgba(36, 83, 211, 0.3);
+}
+
+/* 3D tilt helpers */
+.project-card-perspective {
+  perspective: 900px;
+}
+.project-tilt-card {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+/* Card footer */
+.project-card-footer {
+  border-top: 1px solid rgba(30, 45, 74, 0.5);
+}
+[data-theme="light"] .project-card-footer {
+  border-top-color: rgba(226, 232, 240, 0.8);
+}
+
+/* Link buttons */
+.project-link {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+.project-link:hover {
+  color: var(--text-primary);
+}
+
+.project-link-divider {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: rgba(30, 45, 74, 0.6);
+}
+[data-theme="light"] .project-link-divider {
+  background: rgba(203, 213, 225, 0.9);
+}
+
+/* Primary + ghost action buttons */
+.project-btn-primary {
+  background: linear-gradient(135deg, #2453D3, #00D4FF);
+  box-shadow: 0 4px 16px rgba(36, 83, 211, 0.3);
+  color: #ffffff;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.project-btn-primary:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.project-btn-ghost {
+  color: var(--text-primary);
+  border: 1.5px solid rgba(36, 83, 211, 0.35);
+  background: rgba(36, 83, 211, 0.07);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+[data-theme="light"] .project-btn-ghost {
+  background: rgba(36, 83, 211, 0.05);
+}
+.project-btn-ghost:hover {
+  transform: scale(1.04);
+  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.07);
+}
+
+/* Tech stack badges */
+.project-tech-badge {
+  background: rgba(36, 83, 211, 0.1);
+  border: 1px solid rgba(36, 83, 211, 0.25);
+  color: var(--text-primary);
+}
+[data-theme="light"] .project-tech-badge {
+  background: rgba(36, 83, 211, 0.06);
+}
+
+.project-tech-badge-extra {
+  background: rgba(100, 116, 139, 0.1);
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  color: var(--text-muted);
+}
+
+/* In-progress badge */
+.project-in-progress {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #F59E0B;
+}
