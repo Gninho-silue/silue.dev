@@ -62,6 +62,8 @@
       "ai": "AI / ML"
     },
     "levelLabel": "Level",
+    "coreExpertise": "Core expertise",
+    "alsoWorkWith": "Also work with",
     "tools": {
       "title": "Tools & Others"
     }

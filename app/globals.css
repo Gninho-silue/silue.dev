@@ -501,6 +501,14 @@ label {
   background: rgba(36, 83, 211, 0.06);
 }
 
+/* Divider line between core and tag cloud */
+.stack-divider-line {
+  background: rgba(30, 45, 74, 0.6);
+}
+[data-theme="light"] .stack-divider-line {
+  background: rgba(226, 232, 240, 0.9);
+}
+
 /* ─── Projects section ─── */
 
 .project-bg-orb {
