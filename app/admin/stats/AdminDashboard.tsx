@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import {
   BarChart,
   Bar,
@@ -52,6 +53,15 @@ export default function AdminDashboard() {
     timeStyle: 'short',
   });
 
+  // Restore native cursor — the custom cursor is not mounted on this page
+  useEffect(() => {
+    const prev = document.body.style.cursor;
+    document.body.style.cursor = 'auto';
+    return () => {
+      document.body.style.cursor = prev;
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white p-6 md:p-10 font-sans">
       {/* Header */}
@@ -64,7 +74,7 @@ export default function AdminDashboard() {
         </div>
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-[#2453D3] hover:text-blue-400 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-brand-primary hover:text-blue-400 transition-colors"
         >
           ← Back to site
         </Link>
@@ -155,7 +165,7 @@ export default function AdminDashboard() {
                 iconType="circle"
                 iconSize={10}
                 formatter={(value) => (
-                  <span style={{ color: '#9ca3af', fontSize: 13 }}>{value}</span>
+                  <span className="text-[13px] text-gray-400">{value}</span>
                 )}
               />
             </PieChart>
@@ -171,8 +181,9 @@ export default function AdminDashboard() {
             <div key={name} className="flex items-center gap-4">
               <span className="w-20 text-sm text-gray-300 shrink-0">{name}</span>
               <div className="flex-1 bg-white/5 rounded-full h-2 overflow-hidden">
+                {/* eslint-disable-next-line react/forbid-component-props */}
                 <div
-                  className="h-full rounded-full bg-[#2453D3]"
+                  className="h-full rounded-full bg-brand-primary"
                   style={{ width: `${percent}%` }}
                 />
               </div>
@@ -188,7 +199,7 @@ export default function AdminDashboard() {
           href="https://vercel.com/dashboard"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#2453D3] hover:bg-blue-600 transition-colors text-white font-medium px-6 py-3 rounded-lg text-sm"
+          className="inline-flex items-center gap-2 bg-brand-primary hover:bg-blue-600 transition-colors text-white font-medium px-6 py-3 rounded-lg text-sm"
         >
           Open Vercel Dashboard ↗
         </a>
