@@ -1,160 +1,75 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { skills, tools, type SkillCategory } from '@/content/skills';
+import { skills, type SkillCategory } from '@/content/skills';
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ─── Constants ────────────────────────────────────────────────────────────────
 
 type Tab = 'all' | SkillCategory;
-
 const TABS: Tab[] = ['all', 'backend', 'frontend', 'devops', 'database', 'mobile', 'ai'];
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// Skills shown as animated progress bars (core expertise)
+const CORE_SKILL_NAMES = new Set([
+  'Java 21', 'Spring Boot', 'React', 'TypeScript', 'Docker', 'PostgreSQL',
+]);
 
+// Category color palette
+const CAT_COLOR: Record<SkillCategory, string> = {
+  backend:  '#2453D3',
+  frontend: '#00D4FF',
+  devops:   '#F59E0B',
+  database: '#10B981',
+  mobile:   '#8B5CF6',
+  ai:       '#EC4899',
+};
+
+// Bar color for core skills — green for ≥80, blue otherwise
 function barColor(level: number): string {
-  if (level >= 80) return '#10B981';
-  if (level >= 60) return '#2453D3';
-  return '#00D4FF';
+  return level >= 80 ? '#10B981' : '#2453D3';
 }
 
-const CATEGORY_STYLE: Record<SkillCategory, { bg: string; text: string; border: string; icon: string }> = {
-  backend:  { bg: 'rgba(36,83,211,0.14)',   text: '#2453D3', border: 'rgba(36,83,211,0.35)',   icon: '⚙️' },
-  frontend: { bg: 'rgba(0,212,255,0.12)',   text: '#00D4FF', border: 'rgba(0,212,255,0.35)',   icon: '🎨' },
-  devops:   { bg: 'rgba(245,158,11,0.12)',  text: '#F59E0B', border: 'rgba(245,158,11,0.35)',  icon: '🚀' },
-  database: { bg: 'rgba(16,185,129,0.12)',  text: '#10B981', border: 'rgba(16,185,129,0.35)',  icon: '🗄️' },
-  mobile:   { bg: 'rgba(139,92,246,0.12)', text: '#8B5CF6', border: 'rgba(139,92,246,0.35)', icon: '📱' },
-  ai:       { bg: 'rgba(236,72,153,0.12)', text: '#EC4899', border: 'rgba(236,72,153,0.35)', icon: '🤖' },
+// Tag cloud data keyed by category (skills NOT in core set)
+const TAG_CLOUD: Record<SkillCategory, string[]> = {
+  backend:  ['Kafka', 'Node.js', 'Python', 'Express', 'Spring Cloud'],
+  frontend: ['Tailwind CSS', 'Redux', 'HTML/CSS', 'Next.js'],
+  devops:   ['Kubernetes', 'Helm', 'GitHub Actions', 'Jenkins'],
+  database: ['MySQL', 'MongoDB', 'Redis'],
+  mobile:   ['Flutter', 'Android'],
+  ai:       ['Groq API', 'HuggingFace', 'PyTorch'],
 };
 
 // ─── Framer variants ──────────────────────────────────────────────────────────
 
-const headerVariants: Variants = {
-  hidden:  { opacity: 0, y: 32 },
+const fadeUp: Variants = {
+  hidden:  { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
-const cardVariants: Variants = {
-  hidden:  { opacity: 0, y: 20 },
+const rowVariants: Variants = {
+  hidden:  { opacity: 0, x: -24 },
   visible: (i: number) => ({
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: 'easeOut', delay: i * 0.045 },
+    x: 0,
+    transition: { duration: 0.45, ease: 'easeOut', delay: i * 0.07 },
   }),
-  exit: { opacity: 0, y: -10, transition: { duration: 0.2 } },
 };
 
-// ─── Animated counter hook ────────────────────────────────────────────────────
+const tagVariants: Variants = {
+  hidden:  { opacity: 0, scale: 0.88 },
+  visible: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.32, ease: 'easeOut', delay: i * 0.04 },
+  }),
+};
 
-function useCounter(target: number, active: boolean): number {
-  const [value, setValue] = useState(0);
+// ─── Tab button ───────────────────────────────────────────────────────────────
 
-  useEffect(() => {
-    if (!active) return;
-    setValue(0);
-    const duration = 900;
-    const startTime = performance.now();
-
-    function tick(now: number) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-
-    const id = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(id);
-  }, [active, target]);
-
-  return value;
-}
-
-// ─── Skill card ───────────────────────────────────────────────────────────────
-
-interface SkillCardProps {
-  name: string;
-  level: number;
-  category: SkillCategory;
-  index: number;
-  levelLabel: string;
-}
-
-function SkillCard({ name, level, category, index, levelLabel }: SkillCardProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-40px' });
-  const displayed = useCounter(level, isInView);
-  const color = barColor(level);
-  const style = CATEGORY_STYLE[category];
-
-  return (
-    <motion.div
-      ref={ref}
-      custom={index}
-      variants={cardVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      className="stack-card card-glow rounded-xl p-4 flex flex-col gap-3"
-    >
-      {/* Icon + name */}
-      <div className="flex items-center gap-3">
-        <div
-          className="w-9 h-9 rounded-lg flex items-center justify-center text-base shrink-0"
-          style={{ background: style.bg, border: `1px solid ${style.border}` }}
-          aria-hidden
-        >
-          {style.icon}
-        </div>
-        <p className="font-mono text-sm font-semibold text-foreground leading-tight line-clamp-2">
-          {name}
-        </p>
-      </div>
-
-      {/* Category badge */}
-      <span
-        className="self-start text-[10px] font-mono font-medium px-2 py-0.5 rounded-full"
-        style={{ background: style.bg, color: style.text, border: `1px solid ${style.border}` }}
-      >
-        {category}
-      </span>
-
-      {/* Progress bar + counter */}
-      <div className="flex flex-col gap-1.5">
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-muted">{levelLabel}</span>
-          <span
-            className="font-mono text-xs font-bold tabular-nums"
-            style={{ color }}
-          >
-            {displayed}%
-          </span>
-        </div>
-        <div className="stack-bar-track h-1.5 rounded-full overflow-hidden">
-          <motion.div
-            className="h-full rounded-full"
-            style={{ background: color }}
-            initial={{ width: '0%' }}
-            animate={{ width: isInView ? `${level}%` : '0%' }}
-            transition={{ duration: 1, ease: 'easeOut', delay: 0.05 + index * 0.03 }}
-          />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// ─── Category tab button ──────────────────────────────────────────────────────
-
-interface TabButtonProps {
-  tab: Tab;
-  active: boolean;
-  label: string;
-  onClick: () => void;
-}
-
-function TabButton({ tab, active, label, onClick }: TabButtonProps) {
+function TabButton({ active, label, onClick }: {
+  tab: Tab; active: boolean; label: string; onClick: () => void;
+}) {
   return (
     <button
       type="button"
@@ -175,34 +90,144 @@ function TabButton({ tab, active, label, onClick }: TabButtonProps) {
   );
 }
 
+// ─── Core skill row (progress bar) ───────────────────────────────────────────
+
+function SkillRow({ name, level, index, inView }: {
+  name: string; level: number; index: number; inView: boolean;
+}) {
+  const color = barColor(level);
+
+  return (
+    <motion.div
+      custom={index}
+      variants={rowVariants}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      className="flex items-center gap-4"
+    >
+      {/* Skill name */}
+      <span
+        className="font-mono text-sm font-semibold text-foreground shrink-0"
+        style={{ minWidth: '130px' }}
+      >
+        {name}
+      </span>
+
+      {/* Bar track */}
+      <div className="stack-bar-track flex-1 h-1.5 rounded-full overflow-hidden">
+        <motion.div
+          className="h-full rounded-full"
+          style={{ background: color }}
+          initial={{ width: '0%' }}
+          animate={{ width: inView ? `${level}%` : '0%' }}
+          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 + index * 0.07 }}
+        />
+      </div>
+
+      {/* Percentage */}
+      <span
+        className="font-mono text-xs tabular-nums text-muted shrink-0"
+        style={{ minWidth: '36px', textAlign: 'right' }}
+      >
+        {level}%
+      </span>
+    </motion.div>
+  );
+}
+
+// ─── Tag cloud ────────────────────────────────────────────────────────────────
+
+function TagCloud({ activeTab, inView }: { activeTab: Tab; inView: boolean }) {
+  const t = useTranslations('stack');
+
+  // Build flat list of [tag, category] pairs filtered by active tab
+  const entries: Array<{ tag: string; cat: SkillCategory }> = [];
+  const cats = activeTab === 'all'
+    ? (Object.keys(TAG_CLOUD) as SkillCategory[])
+    : [activeTab as SkillCategory];
+
+  for (const cat of cats) {
+    for (const tag of TAG_CLOUD[cat] ?? []) {
+      entries.push({ tag, cat });
+    }
+  }
+
+  if (entries.length === 0) return null;
+
+  return (
+    <div>
+      {/* Divider */}
+      <div className="stack-divider flex items-center gap-4 my-10">
+        <div className="flex-1 h-px stack-divider-line" />
+        <span className="font-mono text-xs text-muted uppercase tracking-widest whitespace-nowrap">
+          {t('alsoWorkWith')}
+        </span>
+        <div className="flex-1 h-px stack-divider-line" />
+      </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2">
+        {entries.map(({ tag, cat }, i) => {
+          const color = CAT_COLOR[cat];
+          return (
+            <motion.span
+              key={`${cat}-${tag}`}
+              custom={i}
+              variants={tagVariants}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              className="font-mono text-[12px] px-3 py-1 rounded"
+              style={{
+                color,
+                border: `1px solid ${color}99`,
+                background: `${color}14`,
+              }}
+            >
+              {tag}
+            </motion.span>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function StackSection() {
   const t = useTranslations('stack');
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: '-60px' });
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const isBodyInView = useInView(bodyRef, { once: true, margin: '-60px' });
+
   const [activeTab, setActiveTab] = useState<Tab>('all');
 
-  const filtered =
-    activeTab === 'all' ? skills : skills.filter((s) => s.category === activeTab);
+  // Core skills filtered by tab
+  const coreSkills = skills.filter(
+    (s) => CORE_SKILL_NAMES.has(s.name) &&
+      (activeTab === 'all' || s.category === activeTab),
+  );
+
+  // Whether the selected tab has any tag cloud entries
+  const hasTags = activeTab === 'all' || (TAG_CLOUD[activeTab as SkillCategory]?.length ?? 0) > 0;
 
   return (
     <section
       id="stack"
       className="relative py-24 md:py-32 bg-background overflow-hidden"
     >
-      {/* Subtle background accent */}
       <div
         aria-hidden
         className="stack-bg-orb absolute -bottom-32 -left-32 w-96 h-96 rounded-full pointer-events-none"
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ── */}
         <motion.div
           ref={headerRef}
-          variants={headerVariants}
+          variants={fadeUp}
           initial="hidden"
           animate={isHeaderInView ? 'visible' : 'hidden'}
           className="flex flex-col items-center text-center gap-4 mb-12"
@@ -219,7 +244,7 @@ export default function StackSection() {
         </motion.div>
 
         {/* ── Category tabs ── */}
-        <div className="mb-8 -mx-4 px-4 overflow-x-auto stack-tabs-scroll">
+        <div className="mb-10 -mx-4 px-4 overflow-x-auto stack-tabs-scroll">
           <div className="flex items-center gap-1 w-max mx-auto">
             {TABS.map((tab) => (
               <TabButton
@@ -233,42 +258,42 @@ export default function StackSection() {
           </div>
         </div>
 
-        {/* ── Skills grid ── */}
+        {/* ── Body — fades when tab changes ── */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
+            ref={bodyRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+            transition={{ duration: 0.18 }}
           >
-            {filtered.map((skill, i) => (
-              <SkillCard
-                key={skill.name}
-                name={skill.name}
-                level={skill.level}
-                category={skill.category}
-                index={i}
-                levelLabel={t('levelLabel')}
-              />
-            ))}
+            {/* Core expertise bars */}
+            {coreSkills.length > 0 && (
+              <div>
+                <p className="font-mono text-[11px] font-semibold tracking-widest text-muted uppercase mb-6">
+                  {t('coreExpertise')}
+                </p>
+                <div className="flex flex-col gap-5">
+                  {coreSkills.map((skill, i) => (
+                    <SkillRow
+                      key={skill.name}
+                      name={skill.name}
+                      level={skill.level}
+                      index={i}
+                      inView={isBodyInView}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Tag cloud + divider */}
+            {hasTags && (
+              <TagCloud activeTab={activeTab} inView={isBodyInView} />
+            )}
           </motion.div>
         </AnimatePresence>
-
-        {/* ── Tools & Others ── */}
-        <div className="mt-16">
-          <p className="text-xs font-mono font-semibold tracking-widest text-muted uppercase text-center mb-6">
-            {t('tools.title')}
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {tools.map((tool) => (
-              <span key={tool} className="stack-tool-pill font-mono text-xs px-3 py-1.5 rounded-full">
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
 
       </div>
     </section>
