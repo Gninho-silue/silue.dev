@@ -23,40 +23,41 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const BASE_URL = 'https://silue.dev';
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL ?? 'https://silue.dev'
-  ),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: 'Gninninmaguignon Silué — Full-Stack Developer',
     template: '%s | Gninninmaguignon Silué',
   },
   description:
-    'Full-Stack Developer specializing in distributed systems and modern web applications. Based in Casablanca, open to remote opportunities.',
+    'Full-Stack Developer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available July 2026 for remote opportunities.',
   keywords: [
     'Full-Stack Developer',
-    'Java',
-    'Spring Boot',
+    'Java Spring Boot',
     'React',
-    'Next.js',
-    'TypeScript',
-    'Docker',
-    'Kubernetes',
+    'Node.js',
+    'Microservices',
+    'Cloud-Native',
     'Casablanca',
-    'Maroc',
-    'remote',
+    'Remote',
+    'Morocco',
   ],
   authors: [{ name: 'Gninninmaguignon Silué' }],
   creator: 'Gninninmaguignon Silué',
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     alternateLocale: 'en_US',
-    url: 'https://silue.dev',
+    url: BASE_URL,
     siteName: 'Gninninmaguignon Silué',
     title: 'Gninninmaguignon Silué — Full-Stack Developer',
     description:
-      'Full-Stack Developer specializing in distributed systems and modern web applications.',
+      'Full-Stack Developer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available July 2026 for remote opportunities.',
     images: [
       {
         url: '/og-image.png',
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gninninmaguignon Silué — Full-Stack Developer',
     description:
-      'Full-Stack Developer specializing in distributed systems and modern web applications.',
+      'Full-Stack Developer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available July 2026 for remote opportunities.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -89,6 +90,18 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Gninninmaguignon Silué',
+  jobTitle: 'Full-Stack Developer',
+  url: BASE_URL,
+  sameAs: [
+    'https://github.com/Gninho-silue',
+    'https://linkedin.com/in/gninema-silue',
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -100,6 +113,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-background text-foreground antialiased">
         <Providers>{children}</Providers>
         <Analytics />
