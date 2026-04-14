@@ -181,7 +181,6 @@ export default function AdminDashboard() {
             <div key={name} className="flex items-center gap-4">
               <span className="w-20 text-sm text-gray-300 shrink-0">{name}</span>
               <div className="flex-1 bg-white/5 rounded-full h-2 overflow-hidden">
-                {/* eslint-disable-next-line react/forbid-component-props */}
                 <div
                   className="h-full rounded-full bg-brand-primary"
                   style={{ width: `${percent}%` }}
