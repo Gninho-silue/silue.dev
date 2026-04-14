@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://silue.dev/sitemap.xml
+Sitemap: https://silue-dev.vercel.app/sitemap.xml
