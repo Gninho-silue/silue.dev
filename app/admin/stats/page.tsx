@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import { checkPassword } from './actions';
 import AdminDashboard from './AdminDashboard';
 
 export const metadata = { robots: 'noindex, nofollow' };
@@ -9,10 +10,10 @@ interface Props {
 
 export default async function AdminStatsPage({ searchParams }: Props) {
   const params = await searchParams;
-  const password = params.password;
-  const expectedPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+  const password = params.password ?? '';
 
-  if (!password || !expectedPassword || password !== expectedPassword) {
+  const valid = await checkPassword(password);
+  if (!valid) {
     redirect('/');
   }
 
