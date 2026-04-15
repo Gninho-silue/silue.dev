@@ -6,11 +6,11 @@ import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { projects, type Project, type ProjectCategory } from '@/content/projects';
 import { social } from '@/content/personal';
-import { useTilt } from '@/hooks/useTilt';
+import ProjectCard from '@/components/ui/ProjectCard';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const MAX_BADGES = 4;
+const MAX_BADGES = 4; // used by StackBadges in FeaturedCard
 
 const CATEGORY_STYLE: Record<
   ProjectCategory,
@@ -27,15 +27,6 @@ const CATEGORY_STYLE: Record<
 const fadeUp: Variants = {
   hidden:  { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
-const cardVariants: Variants = {
-  hidden:  { opacity: 0, y: 28 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut', delay: 0.1 + i * 0.08 },
-  }),
 };
 
 // ─── GitHub icon ──────────────────────────────────────────────────────────────
@@ -129,42 +120,6 @@ function BrowserMock({
   );
 }
 
-// ─── Project card header — screenshot or gradient fallback ───────────────────
-
-function CardHeader({
-  image,
-  alt,
-  gradient,
-  icon,
-}: {
-  image: string;
-  alt: string;
-  gradient: string;
-  icon: string;
-}) {
-  const [imgError, setImgError] = useState(false);
-
-  return (
-    <div className="relative project-card-header overflow-hidden">
-      {!imgError ? (
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover object-top"
-          onError={() => setImgError(true)}
-          unoptimized
-        />
-      ) : (
-        <div className={`absolute inset-0 bg-linear-to-br ${gradient} flex items-center justify-center`}>
-          <span className="text-3xl opacity-60" aria-hidden>{icon}</span>
-        </div>
-      )}
-    </div>
-  );
-}
-
 // ─── Featured project card ────────────────────────────────────────────────────
 
 function FeaturedCard({ project }: { project: Project }) {
@@ -238,95 +193,6 @@ function FeaturedCard({ project }: { project: Project }) {
             image={project.image}
             alt={project.id}
           />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// ─── Regular project card ─────────────────────────────────────────────────────
-
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const { ref, handlers } = useTilt<HTMLDivElement>(8);
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(wrapRef, { once: true, margin: '-40px' });
-  const t = useTranslations('projects');
-  const catStyle = CATEGORY_STYLE[project.category];
-
-  // Build translation key: pfe-techpal → pfeTechpal
-  const tKey = project.id
-    .replace(/-([a-z])/g, (_: string, c: string) => c.toUpperCase())
-    .replace(/^-/, '') as Parameters<typeof t>[0];
-
-  return (
-    <motion.div
-      ref={wrapRef}
-      custom={index}
-      variants={cardVariants}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      className="project-card-perspective h-full"
-    >
-      <div
-        ref={ref}
-        {...handlers}
-        className="project-card project-tilt-card h-full rounded-xl overflow-hidden flex flex-col"
-      >
-        {/* Card header — screenshot or gradient fallback */}
-        <CardHeader
-          image={project.image}
-          alt={project.id}
-          gradient={catStyle.gradient}
-          icon={catStyle.icon}
-        />
-
-        {/* Body */}
-        <div className="flex flex-col flex-1 gap-3 p-5">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-display font-bold text-lg text-foreground leading-tight">
-              {t(`${tKey}.title` as Parameters<typeof t>[0])}
-            </h3>
-            {project.inProgress && (
-              <span className="project-in-progress shrink-0 font-mono text-[10px] px-2 py-0.5 rounded-full whitespace-nowrap">
-                🔄 {t('inProgress')}
-              </span>
-            )}
-          </div>
-
-          <p className="font-sans text-sm text-muted leading-relaxed line-clamp-2">
-            {t(`${tKey}.description` as Parameters<typeof t>[0])}
-          </p>
-
-          <StackBadges stack={project.stack} />
-        </div>
-
-        {/* Footer links */}
-        <div className="project-card-footer flex items-center gap-2 px-5 py-4">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-link inline-flex items-center gap-1.5 text-xs font-medium"
-            aria-label={`GitHub — ${project.id}`}
-          >
-            <GithubIcon size={14} />
-            {t('viewCode')}
-          </a>
-          {project.live && (
-            <>
-              <span className="project-link-divider mx-1" aria-hidden />
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link inline-flex items-center gap-1.5 text-xs font-medium"
-                aria-label={`Live — ${project.id}`}
-              >
-                <ExternalIcon size={12} />
-                {t('viewLive')}
-              </a>
-            </>
-          )}
         </div>
       </div>
     </motion.div>

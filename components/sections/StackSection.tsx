@@ -4,16 +4,12 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { skills, type SkillCategory } from '@/content/skills';
+import SkillBar from '@/components/ui/SkillBar';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 type Tab = 'all' | SkillCategory;
 const TABS: Tab[] = ['all', 'backend', 'frontend', 'devops', 'database', 'mobile', 'ai'];
-
-// Skills shown as animated progress bars (core expertise)
-const CORE_SKILL_NAMES = new Set([
-  'Java 21', 'Spring Boot', 'React', 'TypeScript', 'Docker', 'PostgreSQL',
-]);
 
 // Category color palette
 const CAT_COLOR: Record<SkillCategory, string> = {
@@ -25,35 +21,11 @@ const CAT_COLOR: Record<SkillCategory, string> = {
   ai:       '#EC4899',
 };
 
-// Bar color for core skills — green for ≥80, blue otherwise
-function barColor(level: number): string {
-  return level >= 80 ? '#10B981' : '#2453D3';
-}
-
-// Tag cloud data keyed by category (skills NOT in core set)
-const TAG_CLOUD: Record<SkillCategory, string[]> = {
-  backend:  ['Kafka', 'Node.js', 'Python', 'Express', 'Spring Cloud'],
-  frontend: ['Tailwind CSS', 'Redux', 'HTML/CSS', 'Next.js'],
-  devops:   ['Kubernetes', 'Helm', 'GitHub Actions', 'Jenkins'],
-  database: ['MySQL', 'MongoDB', 'Redis'],
-  mobile:   ['Flutter', 'Android'],
-  ai:       ['Groq API', 'HuggingFace', 'PyTorch'],
-};
-
 // ─── Framer variants ──────────────────────────────────────────────────────────
 
 const fadeUp: Variants = {
   hidden:  { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
-const rowVariants: Variants = {
-  hidden:  { opacity: 0, x: -24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.45, ease: 'easeOut', delay: i * 0.07 },
-  }),
 };
 
 const tagVariants: Variants = {
@@ -90,67 +62,15 @@ function TabButton({ active, label, onClick }: {
   );
 }
 
-// ─── Core skill row (progress bar) ───────────────────────────────────────────
-
-function SkillRow({ name, level, index, inView }: {
-  name: string; level: number; index: number; inView: boolean;
-}) {
-  const color = barColor(level);
-
-  return (
-    <motion.div
-      custom={index}
-      variants={rowVariants}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      className="flex items-center gap-4"
-    >
-      {/* Skill name */}
-      <span
-        className="font-mono text-sm font-semibold text-foreground shrink-0"
-        style={{ minWidth: '130px' }}
-      >
-        {name}
-      </span>
-
-      {/* Bar track */}
-      <div className="stack-bar-track flex-1 h-1.5 rounded-full overflow-hidden">
-        <motion.div
-          className="h-full rounded-full"
-          style={{ background: color }}
-          initial={{ width: '0%' }}
-          animate={{ width: inView ? `${level}%` : '0%' }}
-          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 + index * 0.07 }}
-        />
-      </div>
-
-      {/* Percentage */}
-      <span
-        className="font-mono text-xs tabular-nums text-muted shrink-0"
-        style={{ minWidth: '36px', textAlign: 'right' }}
-      >
-        {level}%
-      </span>
-    </motion.div>
-  );
-}
-
-// ─── Tag cloud ────────────────────────────────────────────────────────────────
+// ─── Tag cloud — auto-derived from non-featured skills ────────────────────────
 
 function TagCloud({ activeTab, inView }: { activeTab: Tab; inView: boolean }) {
   const t = useTranslations('stack');
 
-  // Build flat list of [tag, category] pairs filtered by active tab
-  const entries: Array<{ tag: string; cat: SkillCategory }> = [];
-  const cats = activeTab === 'all'
-    ? (Object.keys(TAG_CLOUD) as SkillCategory[])
-    : [activeTab as SkillCategory];
-
-  for (const cat of cats) {
-    for (const tag of TAG_CLOUD[cat] ?? []) {
-      entries.push({ tag, cat });
-    }
-  }
+  // Non-featured skills, filtered by tab, become the tag cloud automatically
+  const entries = skills
+    .filter((s) => !s.featured && (activeTab === 'all' || s.category === activeTab))
+    .map((s) => ({ tag: s.name, cat: s.category }));
 
   if (entries.length === 0) return null;
 
@@ -203,14 +123,15 @@ export default function StackSection() {
 
   const [activeTab, setActiveTab] = useState<Tab>('all');
 
-  // Core skills filtered by tab
+  // featured:true skills shown as bars, filtered by active tab
   const coreSkills = skills.filter(
-    (s) => CORE_SKILL_NAMES.has(s.name) &&
-      (activeTab === 'all' || s.category === activeTab),
+    (s) => s.featured && (activeTab === 'all' || s.category === activeTab),
   );
 
-  // Whether the selected tab has any tag cloud entries
-  const hasTags = activeTab === 'all' || (TAG_CLOUD[activeTab as SkillCategory]?.length ?? 0) > 0;
+  // Tag cloud exists if there are non-featured skills for this tab
+  const hasTags = skills.some(
+    (s) => !s.featured && (activeTab === 'all' || s.category === activeTab),
+  );
 
   return (
     <section
@@ -276,7 +197,7 @@ export default function StackSection() {
                 </p>
                 <div className="flex flex-col gap-5">
                   {coreSkills.map((skill, i) => (
-                    <SkillRow
+                    <SkillBar
                       key={skill.name}
                       name={skill.name}
                       level={skill.level}

@@ -5,6 +5,7 @@ import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { personal, social } from '@/content/personal';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 // ─── Framer variants ────────────────────────────────────────────────────────
 
@@ -39,22 +40,6 @@ const pillVariants: Variants = {
 };
 
 // ─── Gradient underline title ───────────────────────────────────────────────
-
-function SectionTitle({ full, highlight }: { full: string; highlight: string }) {
-  const before = full.slice(0, full.indexOf(highlight));
-  const after = full.slice(full.indexOf(highlight) + highlight.length);
-
-  return (
-    <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight">
-      {before}
-      <span className="relative inline-block">
-        <span className="gradient-text">{highlight}</span>
-        <span className="about-title-underline absolute -bottom-1 left-0 h-0.75 w-full rounded-full" />
-      </span>
-      {after}
-    </h2>
-  );
-}
 
 // ─── Info row ───────────────────────────────────────────────────────────────
 
