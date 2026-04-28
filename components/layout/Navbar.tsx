@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import LanguageToggle from '@/components/ui/LanguageToggle';
+import CVDownloadDropdown from '@/components/ui/CVDownloadDropdown';
 
 const NAV_SECTIONS = ['about', 'stack', 'projects', 'experience', 'contact'] as const;
 
@@ -21,7 +22,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 768) setMobileOpen(false);
@@ -102,14 +102,8 @@ export default function Navbar() {
               <ThemeToggle />
             </div>
 
-            {/* Hire Me button */}
-            <button
-              onClick={() => scrollTo('contact')}
-              className="hidden md:inline-flex items-center px-4 py-1.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
-              style={{ background: 'linear-gradient(135deg, #2453D3, #00D4FF)' }}
-            >
-              {t('downloadCV')}
-            </button>
+            {/* CV Download dropdown */}
+            <CVDownloadDropdown variant="navbar" align="right" className="hidden md:block" />
 
             {/* Mobile hamburger */}
             <button
@@ -168,13 +162,7 @@ export default function Navbar() {
                   <LanguageToggle />
                   <ThemeToggle />
                 </div>
-                <button
-                  onClick={() => scrollTo('contact')}
-                  className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold text-white"
-                  style={{ background: 'linear-gradient(135deg, #2453D3, #00D4FF)' }}
-                >
-                  {t('downloadCV')}
-                </button>
+                <CVDownloadDropdown variant="navbar" align="right" />
               </div>
             </nav>
           </motion.div>
