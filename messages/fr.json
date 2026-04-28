@@ -5,7 +5,9 @@
     "projects": "Projets",
     "experience": "Expérience",
     "contact": "Contact",
-    "downloadCV": "Télécharger CV"
+    "downloadCV": "Télécharger le CV",
+    "cvFrench": "Version Française",
+    "cvEnglish": "English Version"
   },
   "hero": {
     "available": "Disponible Juillet 2026",
