@@ -1,93 +1,14 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import LanguageToggle from '@/components/ui/LanguageToggle';
+import CVDownloadDropdown from '@/components/ui/CVDownloadDropdown';
 
 const NAV_SECTIONS = ['about', 'stack', 'projects', 'experience', 'contact'] as const;
-
-function CVDropdown({ className = '' }: { className?: string }) {
-  const t = useTranslations('nav');
-  const locale = useLocale();
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
-    if (open) document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, [open]);
-
-  const isFR = locale === 'fr';
-
-  const options = [
-    isFR
-      ? { label: t('cvFrench'), href: '/cv-silue-fr.pdf', flag: '📄' }
-      : { label: t('cvEnglish'), href: '/cv-silue-en.pdf', flag: '📄' },
-    isFR
-      ? { label: t('cvEnglish'), href: '/cv-silue-en.pdf', flag: '📄' }
-      : { label: t('cvFrench'), href: '/cv-silue-fr.pdf', flag: '📄' },
-  ];
-
-  return (
-    <div ref={ref} className={`relative ${className}`}>
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
-        style={{ background: 'linear-gradient(135deg, #2453D3, #00D4FF)' }}
-        aria-expanded={open}
-        aria-haspopup="listbox"
-      >
-        {t('downloadCV')}
-        <motion.svg
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </motion.svg>
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -6, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.97 }}
-            transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="absolute right-0 mt-2 w-52 rounded-xl border border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-md shadow-xl overflow-hidden z-50"
-            role="listbox"
-          >
-            {options.map((opt) => (
-              <a
-                key={opt.href}
-                href={opt.href}
-                download
-                role="option"
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 px-4 py-3 text-sm text-[var(--text-primary)] hover:text-[#2453D3] hover:bg-[#2453D3]/10 transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
-              >
-                <span aria-hidden="true">{opt.flag}</span>
-                {opt.label}
-              </a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 export default function Navbar() {
   const t = useTranslations('nav');
@@ -182,7 +103,7 @@ export default function Navbar() {
             </div>
 
             {/* CV Download dropdown */}
-            <CVDropdown className="hidden md:block" />
+            <CVDownloadDropdown variant="navbar" align="right" className="hidden md:block" />
 
             {/* Mobile hamburger */}
             <button
@@ -241,7 +162,7 @@ export default function Navbar() {
                   <LanguageToggle />
                   <ThemeToggle />
                 </div>
-                <CVDropdown />
+                <CVDownloadDropdown variant="navbar" align="right" />
               </div>
             </nav>
           </motion.div>
