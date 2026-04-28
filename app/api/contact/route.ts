@@ -78,7 +78,7 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nouveau message — silue.dev</title>
+  <title>Nouveau message — silue-dev</title>
 </head>
 <body style="margin:0;padding:0;background:#060B18;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#060B18;padding:40px 20px;">
@@ -90,7 +90,9 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
           <tr>
             <td style="background:linear-gradient(135deg,#2453D3,#00D4FF);padding:32px 36px;">
               <h1 style="margin:0;font-size:22px;font-weight:700;color:#ffffff;letter-spacing:-0.02em;">
-                silue.dev
+                 <a href="https://silue-dev.vercel.app/" target="_blank" style="color:#ffffff;text-decoration:none;">
+                  silue-dev
+                 </a>
               </h1>
               <p style="margin:6px 0 0;font-size:13px;color:rgba(255,255,255,0.85);">
                 Nouveau message via le formulaire de contact
@@ -132,7 +134,7 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
           <tr>
             <td style="padding:20px 36px 28px;border-top:1px solid #1E2D4A;">
               <p style="margin:0;font-size:11px;color:#64748B;font-family:monospace;">
-                Reçu le ${date} — via silue.dev
+                Reçu le ${date} — via <a href="https://silue-dev.vercel.app/" target="_blank" style="color:#00D4FF;text-decoration:none;">silue-dev</a>
               </p>
             </td>
           </tr>
