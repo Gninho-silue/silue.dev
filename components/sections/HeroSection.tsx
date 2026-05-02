@@ -31,6 +31,16 @@ const photoVariants: Variants = {
   },
 };
 
+const photoVariantsMobile: Variants = {
+  hidden: { opacity: 0, scale: 0.92, y: -20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' },
+  },
+};
+
 const ORB_FLOAT_1 = {
   y: [0, -28, 0] as number[],
   x: [0, 14, 0] as number[],
