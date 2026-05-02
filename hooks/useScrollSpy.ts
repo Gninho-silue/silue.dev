@@ -17,8 +17,8 @@ export function useScrollSpy(sectionIds: string[], offset = 80): string {
     };
 
     const observerOptions: IntersectionObserverInit = {
-      rootMargin: `-${offset}px 0px -40% 0px`,
-      threshold: 0,
+      rootMargin: `-${offset}px 0px -70% 0px`,
+      threshold: 0.3,
     };
 
     sectionIds.forEach((id) => {
