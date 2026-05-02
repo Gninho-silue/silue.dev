@@ -17,7 +17,7 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
 const photoVariants: Variants = {
@@ -26,7 +26,7 @@ const photoVariants: Variants = {
     opacity: 1,
     scale: 1,
     x: 0,
-    transition: { duration: 0.8, ease: 'easeOut', delay: 0.3 },
+    transition: { duration: 0.4, ease: 'easeOut', delay: 0.2 },
   },
 };
 

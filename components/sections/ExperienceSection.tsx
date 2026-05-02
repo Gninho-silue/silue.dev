@@ -25,7 +25,7 @@ function idToKey(id: string): string {
 
 const fadeUp: Variants = {
   hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
 const slideLeft: Variants = {
@@ -33,7 +33,7 @@ const slideLeft: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.55, ease: 'easeOut', delay: i * 0.12 },
+    transition: { duration: 0.4, ease: 'easeOut', delay: i * 0.1 },
   }),
 };
 
@@ -42,7 +42,7 @@ const slideRight: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.55, ease: 'easeOut', delay: i * 0.1 },
+    transition: { duration: 0.4, ease: 'easeOut', delay: i * 0.08 },
   }),
 };
 
@@ -252,7 +252,7 @@ export default function ExperienceSection() {
                 className="exp-timeline-line absolute top-2 bottom-0 left-[4px] w-0.5 origin-top"
                 initial={{ scaleY: 0 }}
                 animate={isTimelineInView ? { scaleY: 1 } : { scaleY: 0 }}
-                transition={{ duration: 1.4, ease: 'easeInOut' }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
               />
 
               {/* Experience entries */}

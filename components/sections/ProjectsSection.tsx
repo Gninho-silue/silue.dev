@@ -26,7 +26,7 @@ const CATEGORY_STYLE: Record<
 
 const fadeUp: Variants = {
   hidden:  { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
 // ─── GitHub icon ──────────────────────────────────────────────────────────────
@@ -105,6 +105,7 @@ function BrowserMock({
             sizes="(max-width: 1024px) 100vw, 520px"
             className="object-cover object-top"
             onError={() => setImgError(true)}
+            loading="lazy"
             unoptimized
           />
         ) : (
