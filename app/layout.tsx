@@ -3,6 +3,7 @@ import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '@/components/providers/Providers';
+import ScrollProgressBar from '@/components/ui/ScrollProgressBar';
 import './globals.css';
 
 const syne = Syne({
@@ -123,6 +124,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-foreground antialiased">
+        <ScrollProgressBar />
         <Providers>{children}</Providers>
         <Analytics />
         <SpeedInsights />
