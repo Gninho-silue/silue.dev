@@ -26,6 +26,16 @@ export const projects: Project[] = [
     category: 'ai',
   },
   {
+    id: 'agent-flow',
+    titleKey: 'projects.agentFlow.title',
+    descriptionKey: 'projects.agentFlow.description',
+    stack: ['Python', 'FastAPI', 'LangGraph', 'Ollama', 'React', 'TypeScript', 'Docker'],
+    github: 'https://github.com/Gninho-silue/agentflow',
+    featured: true,
+    image: '/projects/agent-flow.png',
+    category: 'ai',
+  },
+  {
     id: 'banking-ms',
     titleKey: 'projects.bankingMs.title',
     descriptionKey: 'projects.bankingMs.description',

@@ -88,6 +88,10 @@
       "title": "DevScope",
       "description": "GitHub profile analyzer powered by Groq AI. Generates detailed reports on a developer's skills, activity and technologies from their GitHub profile."
     },
+    "agentFlow": {
+      "title": "AgentFlow",
+      "description": "Multi-agent task automation platform: describe any task in natural language and five specialized AI agents (Planner, FileAgent, CodeAgent, Reporter, Supervisor) coordinate via LangGraph to execute it. Local LLM via Ollama — zero API costs."
+    },
     "bankingMs": {
       "title": "Banking Microservices",
       "description": "Complete banking microservices architecture with Spring Cloud, Kafka, Kubernetes and Docker. Account management, transactions, real-time notifications."
