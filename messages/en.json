@@ -10,7 +10,7 @@
     "cvEnglish": "English Version"
   },
   "hero": {
-    "available": "Available July 2026",
+    "available": "Available now",
     "titles": ["Full-Stack Developer", "Cloud-Native Architect", "AI Enthusiast"],
     "tagline": "I build high-performance distributed systems and modern web applications.",
     "cta": {
@@ -28,8 +28,8 @@
     "label": "ABOUT ME",
     "title": "Passionate about systems that scale",
     "titleHighlight": "systems that scale",
-    "bio1": "Final-year engineering student at ENSA Al Hoceima, I specialize in Cloud-Native architectures and distributed systems. My journey blends academic rigor with real-world experience — from building complex Odoo modules at TechPal to deploying distributed banking systems with Kafka and Kubernetes.",
-    "bio2": "What sets me apart? I don't just code features — I think architecture, scalability, resilience and observability from day one. Available from July 2026 for a junior position or international remote opportunity.",
+    "bio1": "Engineering graduate from ENSA Al Hoceima, I specialize in Cloud-Native architectures and distributed systems. My journey blends academic rigor with real-world experience — from building complex Odoo modules at TechPal to deploying distributed banking systems with Kafka and Kubernetes.",
+    "bio2": "What sets me apart? I don't just code features — I think architecture, scalability, resilience and observability from day one. Available now for a junior position or international remote opportunity.",
     "pills": {
       "performance": "Performance First",
       "architecture": "Clean Architecture",
@@ -44,10 +44,10 @@
       "title": "Full-Stack Developer",
       "location": "Casablanca, Morocco",
       "school": "ENSA Al Hoceima — Computer Science",
-      "diploma": "Degree: July 2026",
+      "diploma": "Graduated: June 23, 2026",
       "openTo": "Open to: Remote / Hybrid",
       "languages": "French (native), English (fluent)",
-      "available": "Available July 2026"
+      "available": "Available now"
     }
   },
   "stack": {
@@ -135,7 +135,7 @@
         "name": "ENSA Al Hoceima",
         "degree": "State Engineering Degree",
         "field": "Computer Science — Software Engineering specialization",
-        "graduation": "Expected graduation: July 2026",
+        "graduation": "Graduated: June 23, 2026",
         "years": "2023 — 2026"
       },
       "estem": {
@@ -159,7 +159,7 @@
     "label": "CONTACT",
     "sectionTitle": "Let's work together",
     "title": "Contact",
-    "subtitle": "Available for remote opportunities from July 2026",
+    "subtitle": "Available for remote opportunities",
     "intro": "I'm open to remote work opportunities. Feel free to reach out to discuss your projects.",
     "form": {
       "name": "Your name",
@@ -180,7 +180,7 @@
       "githubLabel": "GitHub",
       "locationLabel": "Location",
       "locationValue": "Casablanca, Morocco — Remote friendly",
-      "availTitle": "Available July 2026",
+      "availTitle": "Available now",
       "openTo": "Open to: Full-time • Remote • International",
       "responseTime": "I usually respond within 24h"
     },

@@ -10,6 +10,7 @@ export interface Project {
   featured: boolean;
   image: string;
   category: ProjectCategory;
+  icon?: string;
   inProgress?: boolean;
 }
 
@@ -24,6 +25,7 @@ export const projects: Project[] = [
     featured: true,
     image: '/projects/devscope.png',
     category: 'ai',
+    icon: '🤖',
   },
   {
     id: 'agent-flow',
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     featured: true,
     image: '/projects/agent-flow.png',
     category: 'ai',
+    icon: '🤖',
   },
   {
     id: 'banking-ms',
@@ -44,6 +47,7 @@ export const projects: Project[] = [
     featured: true,
     image: '/projects/banking-ms.png',
     category: 'fullstack',
+    icon: '🏦',
   },
   {
     id: 'taskpro',
@@ -74,6 +78,7 @@ export const projects: Project[] = [
     featured: false,
     image: '/projects/pfe-techpal.png',
     category: 'mobile',
+    icon: '📱',
     inProgress: true,
   },
 ];

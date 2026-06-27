@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
+import { GraduationCap, Calculator } from 'lucide-react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { experiences, type Experience } from '@/content/experience';
@@ -24,12 +25,12 @@ function idToKey(id: string): string {
 // ─── Framer variants ──────────────────────────────────────────────────────────
 
 const fadeUp: Variants = {
-  hidden:  { opacity: 0, y: 24 },
+  hidden:  { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
 const slideLeft: Variants = {
-  hidden:  { opacity: 0, x: -40 },
+  hidden:  { opacity: 0, x: -32 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
@@ -38,7 +39,7 @@ const slideLeft: Variants = {
 };
 
 const slideRight: Variants = {
-  hidden:  { opacity: 0, x: 40 },
+  hidden:  { opacity: 0, x: 32 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
@@ -47,15 +48,15 @@ const slideRight: Variants = {
 };
 
 const certVariants: Variants = {
-  hidden:  { opacity: 0, scale: 0.85 },
+  hidden:  { opacity: 0, scale: 0.88 },
   visible: (i: number) => ({
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.38, ease: 'easeOut', delay: 0.25 + i * 0.07 },
+    transition: { duration: 0.3, ease: 'easeOut', delay: 0.2 + i * 0.06 },
   }),
 };
 
-// ─── Timeline Entry ───────────────────────────────────────────────────────────
+// ─── Timeline entry ───────────────────────────────────────────────────────────
 
 function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -79,39 +80,37 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
       variants={slideLeft}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className="relative pl-10 pb-10 last:pb-0"
+      className="relative pl-8 pb-10 last:pb-0"
     >
-      {/* Connector dot */}
+      {/* Timeline dot */}
       <div
-        className={`absolute left-0 top-1.5 w-2.5 h-2.5 rounded-full border-2 border-brand-primary ${
-          exp.current ? 'bg-brand-primary' : 'bg-background'
+        className={`absolute left-0 top-1.5 w-2 h-2 rounded-full border ${
+          exp.current
+            ? 'bg-[#F59E0B] border-[#F59E0B]'
+            : 'bg-[var(--bg)] border-[var(--text-secondary)]'
         }`}
-      >
-        {exp.current && (
-          <span className="absolute inset-0 rounded-full bg-brand-primary animate-ping opacity-40" />
-        )}
-      </div>
+      />
 
-      {/* Date range */}
-      <p className="font-mono text-xs text-muted mb-2 capitalize">
+      {/* Date */}
+      <p className="font-mono text-xs text-[var(--text-secondary)] mb-2 capitalize">
         {startLabel} — {endLabel}
       </p>
 
-      {/* Company + location + status badges */}
-      <div className="flex flex-wrap items-center gap-2 mb-1.5">
-        <h3 className="font-display font-bold text-lg text-foreground leading-tight">
+      {/* Company + badges */}
+      <div className="flex flex-wrap items-center gap-2 mb-1">
+        <h3 className="font-mono font-bold text-lg text-[var(--text-primary)] leading-tight">
           {exp.company}
         </h3>
-        <span className="exp-location-pill font-mono text-[10px] px-2 py-0.5 rounded-full">
+        <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
           {exp.location}
         </span>
         {exp.remote && (
-          <span className="exp-remote-badge font-mono text-[10px] px-2 py-0.5 rounded-full">
+          <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
             {t('remote')}
           </span>
         )}
         {exp.current && (
-          <span className="exp-current-badge inline-flex items-center gap-1.5 font-mono text-[10px] px-2 py-0.5 rounded-full">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[10px] px-2 py-0.5 rounded border border-emerald-500/30 text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             {t('current')}
           </span>
@@ -119,21 +118,21 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
       </div>
 
       {/* Role */}
-      <p className="gradient-text font-display font-semibold text-base mb-2.5">
+      <p className="font-mono font-semibold text-sm text-[var(--accent)] mb-2">
         {t(`${tKey}.role` as Parameters<typeof t>[0])}
       </p>
 
       {/* Description */}
-      <p className="font-sans text-sm text-muted leading-relaxed mb-3">
+      <p className="font-mono text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
         {t(`${tKey}.description` as Parameters<typeof t>[0])}
       </p>
 
-      {/* Stack badges */}
+      {/* Stack */}
       <div className="flex flex-wrap gap-1.5">
         {exp.stack.map((tech) => (
           <span
             key={tech}
-            className="exp-tech-badge font-mono text-[11px] px-2 py-0.5 rounded-md"
+            className="font-mono text-[11px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]"
           >
             {tech}
           </span>
@@ -143,10 +142,10 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
   );
 }
 
-// ─── Education Card ───────────────────────────────────────────────────────────
+// ─── Education card ───────────────────────────────────────────────────────────
 
 interface EducationCardProps {
-  icon: string;
+  icon: ReactNode;
   name: string;
   degree: string;
   field: string;
@@ -166,31 +165,31 @@ function EducationCard({ icon, name, degree, field, note, years, index }: Educat
       variants={slideRight}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className="exp-edu-card card-glow rounded-xl p-5"
+      className="flat-card p-5"
     >
       <div className="flex items-start gap-3 mb-3">
-        <div className="exp-edu-icon flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-xl">
+        <div className="shrink-0 w-9 h-9 rounded-lg bg-[var(--bg-hover)] border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)]">
           {icon}
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h4 className="font-display font-bold text-base text-foreground">{name}</h4>
-            <span className="exp-years-badge font-mono text-[10px] px-2 py-0.5 rounded-full">
+            <h4 className="font-mono font-bold text-sm text-[var(--text-primary)]">{name}</h4>
+            <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
               {years}
             </span>
           </div>
-          <p className="gradient-text font-semibold text-sm mt-0.5">{degree}</p>
+          <p className="font-mono text-xs text-[var(--accent)] font-semibold mt-0.5">{degree}</p>
         </div>
       </div>
-      <p className="font-sans text-sm text-muted leading-relaxed">{field}</p>
+      <p className="font-mono text-xs text-[var(--text-secondary)] leading-relaxed">{field}</p>
       {note && (
-        <p className="font-mono text-[11px] text-muted mt-2 opacity-75">{note}</p>
+        <p className="font-mono text-[11px] text-[var(--text-muted)] mt-2">{note}</p>
       )}
     </motion.div>
   );
 }
 
-// ─── Main Section ─────────────────────────────────────────────────────────────
+// ─── Main section ─────────────────────────────────────────────────────────────
 
 export default function ExperienceSection() {
   const t = useTranslations('experience');
@@ -214,28 +213,20 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative py-24 md:py-32 bg-background overflow-hidden"
+      className="relative py-24 md:py-32 bg-[var(--bg)]"
     >
-      {/* Background orb */}
-      <div
-        aria-hidden
-        className="absolute top-1/3 -left-32 w-96 h-96 rounded-full pointer-events-none exp-bg-orb"
-      />
-
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Section header ── */}
+        {/* ── Header ── */}
         <motion.div
           ref={headerRef}
           variants={fadeUp}
           initial="hidden"
           animate={isHeaderInView ? 'visible' : 'hidden'}
-          className="flex flex-col items-center text-center gap-4 mb-16"
+          className="flex flex-col gap-3 mb-16"
         >
-          <p className="text-xs font-mono font-semibold tracking-widest text-muted uppercase">
-            {t('label')}
-          </p>
-          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground">
+          <p className="section-label">{'// '}{t('label')}</p>
+          <h2 className="font-mono font-black text-3xl md:text-4xl text-[var(--text-primary)]">
             {t('sectionTitle')}
           </h2>
         </motion.div>
@@ -243,19 +234,17 @@ export default function ExperienceSection() {
         {/* ── Two-column layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-start">
 
-          {/* ── Left: Work timeline ── */}
+          {/* ── Left: Timeline ── */}
           <div ref={timelineRef}>
-            {/* Relative container for the vertical line + entries */}
             <div className="relative">
-              {/* Animated timeline line */}
+              {/* Thin timeline line — 1px */}
               <motion.div
-                className="exp-timeline-line absolute top-2 bottom-0 left-[4px] w-0.5 origin-top"
+                className="timeline-line absolute top-2 bottom-0 left-[3px] w-px origin-top"
                 initial={{ scaleY: 0 }}
                 animate={isTimelineInView ? { scaleY: 1 } : { scaleY: 0 }}
                 transition={{ duration: 0.8, ease: 'easeInOut' }}
               />
 
-              {/* Experience entries */}
               {experiences.map((exp, i) => (
                 <TimelineEntry key={exp.id} exp={exp} index={i} />
               ))}
@@ -271,13 +260,13 @@ export default function ExperienceSection() {
                 variants={fadeUp}
                 initial="hidden"
                 animate={isEduInView ? 'visible' : 'hidden'}
-                className="font-display font-bold text-xl text-foreground mb-5"
+                className="font-mono font-bold text-base text-[var(--text-primary)] mb-5"
               >
                 {t('education.title')}
               </motion.h3>
               <div className="flex flex-col gap-4">
                 <EducationCard
-                  icon="🎓"
+                  icon={<GraduationCap size={18} />}
                   name={t('education.ensa.name')}
                   degree={t('education.ensa.degree')}
                   field={t('education.ensa.field')}
@@ -286,7 +275,7 @@ export default function ExperienceSection() {
                   index={0}
                 />
                 <EducationCard
-                  icon="📐"
+                  icon={<Calculator size={18} />}
                   name={t('education.estem.name')}
                   degree={t('education.estem.degree')}
                   field={t('education.estem.field')}
@@ -303,7 +292,7 @@ export default function ExperienceSection() {
                 variants={fadeUp}
                 initial="hidden"
                 animate={isCertsInView ? 'visible' : 'hidden'}
-                className="font-display font-bold text-xl text-foreground mb-4"
+                className="font-mono font-bold text-base text-[var(--text-primary)] mb-4"
               >
                 {t('certifications.title')}
               </motion.h3>
@@ -315,7 +304,7 @@ export default function ExperienceSection() {
                     variants={certVariants}
                     initial="hidden"
                     animate={isCertsInView ? 'visible' : 'hidden'}
-                    className="exp-cert-pill font-mono text-xs px-3 py-1.5 rounded-full"
+                    className="flat-badge cursor-default"
                   >
                     {cert}
                   </motion.span>
