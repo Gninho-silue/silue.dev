@@ -13,11 +13,8 @@ export default function ScrollProgressBar() {
   return (
     <motion.div
       aria-hidden
-      style={{
-        scaleX,
-        background: 'linear-gradient(90deg, #2453D3, #00D4FF)',
-      }}
-      className="fixed top-0 left-0 right-0 h-0.75 origin-left z-9999 pointer-events-none"
+      style={{ scaleX, background: '#F59E0B' }}
+      className="fixed top-0 left-0 right-0 h-0.5 origin-left z-[9999] pointer-events-none"
     />
   );
 }

@@ -5,11 +5,25 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Props {
-  /** 'navbar' — gradient pill button; 'about' — primary CTA with download icon */
   variant?: 'navbar' | 'about';
-  /** Which side the dropdown opens from (default: right) */
   align?: 'left' | 'right';
   className?: string;
+}
+
+function ChevronSvg({ open }: { open: boolean }) {
+  return (
+    <motion.svg
+      animate={{ rotate: open ? 180 : 0 }}
+      transition={{ duration: 0.2 }}
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </motion.svg>
+  );
 }
 
 export default function CVDownloadDropdown({ variant = 'navbar', align = 'right', className = '' }: Props) {
@@ -48,28 +62,17 @@ export default function CVDownloadDropdown({ variant = 'navbar', align = 'right'
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-haspopup="listbox"
-          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
-          style={{ background: 'linear-gradient(135deg, #2453D3, #00D4FF)' }}
+          className="btn-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono"
         >
           {t('downloadCV')}
-          <motion.svg
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </motion.svg>
+          <ChevronSvg open={open} />
         </button>
       ) : (
         <button
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-haspopup="listbox"
-          className="about-cta-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold"
+          className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono"
         >
           <svg
             width="15"
@@ -87,17 +90,7 @@ export default function CVDownloadDropdown({ variant = 'navbar', align = 'right'
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
           {t('downloadCV')}
-          <motion.svg
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </motion.svg>
+          <ChevronSvg open={open} />
         </button>
       )}
 
@@ -108,7 +101,7 @@ export default function CVDownloadDropdown({ variant = 'navbar', align = 'right'
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className={`absolute ${alignClass} mt-2 w-52 rounded-xl border border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-md shadow-xl overflow-hidden z-50`}
+            className={`absolute ${alignClass} mt-2 w-52 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden z-50`}
             role="listbox"
           >
             {options.map((opt) => (
@@ -117,8 +110,9 @@ export default function CVDownloadDropdown({ variant = 'navbar', align = 'right'
                 href={opt.href}
                 download
                 role="option"
+                aria-selected={false}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 px-4 py-3 text-sm text-[var(--text-primary)] hover:text-[#2453D3] hover:bg-[#2453D3]/10 transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
+                className="flex items-center gap-2.5 px-4 py-3 text-sm font-mono text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
               >
                 <span aria-hidden="true">📄</span>
                 {opt.label}
