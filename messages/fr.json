@@ -107,6 +107,10 @@
     "pfeTechpal": {
       "title": "PFE TechPal",
       "description": "Plateforme e-commerce développée sur Odoo 17 avec Python, couplée à une application mobile Flutter. Projet de fin d'études en cours."
+    },
+    "jobpilot": {
+      "title": "JobPilot",
+      "description": "SaaS IA pour la recherche d'emploi — adaptation de CV, génération de lettres de motivation et préparation aux entretiens. Paiement Stripe, auth Clerk, backend Supabase + Prisma."
     }
   },
   "experience": {
@@ -193,5 +197,11 @@
   "footer": {
     "rights": "Tous droits réservés.",
     "builtWith": "Construit avec"
+  },
+  "banner": {
+    "badge": "✈️ Mon dernier projet",
+    "subtitle": "SaaS IA pour la recherche d'emploi — adaptation de CV, lettres de motivation & entretiens",
+    "cta": "Essayer gratuitement →",
+    "dismiss": "Fermer"
   }
 }

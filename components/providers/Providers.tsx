@@ -1,6 +1,5 @@
 'use client';
 
-import { ThemeProvider } from 'next-themes';
 import { NextIntlClientProvider } from 'next-intl';
 import { useState, useEffect, createContext, useContext } from 'react';
 import type { ReactNode } from 'react';
@@ -49,31 +48,17 @@ export default function Providers({ children }: { children: ReactNode }) {
 
   if (!mounted) {
     return (
-      <ThemeProvider
-        attribute="data-theme"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange={false}
-      >
-        <NextIntlClientProvider locale="fr" messages={frMessages} timeZone="Africa/Casablanca">
-          {children}
-        </NextIntlClientProvider>
-      </ThemeProvider>
+      <NextIntlClientProvider locale="fr" messages={frMessages} timeZone="Africa/Casablanca">
+        {children}
+      </NextIntlClientProvider>
     );
   }
 
   return (
     <LocaleContext.Provider value={{ locale, setLocale }}>
-      <ThemeProvider
-        attribute="data-theme"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange={false}
-      >
-        <NextIntlClientProvider locale={locale} messages={messages[locale]} timeZone="Africa/Casablanca">
-          {children}
-        </NextIntlClientProvider>
-      </ThemeProvider>
+      <NextIntlClientProvider locale={locale} messages={messages[locale]} timeZone="Africa/Casablanca">
+        {children}
+      </NextIntlClientProvider>
     </LocaleContext.Provider>
   );
 }

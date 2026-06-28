@@ -1,4 +1,4 @@
-export type ProjectCategory = 'fullstack' | 'mobile' | 'ai' | 'devops';
+export type ProjectCategory = 'fullstack' | 'mobile' | 'ai' | 'devops' | 'saas';
 
 export interface Project {
   id: string;
@@ -68,6 +68,18 @@ export const projects: Project[] = [
     featured: false,
     image: '/projects/smartcollab.png',
     category: 'fullstack',
+  },
+  {
+    id: 'jobpilot',
+    titleKey: 'projects.jobpilot.title',
+    descriptionKey: 'projects.jobpilot.description',
+    stack: ['Next.js', 'TypeScript', 'Groq AI', 'Stripe', 'Clerk', 'Supabase', 'Prisma', 'Tailwind'],
+    github: 'https://github.com/Gninho-silue/jobpilot',
+    live: 'https://jobpilot-jet.vercel.app',
+    featured: true,
+    image: '/projects/jobpilot.png',
+    category: 'saas',
+    icon: '✈️',
   },
   {
     id: 'pfe-techpal',
