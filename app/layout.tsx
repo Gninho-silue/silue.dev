@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '@/components/providers/Providers';
@@ -107,7 +108,14 @@ export default function RootLayout({
       </head>
       <body className="bg-background text-foreground antialiased">
         <ScrollProgressBar />
-        <Providers>{children}</Providers>
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
+          <Providers>{children}</Providers>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

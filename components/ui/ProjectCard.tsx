@@ -17,6 +17,7 @@ const CATEGORY_STYLE: Record<
   fullstack: { gradient: 'from-[#2453D3] to-[#00D4FF]',  icon: '⚡' },
   mobile:    { gradient: 'from-[#8B5CF6] to-[#06B6D4]',  icon: '📱' },
   devops:    { gradient: 'from-[#F59E0B] to-[#EF4444]',  icon: '🚀' },
+  saas:      { gradient: 'from-[#F59E0B] to-[#10B981]',  icon: '✈️' },
 };
 
 const MAX_BADGES = 4;
