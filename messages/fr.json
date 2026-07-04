@@ -26,7 +26,7 @@
   },
   "about": {
     "label": "À PROPOS",
-    "title": "Passionné par les systèmes qui passent à l'échelle",
+    "title": "Passionné par les systèmes qui  à ",
     "titleHighlight": "passent à l'échelle",
     "bio1": "Ingénieur diplômé de l'ENSA Al Hoceima, je me spécialise dans la conception d'architectures Cloud-Native et de systèmes distribués. Mon parcours mêle rigueur académique et expérience terrain — de la conception de modules Odoo complexes chez TechPal à la mise en production de systèmes bancaires distribués avec Kafka et Kubernetes.",
     "bio2": "Ce qui me différencie ? Je ne me contente pas de coder des features — je pense architecture, scalabilité, résilience et observabilité dès le départ. Disponible immédiatement pour un poste junior ou une opportunité remote internationale.",

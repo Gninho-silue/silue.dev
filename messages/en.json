@@ -26,10 +26,10 @@
   },
   "about": {
     "label": "ABOUT ME",
-    "title": "Passionate about systems that scale",
+    "title": "Passionate about ",
     "titleHighlight": "systems that scale",
     "bio1": "Engineering graduate from ENSA Al Hoceima, I specialize in Cloud-Native architectures and distributed systems. My journey blends academic rigor with real-world experience — from building complex Odoo modules at TechPal to deploying distributed banking systems with Kafka and Kubernetes.",
-    "bio2": "What sets me apart? I don't just code features — I think architecture, scalability, resilience and observability from day one. Available now for a junior position or international remote opportunity.",
+    "bio2": "What sets me apart? I don't just code features — I think architecture, scalability, resilience and observability from day one. Available now for a full-time position or international remote opportunity.",
     "pills": {
       "performance": "Performance First",
       "architecture": "Clean Architecture",

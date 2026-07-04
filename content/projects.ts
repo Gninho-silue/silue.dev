@@ -27,7 +27,7 @@ export const projects: Project[] = [
     image: '/projects/devscope.png',
     category: 'ai',
     icon: '🤖',
-    year: 2024,
+    year: 2026,
   },
   {
     id: 'agent-flow',
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     image: '/projects/agent-flow.png',
     category: 'ai',
     icon: '🤖',
-    year: 2025,
+    year: 2026,
   },
   {
     id: 'banking-ms',
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     featured: false,
     image: '/projects/smartcollab.png',
     category: 'fullstack',
-    year: 2024,
+    year: 2025,
   },
   {
     id: 'jobpilot',
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     image: '/projects/jobpilot.png',
     category: 'saas',
     icon: '✈️',
-    year: 2025,
+    year: 2026,
   },
   {
     id: 'pfe-techpal',
