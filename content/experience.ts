@@ -19,7 +19,7 @@ export const experiences: Experience[] = [
     descriptionKey: 'experience.pfeTechpal.description',
     startDate: '2026-03',
     endDate: '2026-07',
-    current: true,
+    current: false,
     location: 'Casablanca, Maroc',
     remote: false,
     stack: ['Odoo 17', 'Python', 'Flutter', 'PostgreSQL'],

@@ -12,6 +12,7 @@ export interface Project {
   category: ProjectCategory;
   icon?: string;
   inProgress?: boolean;
+  year?: number;
 }
 
 export const projects: Project[] = [
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     image: '/projects/devscope.png',
     category: 'ai',
     icon: '🤖',
+    year: 2024,
   },
   {
     id: 'agent-flow',
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     image: '/projects/agent-flow.png',
     category: 'ai',
     icon: '🤖',
+    year: 2025,
   },
   {
     id: 'banking-ms',
@@ -48,6 +51,7 @@ export const projects: Project[] = [
     image: '/projects/banking-ms.png',
     category: 'fullstack',
     icon: '🏦',
+    year: 2025,
   },
   {
     id: 'taskpro',
@@ -58,6 +62,7 @@ export const projects: Project[] = [
     featured: true,
     image: '/projects/taskpro.png',
     category: 'fullstack',
+    year: 2024,
   },
   {
     id: 'smartcollab',
@@ -68,6 +73,7 @@ export const projects: Project[] = [
     featured: false,
     image: '/projects/smartcollab.png',
     category: 'fullstack',
+    year: 2024,
   },
   {
     id: 'jobpilot',
@@ -80,6 +86,7 @@ export const projects: Project[] = [
     image: '/projects/jobpilot.png',
     category: 'saas',
     icon: '✈️',
+    year: 2025,
   },
   {
     id: 'pfe-techpal',
@@ -91,6 +98,18 @@ export const projects: Project[] = [
     image: '/projects/pfe-techpal.png',
     category: 'mobile',
     icon: '📱',
-    inProgress: true,
+    year: 2026,
+  },
+  {
+    id: 'recommender-system',
+    titleKey: 'projects.recommenderSystem.title',
+    descriptionKey: 'projects.recommenderSystem.description',
+    stack: ['Python', 'PyTorch', 'AWS SageMaker', 'Streamlit'],
+    github: 'https://github.com/Gninho-silue/recommender-system',
+    featured: false,
+    image: '/projects/recommender-system.png',
+    category: 'ai',
+    icon: '🎬',
+    year: 2025,
   },
 ];

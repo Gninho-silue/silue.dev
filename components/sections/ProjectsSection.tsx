@@ -64,24 +64,45 @@ function StackBadges({ stack }: { stack: string[] }) {
 function ProjectImage({ image, alt, aspectVideo = false }: { image: string; alt: string; aspectVideo?: boolean }) {
   const [imgError, setImgError] = useState(false);
 
-  return (
-    <div className={`relative w-full overflow-hidden rounded-lg bg-[var(--bg-hover)] border border-[var(--border)] ${aspectVideo ? 'aspect-video' : 'h-44'}`}>
-      {!imgError ? (
+  if (imgError) {
+    return (
+      <div className={`w-full overflow-hidden rounded-lg bg-[var(--bg-hover)] border border-[var(--border)] flex items-center justify-center ${aspectVideo ? 'aspect-video' : 'h-44'}`}>
+        <span className="font-mono text-xs text-[var(--text-muted)]">{alt}</span>
+      </div>
+    );
+  }
+
+  if (aspectVideo) {
+    return (
+      <div className="w-full overflow-hidden rounded-lg bg-[var(--bg-hover)] border border-[var(--border)]">
         <Image
           src={image}
           alt={alt}
-          fill
+          width={0}
+          height={0}
           sizes="(max-width: 1024px) 100vw, 520px"
-          className="object-cover object-top"
+          className="w-full h-auto"
           onError={() => setImgError(true)}
           loading="lazy"
           unoptimized
         />
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-mono text-xs text-[var(--text-muted)]">{alt}</span>
-        </div>
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full overflow-hidden rounded-lg bg-[var(--bg-hover)] border border-[var(--border)]">
+      <Image
+        src={image}
+        alt={alt}
+        width={0}
+        height={0}
+        sizes="(max-width: 640px) 100vw, 33vw"
+        className="w-full h-auto max-h-44"
+        onError={() => setImgError(true)}
+        loading="lazy"
+        unoptimized
+      />
     </div>
   );
 }
@@ -112,6 +133,11 @@ function FeaturedCard({ project }: { project: Project }) {
         <span className="btn-accent text-xs font-mono px-2.5 py-0.5 rounded">
           ★ {t('featured')}
         </span>
+        {project.year && (
+          <span className="font-mono text-xs px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
+            {project.year}
+          </span>
+        )}
         {project.inProgress && (
           <span className="font-mono text-xs px-2 py-0.5 rounded border border-[#F59E0B]/40 text-[#F59E0B]">
             {t('inProgress')}
@@ -201,11 +227,18 @@ function GridCard({ project, index }: { project: Project; index: number }) {
               {t(`${tKey}.title` as Parameters<typeof t>[0])}
             </h3>
           </div>
-          {project.inProgress && (
-            <span className="font-mono text-[10px] px-1.5 py-0.5 rounded border border-[#F59E0B]/40 text-[#F59E0B] shrink-0">
-              {t('inProgress')}
-            </span>
-          )}
+          <div className="flex items-center gap-1.5 shrink-0">
+            {project.year && (
+              <span className="font-mono text-[10px] px-1.5 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
+                {project.year}
+              </span>
+            )}
+            {project.inProgress && (
+              <span className="font-mono text-[10px] px-1.5 py-0.5 rounded border border-[#F59E0B]/40 text-[#F59E0B]">
+                {t('inProgress')}
+              </span>
+            )}
+          </div>
         </div>
 
         <p className="font-mono text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">

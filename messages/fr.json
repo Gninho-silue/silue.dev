@@ -106,7 +106,11 @@
     },
     "pfeTechpal": {
       "title": "PFE TechPal",
-      "description": "Plateforme e-commerce développée sur Odoo 17 avec Python, couplée à une application mobile Flutter. Projet de fin d'études en cours."
+      "description": "Plateforme e-commerce développée sur Odoo 17 avec 9 modules Python personnalisés, couplée à une application mobile Flutter cross-platform. Projet de fin d'études."
+    },
+    "recommenderSystem": {
+      "title": "MovieLens Recommender",
+      "description": "Système de recommandation de films basé sur le filtrage collaboratif avec PyTorch. Entraîné sur le dataset MovieLens 1M, déployé sur AWS SageMaker avec une interface Streamlit."
     },
     "jobpilot": {
       "title": "JobPilot",
@@ -131,7 +135,7 @@
     },
     "pfeTechpal": {
       "role": "Stagiaire Développeur Full-Stack (PFE)",
-      "description": "Développement d'une plateforme e-commerce sur Odoo 17 avec 9 modules personnalisés en Python, couplée à une application mobile Flutter cross-platform. Projet de fin d'études en cours."
+      "description": "Développement d'une plateforme e-commerce sur Odoo 17 avec 9 modules personnalisés en Python, couplée à une application mobile Flutter cross-platform. Projet de fin d'études — soutenu en juillet 2026."
     },
     "education": {
       "title": "Formation",
@@ -152,10 +156,9 @@
     },
     "certifications": {
       "title": "Certifications",
-      "oci": "Oracle Cloud Infrastructure 2025",
       "java": "Java SE 17 Developer",
       "microservices": "Master Microservices SpringBoot/Docker/K8s",
-      "devops": "Certified DevOps Professional",
+      "devops": "OCP DevOps Professional",
       "python": "Python Formation Complète"
     }
   },

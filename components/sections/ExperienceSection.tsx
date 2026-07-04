@@ -203,11 +203,10 @@ export default function ExperienceSection() {
   const isEduInView = useInView(eduRef, { once: true, margin: '-60px' });
 
   const CERTIFICATIONS = [
-    t('certifications.oci'),
-    t('certifications.java'),
-    t('certifications.microservices'),
-    t('certifications.devops'),
-    t('certifications.python'),
+    { label: t('certifications.java'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=08148E3935971C0D94F8E7D936FA5745C536501EAD5E71D8B4A2A43E26701652' },
+    { label: t('certifications.devops'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=7756CF268916D8C00461D202FFE10C2F2809155FA680B71D3ABFE5EC1640A496' },
+    { label: t('certifications.microservices'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=7756CF268916D8C00461D202FFE10C2F2809155FA680B71D3ABFE5EC1640A496' },
+    { label: t('certifications.python'), url: 'https://www.udemy.com/certificate/UC-a60a7f26-5f31-4386-85b3-75d73d346e3b/' },
   ];
 
   return (
@@ -296,18 +295,27 @@ export default function ExperienceSection() {
               >
                 {t('certifications.title')}
               </motion.h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {CERTIFICATIONS.map((cert, i) => (
-                  <motion.span
-                    key={cert}
+                  <motion.a
+                    key={cert.label}
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     custom={i}
                     variants={certVariants}
                     initial="hidden"
                     animate={isCertsInView ? 'visible' : 'hidden'}
-                    className="flat-badge cursor-default"
+                    className="inline-flex items-center gap-2 font-mono text-sm px-4 py-2 rounded border border-[var(--border)] text-[var(--text-primary)] bg-[var(--bg-card)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200"
                   >
-                    {cert}
-                  </motion.span>
+                    <span>🏅</span>
+                    {cert.label}
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="opacity-60 shrink-0">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </motion.a>
                 ))}
               </div>
             </div>
