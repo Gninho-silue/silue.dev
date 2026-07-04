@@ -29,7 +29,7 @@
     "title": "Passionné par les systèmes qui  à ",
     "titleHighlight": "passent à l'échelle",
     "bio1": "Ingénieur diplômé de l'ENSA Al Hoceima, je me spécialise dans la conception d'architectures Cloud-Native et de systèmes distribués. Mon parcours mêle rigueur académique et expérience terrain — de la conception de modules Odoo complexes chez TechPal à la mise en production de systèmes bancaires distribués avec Kafka et Kubernetes.",
-    "bio2": "Ce qui me différencie ? Je ne me contente pas de coder des features — je pense architecture, scalabilité, résilience et observabilité dès le départ. Disponible immédiatement pour un poste junior ou une opportunité remote internationale.",
+    "bio2": "Ce qui me différencie ? Je ne me contente pas de coder des features — je pense architecture, scalabilité, résilience et observabilité dès le départ. Disponible immédiatement pour un poste full-time ou une opportunité remote internationale.",
     "pills": {
       "performance": "Performance First",
       "architecture": "Clean Architecture",
@@ -135,7 +135,7 @@
     },
     "pfeTechpal": {
       "role": "Stagiaire Développeur Full-Stack (PFE)",
-      "description": "Développement d'une plateforme e-commerce sur Odoo 17 avec 9 modules personnalisés en Python, couplée à une application mobile Flutter cross-platform. Projet de fin d'études — soutenu en juillet 2026."
+      "description": "Développement d'une plateforme e-commerce sur Odoo 17 avec 9 modules personnalisés en Python, couplée à une application mobile Flutter cross-platform. Projet de fin d'études — soutenu le 23 juin 2026."
     },
     "education": {
       "title": "Formation",
