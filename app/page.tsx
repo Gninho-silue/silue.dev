@@ -5,6 +5,7 @@ import AboutSection from '@/components/sections/AboutSection';
 import StackSection from '@/components/sections/StackSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ContactSection from '@/components/sections/ContactSection';
 import JobPilotBanner from '@/components/ui/JobPilotBanner';
 
@@ -18,6 +19,7 @@ export default function Home() {
         <StackSection />
         <ProjectsSection />
         <ExperienceSection />
+        <TestimonialsSection />
         <ContactSection />
       </main>
       <Footer />

@@ -8,7 +8,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle';
 import LanguageToggle from '@/components/ui/LanguageToggle';
 import CVDownloadDropdown from '@/components/ui/CVDownloadDropdown';
 
-const NAV_SECTIONS = ['about', 'stack', 'projects', 'experience', 'contact'] as const;
+const NAV_SECTIONS = ['about', 'stack', 'projects', 'experience', 'testimonials', 'contact'] as const;
 
 export default function Navbar() {
   const t = useTranslations('nav');

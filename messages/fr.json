@@ -4,6 +4,7 @@
     "stack": "Stack",
     "projects": "Projets",
     "experience": "Expérience",
+    "testimonials": "Recommandations",
     "contact": "Contact",
     "downloadCV": "Télécharger le CV",
     "cvFrench": "Version Française",
@@ -160,6 +161,17 @@
       "microservices": "Master Microservices SpringBoot/Docker/K8s",
       "devops": "OCP DevOps Professional",
       "python": "Python Formation Complète"
+    }
+  },
+  "testimonials": {
+    "label": "RECOMMANDATIONS",
+    "title": "Ce qu'ils disent",
+    "subtitle": "Retours de ceux avec qui j'ai eu la chance de collaborer",
+    "abdelhadiLaassi": {
+      "quote": "Malgré des technologies entièrement nouvelles pour lui, il a acquis une solide maîtrise et contribué efficacement en peu de temps. Sa capacité à traduire les besoins métier en solutions techniques concrètes, et à assimiler rapidement des concepts complexes, en a fait un membre précieux de l'équipe."
+    },
+    "tarikBoudaa": {
+      "quote": "Il s'est distingué par son sérieux, sa rigueur et ses solides compétences techniques. Curieux, impliqué et particulièrement motivé, il a constamment fait preuve d'une réelle volonté de progresser. Son esprit d'analyse, son autonomie et sa capacité à résoudre des problèmes complexes constituent des atouts indéniables."
     }
   },
   "contact": {
