@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { skills, type SkillCategory } from '@/content/skills';
+import { skills, tools, type SkillCategory } from '@/content/skills';
 
 // ─── Category groups ──────────────────────────────────────────────────────────
 
@@ -124,6 +124,13 @@ export default function StackSection() {
               />
             );
           })}
+
+          <BadgeGroup
+            label={t('tools.title')}
+            names={[...tools]}
+            inView={isBodyInView}
+            globalOffset={skills.length}
+          />
         </div>
 
       </div>
