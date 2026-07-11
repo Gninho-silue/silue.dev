@@ -93,7 +93,7 @@ export const projects: Project[] = [
     titleKey: 'projects.pfeTechpal.title',
     descriptionKey: 'projects.pfeTechpal.description',
     stack: ['Odoo 17', 'Python', 'Flutter', 'PostgreSQL'],
-    github: 'https://github.com/Gninho-silue/pfe-techpal',
+    github: 'https://gitlab.com/Abdelhadi_Laassi/techpalecommerce',
     featured: false,
     image: '/projects/pfe-techpal.png',
     category: 'mobile',

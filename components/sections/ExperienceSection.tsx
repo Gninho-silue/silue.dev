@@ -205,7 +205,7 @@ export default function ExperienceSection() {
   const CERTIFICATIONS = [
     { label: t('certifications.java'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=08148E3935971C0D94F8E7D936FA5745C536501EAD5E71D8B4A2A43E26701652' },
     { label: t('certifications.devops'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=7756CF268916D8C00461D202FFE10C2F2809155FA680B71D3ABFE5EC1640A496' },
-    { label: t('certifications.microservices'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=7756CF268916D8C00461D202FFE10C2F2809155FA680B71D3ABFE5EC1640A496' },
+    { label: t('certifications.microservices'), url: 'https://www.udemy.com/certificate/UC-3503917e-f06a-4cce-b66d-981da289c5ba/' },
     { label: t('certifications.python'), url: 'https://www.udemy.com/certificate/UC-a60a7f26-5f31-4386-85b3-75d73d346e3b/' },
   ];
 

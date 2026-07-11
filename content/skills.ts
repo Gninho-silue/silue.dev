@@ -53,5 +53,5 @@ export const skills: Skill[] = [
 
 export const tools = [
   'Git', 'Maven', 'Gradle', 'Keycloak', 'Postman',
-  'IntelliJ', 'Jira', 'Swagger',
+  'IntelliJ', 'Jira', 'Swagger', 'Agile/Scrum', 'Unit Testing', 'CI/CD', 'SOLID', 'Design Patterns' ,
 ] as const;
