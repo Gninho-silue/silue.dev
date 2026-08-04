@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | Gninninmaguignon Silué',
   },
   description:
-    'Full-Stack Developer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available July 2026 for remote opportunities.',
+    'Backend-First Full-Stack Engineer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available now for remote opportunities.',
   keywords: [
     'Full-Stack Developer',
     'Java Spring Boot',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: 'Gninninmaguignon Silué',
     title: 'Gninninmaguignon Silué — Full-Stack Developer',
     description:
-      'Full-Stack Developer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available July 2026 for remote opportunities.',
+      'Backend-First Full-Stack Engineer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available now for remote opportunities.',
     images: [
       {
         url: '/og-image.png',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gninninmaguignon Silué — Full-Stack Developer',
     description:
-      'Full-Stack Developer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available July 2026 for remote opportunities.',
+      'Backend-First Full-Stack Engineer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available now for remote opportunities.',
     images: ['/og-image.png'],
   },
   robots: {

@@ -11,7 +11,8 @@
     "cvEnglish": "English Version"
   },
   "hero": {
-    "available": "Disponible immédiatement",
+    "available": "Disponible maintenant",
+    "subtitle": "Ingénieur Full-Stack Backend-First // Java · Spring Boot · React",
     "titles": ["Développeur Full-Stack", "Architecte Cloud-Native", "Passionné d'IA"],
     "tagline": "Je construis des systèmes distribués performants et des applications web modernes.",
     "cta": {
@@ -20,8 +21,9 @@
     },
     "stats": {
       "repos": { "value": "28+", "label": "Repositories" },
-      "experience": { "value": "2+", "label": "Ans d'expérience" },
-      "projects": { "value": "5+", "label": "Projets livrés" }
+      "internships": { "value": "3", "label": "Stages effectués" },
+      "projects": { "value": "5+", "label": "Projets livrés" },
+      "available": { "value": "Disponible", "label": "maintenant" }
     },
     "scrollDown": "Défiler"
   },
@@ -42,13 +44,13 @@
     },
     "card": {
       "name": "Gninninmaguignon Silué",
-      "title": "Développeur Full-Stack",
+      "title": "Ingénieur Full-Stack Backend-First",
       "location": "Casablanca, Maroc",
       "school": "ENSA Al Hoceima — Génie Informatique",
       "diploma": "Diplômé: 23 juin 2026",
       "openTo": "Open to: Remote / Hybride",
       "languages": "Français (natif), Anglais (courant)",
-      "available": "Disponible immédiatement"
+      "available": "Disponible maintenant"
     }
   },
   "stack": {
@@ -65,8 +67,8 @@
       "ai": "IA / ML"
     },
     "levelLabel": "Niveau",
-    "coreExpertise": "Expertise principale",
-    "alsoWorkWith": "Également maîtrisé",
+    "coreExpertise": "EXPERTISE PRINCIPALE",
+    "alsoWorkWith": "ÉGALEMENT MAÎTRISÉ",
     "tools": {
       "title": "Outils & Autres"
     }

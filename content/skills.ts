@@ -1,57 +1,59 @@
-export type SkillCategory = 'backend' | 'frontend' | 'devops' | 'database' | 'mobile' | 'ai';
+export type SkillCategory = 'backend' | 'frontend' | 'devops' | 'mobile' | 'ai' | 'tools';
 
 export interface Skill {
   name: string;
-  level: number;
   category: SkillCategory;
-  /** If true, shown as an animated progress bar in the Stack section.
-   *  If false/omitted, shown in the tag cloud below. */
-  featured?: boolean;
+  /** True = Level 1 "core expertise" badge. False/omitted = Level 2 "also work with". */
+  core?: boolean;
 }
 
 export const skills: Skill[] = [
-  // Backend
-  { name: 'Java 21',     level: 90, category: 'backend',  featured: true },
-  { name: 'Spring Boot', level: 88, category: 'backend',  featured: true },
-  { name: 'Node.js',     level: 80, category: 'backend' },
-  { name: 'Kafka',       level: 72, category: 'backend' },
-  { name: 'Express',     level: 75, category: 'backend' },
-  { name: 'Python',      level: 70, category: 'backend' },
-  { name: 'Spring Cloud',level: 68, category: 'backend' },
+  // ── Core expertise (Level 1) ──
+  { name: 'Java 21',       category: 'backend',  core: true },
+  { name: 'Spring Boot',   category: 'backend',  core: true },
+  { name: 'Spring Cloud',  category: 'backend',  core: true },
+  { name: 'Microservices', category: 'backend',  core: true },
+  { name: 'React',         category: 'frontend', core: true },
+  { name: 'Kubernetes',    category: 'devops',   core: true },
+  { name: 'Apache Kafka',  category: 'backend',  core: true },
+  { name: 'PostgreSQL',    category: 'backend',  core: true },
 
-  // Frontend
-  { name: 'React',       level: 85, category: 'frontend', featured: true },
-  { name: 'TypeScript',  level: 82, category: 'frontend', featured: true },
-  { name: 'HTML / CSS',  level: 88, category: 'frontend' },
-  { name: 'JavaScript',  level: 80, category: 'frontend' },
-  { name: 'Next.js',     level: 60, category: 'frontend' },
-  { name: 'Tailwind CSS',level: 80, category: 'frontend' },
-  { name: 'Redux',       level: 70, category: 'frontend' },
+  // ── Also work with (Level 2) — Frontend ──
+  { name: 'TypeScript',   category: 'frontend' },
+  { name: 'Next.js',      category: 'frontend' },
+  { name: 'Tailwind CSS', category: 'frontend' },
+  { name: 'Redux',        category: 'frontend' },
 
-  // DevOps
-  { name: 'Docker',          level: 78, category: 'devops', featured: true },
-  { name: 'Kubernetes',      level: 70, category: 'devops' },
-  { name: 'GitHub Actions',  level: 75, category: 'devops' },
-  { name: 'Helm',            level: 65, category: 'devops' },
-  { name: 'Jenkins',         level: 60, category: 'devops' },
+  // ── Also work with (Level 2) — Backend ──
+  { name: 'Python',  category: 'backend' },
+  { name: 'Node.js', category: 'backend' },
+  { name: 'Express', category: 'backend' },
+  { name: 'MySQL',   category: 'backend' },
+  { name: 'MongoDB', category: 'backend' },
+  { name: 'Redis',   category: 'backend' },
 
-  // Database
-  { name: 'PostgreSQL', level: 82, category: 'database', featured: true },
-  { name: 'MySQL',      level: 75, category: 'database' },
-  { name: 'MongoDB',    level: 72, category: 'database' },
-  { name: 'Redis',      level: 70, category: 'database' },
+  // ── Also work with (Level 2) — Cloud & DevOps ──
+  { name: 'Docker',         category: 'devops' },
+  { name: 'GitHub Actions', category: 'devops' },
+  { name: 'Helm',           category: 'devops' },
+  { name: 'Jenkins',        category: 'devops' },
+  { name: 'Terraform',      category: 'devops' },
 
-  // Mobile
-  { name: 'Flutter',               level: 45, category: 'mobile' },
-  { name: 'Android (Java/Kotlin)', level: 45, category: 'mobile' },
+  // ── Also work with (Level 2) — Mobile ──
+  { name: 'Flutter',               category: 'mobile' },
+  { name: 'Android (Java/Kotlin)', category: 'mobile' },
 
-  // AI/ML
-  { name: 'Groq API',    level: 70, category: 'ai' },
-  { name: 'HuggingFace', level: 55, category: 'ai' },
-  { name: 'PyTorch',     level: 50, category: 'ai' },
+  // ── Also work with (Level 2) — AI/ML ──
+  { name: 'Groq API',    category: 'ai' },
+  { name: 'HuggingFace', category: 'ai' },
+  { name: 'PyTorch',     category: 'ai' },
+  { name: 'LangGraph',   category: 'ai' },
+
+  // ── Also work with (Level 2) — Tools ──
+  { name: 'Git',         category: 'tools' },
+  { name: 'Maven',       category: 'tools' },
+  { name: 'Postman',     category: 'tools' },
+  { name: 'IntelliJ',    category: 'tools' },
+  { name: 'Swagger',     category: 'tools' },
+  { name: 'Agile/Scrum', category: 'tools' },
 ];
-
-export const tools = [
-  'Git', 'Maven', 'Gradle', 'Keycloak', 'Postman',
-  'IntelliJ', 'Jira', 'Swagger', 'Agile/Scrum', 'Unit Testing', 'CI/CD', 'SOLID', 'Design Patterns' ,
-] as const;

@@ -11,7 +11,8 @@
     "cvEnglish": "English Version"
   },
   "hero": {
-    "available": "Available now",
+    "available": "Available Now",
+    "subtitle": "Backend-First Full-Stack Engineer // Java · Spring Boot · React",
     "titles": ["Full-Stack Developer", "Cloud-Native Architect", "AI Enthusiast"],
     "tagline": "I build high-performance distributed systems and modern web applications.",
     "cta": {
@@ -20,8 +21,9 @@
     },
     "stats": {
       "repos": { "value": "28+", "label": "Repositories" },
-      "experience": { "value": "2+", "label": "Years Experience" },
-      "projects": { "value": "5+", "label": "Projects Shipped" }
+      "internships": { "value": "3", "label": "Internships Completed" },
+      "projects": { "value": "5+", "label": "Projects Shipped" },
+      "available": { "value": "Available", "label": "Now" }
     },
     "scrollDown": "Scroll down"
   },
@@ -42,19 +44,19 @@
     },
     "card": {
       "name": "Gninninmaguignon Silué",
-      "title": "Full-Stack Developer",
+      "title": "Backend-First Full-Stack Engineer",
       "location": "Casablanca, Morocco",
       "school": "ENSA Al Hoceima — Computer Science",
       "diploma": "Graduated: June 23, 2026",
       "openTo": "Open to: Remote / Hybrid",
       "languages": "French (native), English (fluent)",
-      "available": "Available now"
+      "available": "Available Now"
     }
   },
   "stack": {
     "label": "TECH STACK",
     "title": "Technologies I work with",
-    "subtitle": "From backend architecture to modern interfaces — each bar reflects real-world experience.",
+    "subtitle": "From backend architecture to modern interfaces — each card reflects real-world experience.",
     "tabs": {
       "all": "All",
       "backend": "Backend",
@@ -65,8 +67,8 @@
       "ai": "AI / ML"
     },
     "levelLabel": "Level",
-    "coreExpertise": "Core expertise",
-    "alsoWorkWith": "Also work with",
+    "coreExpertise": "CORE EXPERTISE",
+    "alsoWorkWith": "ALSO WORK WITH",
     "tools": {
       "title": "Tools & Others"
     }

@@ -1,9 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { MapPin, GraduationCap, Award, Globe, MessageSquare } from 'lucide-react';
 import { personal, social } from '@/content/personal';
+import ProfilePhoto from '@/components/ui/ProfilePhoto';
 
 // ─── Framer variants ─────────────────────────────────────────────────────────
 
@@ -19,52 +21,72 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
-const terminalVariants: Variants = {
+const sideColumnVariants: Variants = {
   hidden: { opacity: 0, x: 30 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut', delay: 0.3 } },
 };
 
-// ─── Terminal block ───────────────────────────────────────────────────────────
+// ─── Info row ─────────────────────────────────────────────────────────────────
 
-function TerminalBlock() {
+function InfoRow({ icon, text }: { icon: ReactNode; text: string }) {
   return (
-    <div className="terminal-block w-full max-w-sm p-5 text-sm leading-relaxed">
-      {/* Window bar */}
-      <div className="flex items-center gap-1.5 mb-4">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-        <span className="ml-3 text-[var(--text-secondary)] text-xs">gninho@casablanca</span>
+    <div className="flex items-start gap-3 text-sm">
+      <span className="shrink-0 mt-0.5 text-[var(--text-secondary)]">{icon}</span>
+      <span className="font-mono text-[var(--text-secondary)] leading-snug">{text}</span>
+    </div>
+  );
+}
+
+// ─── Profile card ─────────────────────────────────────────────────────────────
+
+function ProfileCard() {
+  const t = useTranslations('about');
+
+  const infoRows = [
+    { icon: <MapPin size={14} />, text: t('card.location') },
+    { icon: <GraduationCap size={14} />, text: t('card.school') },
+    { icon: <Award size={14} />, text: t('card.diploma') },
+    { icon: <Globe size={14} />, text: t('card.openTo') },
+    { icon: <MessageSquare size={14} />, text: t('card.languages') },
+  ];
+
+  return (
+    <div className="flat-card w-full max-w-sm p-6 flex flex-col gap-5">
+      {/* Name + title */}
+      <div className="flex items-center gap-4">
+        <ProfilePhoto size={48} rounded="rounded-xl" />
+        <div className="min-w-0">
+          <p className="font-mono font-bold text-sm text-[var(--text-primary)] truncate">
+            {t('card.name')}
+          </p>
+          <p className="font-mono text-xs text-[var(--text-secondary)] mt-0.5">
+            {t('card.title')}
+          </p>
+        </div>
       </div>
 
-      {/* Lines */}
-      <div className="flex flex-col gap-1.5">
-        <div>
-          <span className="terminal-prompt">$ </span>
-          <span className="text-[var(--text-primary)]">whoami</span>
-        </div>
-        <div className="pl-2 text-[var(--text-secondary)]">
-          <span className="terminal-prompt">&gt; </span>Full-Stack Engineer
-        </div>
+      {/* Divider */}
+      <div className="h-px w-full bg-[var(--border)]" />
 
-        <div className="mt-1">
-          <span className="terminal-prompt">$ </span>
-          <span className="text-[var(--text-primary)]">cat stack.txt</span>
-        </div>
-        <div className="pl-2 text-[var(--text-secondary)]">
-          <span className="terminal-prompt">&gt; </span>Java · Spring · React · Next.js
-        </div>
-        <div className="pl-2 text-[var(--text-secondary)]">
-          <span className="terminal-prompt">&gt; </span>Docker · K8s · Groq · Kafka
-        </div>
+      {/* Info rows */}
+      <div className="flex flex-col gap-3">
+        {infoRows.map(({ icon, text }) => (
+          <InfoRow key={text} icon={icon} text={text} />
+        ))}
+      </div>
 
-        <div className="mt-1">
-          <span className="terminal-prompt">$ </span>
-          <span className="text-[var(--text-primary)]">git status</span>
-        </div>
-        <div className="pl-2 text-emerald-400">
-          <span className="terminal-prompt">&gt; </span>Available from July 2026
-        </div>
+      {/* Divider */}
+      <div className="h-px w-full bg-[var(--border)]" />
+
+      {/* Availability */}
+      <div className="flex items-center gap-2">
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
+        </span>
+        <span className="font-mono text-xs font-medium text-emerald-400">
+          {t('card.available')}
+        </span>
       </div>
     </div>
   );
@@ -97,9 +119,9 @@ export default function HeroSection() {
 
   const stats = [
     { value: t('stats.repos.value'), label: t('stats.repos.label') },
-    { value: t('stats.experience.value'), label: t('stats.experience.label') },
+    { value: t('stats.internships.value'), label: t('stats.internships.label') },
     { value: t('stats.projects.value'), label: t('stats.projects.label') },
-    { value: personal.availableFrom, label: 'Available' },
+    { value: t('stats.available.value'), label: t('stats.available.label') },
   ];
 
   return (
@@ -142,7 +164,7 @@ export default function HeroSection() {
 
             {/* Subtitle */}
             <motion.p variants={itemVariants} className="font-mono text-sm text-[var(--text-secondary)]">
-              Full-Stack Engineer // Backend · Cloud · AI
+              {t('subtitle')}
             </motion.p>
 
             {/* Description */}
@@ -189,9 +211,14 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Terminal — mobile */}
-          <motion.div variants={terminalVariants} initial="hidden" animate="visible">
-            <TerminalBlock />
+          {/* Profile card — mobile */}
+          <motion.div
+            variants={sideColumnVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex justify-center"
+          >
+            <ProfileCard />
           </motion.div>
 
           {/* Stats bar */}
@@ -246,7 +273,7 @@ export default function HeroSection() {
 
             {/* Subtitle */}
             <motion.p variants={itemVariants} className="font-mono text-lg text-[var(--text-secondary)]">
-              Full-Stack Engineer // Backend · Cloud · AI
+              {t('subtitle')}
             </motion.p>
 
             {/* Description */}
@@ -314,14 +341,14 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right: terminal */}
+          {/* Right: profile card */}
           <motion.div
-            variants={terminalVariants}
+            variants={sideColumnVariants}
             initial="hidden"
             animate="visible"
             className="flex-shrink-0"
           >
-            <TerminalBlock />
+            <ProfileCard />
           </motion.div>
         </div>
       </div>

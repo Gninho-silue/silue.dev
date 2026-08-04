@@ -3,18 +3,20 @@
 import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { skills, tools, type SkillCategory } from '@/content/skills';
+import { skills, type SkillCategory } from '@/content/skills';
 
-// ─── Category groups ──────────────────────────────────────────────────────────
+// ─── Secondary category groups ─────────────────────────────────────────────────
 
-const GROUPS: { id: SkillCategory | 'all'; labelKey: string }[] = [
-  { id: 'backend',  labelKey: 'CORE' },
-  { id: 'frontend', labelKey: 'FRONTEND' },
-  { id: 'devops',   labelKey: 'CLOUD & DEVOPS' },
-  { id: 'database', labelKey: 'DATABASES' },
-  { id: 'mobile',   labelKey: 'MOBILE' },
-  { id: 'ai',       labelKey: 'AI / ML' },
-];
+const CATEGORY_LABELS: Record<SkillCategory, string> = {
+  frontend: 'FRONTEND',
+  backend:  'BACKEND',
+  devops:   'CLOUD & DEVOPS',
+  mobile:   'MOBILE',
+  ai:       'AI / ML',
+  tools:    'TOOLS',
+};
+
+const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', 'devops', 'mobile', 'ai', 'tools'];
 
 // ─── Framer variants ──────────────────────────────────────────────────────────
 
@@ -32,9 +34,71 @@ const badgeVariants: Variants = {
   }),
 };
 
-// ─── Badge group ─────────────────────────────────────────────────────────────
+// ─── Terminal block (decorative, moved from Hero) ──────────────────────────────
 
-function BadgeGroup({
+function TerminalBlock() {
+  return (
+    <div className="terminal-block w-full max-w-xs p-4 text-xs leading-relaxed">
+      {/* Window bar */}
+      <div className="flex items-center gap-1.5 mb-3">
+        <span className="w-2 h-2 rounded-full bg-red-500/70" />
+        <span className="w-2 h-2 rounded-full bg-yellow-500/70" />
+        <span className="w-2 h-2 rounded-full bg-green-500/70" />
+        <span className="ml-3 text-[var(--text-secondary)] text-[10px]">gninho@casablanca</span>
+      </div>
+
+      {/* Lines */}
+      <div className="flex flex-col gap-1.5">
+        <div>
+          <span className="terminal-prompt">$ </span>
+          <span className="text-[var(--text-primary)]">whoami</span>
+        </div>
+        <div className="pl-2 text-[var(--text-secondary)]">
+          <span className="terminal-prompt">&gt; </span>Backend-First Full-Stack Engineer
+        </div>
+
+        <div className="mt-1">
+          <span className="terminal-prompt">$ </span>
+          <span className="text-[var(--text-primary)]">cat stack.txt</span>
+        </div>
+        <div className="pl-2 text-[var(--text-secondary)]">
+          <span className="terminal-prompt">&gt; </span>Java · Spring · React · Next.js
+        </div>
+        <div className="pl-2 text-[var(--text-secondary)]">
+          <span className="terminal-prompt">&gt; </span>Docker · K8s · Groq · Kafka
+        </div>
+
+        <div className="mt-1">
+          <span className="terminal-prompt">$ </span>
+          <span className="text-[var(--text-primary)]">git status</span>
+        </div>
+        <div className="pl-2 text-emerald-400">
+          <span className="terminal-prompt">&gt; </span>Available now — Casablanca / Remote
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Core (Level 1) badge ───────────────────────────────────────────────────────
+
+function CoreBadge({ name, index, inView }: { name: string; index: number; inView: boolean }) {
+  return (
+    <motion.span
+      custom={index}
+      variants={badgeVariants}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      className="font-mono text-sm font-semibold px-4 py-2 rounded-lg border border-amber-500/40 bg-amber-500/5 text-[var(--accent)] cursor-default"
+    >
+      {name}
+    </motion.span>
+  );
+}
+
+// ─── Secondary (Level 2) group ──────────────────────────────────────────────────
+
+function SecondaryGroup({
   label,
   names,
   inView,
@@ -60,7 +124,7 @@ function BadgeGroup({
             variants={badgeVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="flat-badge cursor-default"
+            className="font-mono text-xs px-2.5 py-1 rounded border border-[var(--border)] text-[var(--text-secondary)] cursor-default"
           >
             {name}
           </motion.span>
@@ -76,15 +140,20 @@ export default function StackSection() {
   const t = useTranslations('stack');
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: '-60px' });
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const isTerminalInView = useInView(terminalRef, { once: true, margin: '-40px' });
   const bodyRef = useRef<HTMLDivElement>(null);
   const isBodyInView = useInView(bodyRef, { once: true, margin: '-60px' });
+
+  const coreSkills = skills.filter((s) => s.core);
+  const secondarySkills = skills.filter((s) => !s.core);
 
   return (
     <section
       id="stack"
       className="relative py-24 md:py-32 bg-[var(--bg)]"
     >
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ── */}
         <motion.div
@@ -103,34 +172,62 @@ export default function StackSection() {
           </p>
         </motion.div>
 
-        {/* ── Badge grid ── */}
-        <div ref={bodyRef} className="flex flex-col gap-10">
-          {GROUPS.map(({ id, labelKey }) => {
-            const names = skills
-              .filter((s) => s.category === id)
-              .map((s) => s.name);
+        {/* ── Two-column layout ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-start">
 
-            const offset = GROUPS
-              .slice(0, GROUPS.findIndex((g) => g.id === id))
-              .reduce((acc, g) => acc + skills.filter((s) => s.category === g.id).length, 0);
+          {/* ── Left: skills ── */}
+          <div ref={bodyRef} className="flex flex-col gap-10">
 
-            return (
-              <BadgeGroup
-                key={id}
-                label={labelKey}
-                names={names}
-                inView={isBodyInView}
-                globalOffset={offset}
-              />
-            );
-          })}
+            {/* Level 1 — Core expertise */}
+            <div className="flex flex-col gap-3">
+              <p className="font-mono text-[10px] font-semibold tracking-widest text-[var(--text-muted)] uppercase">
+                {t('coreExpertise')}
+              </p>
+              <div className="flex flex-wrap gap-2.5">
+                {coreSkills.map((s, i) => (
+                  <CoreBadge key={s.name} name={s.name} index={i} inView={isBodyInView} />
+                ))}
+              </div>
+            </div>
 
-          <BadgeGroup
-            label={t('tools.title')}
-            names={[...tools]}
-            inView={isBodyInView}
-            globalOffset={skills.length}
-          />
+            {/* Level 2 — Also work with */}
+            <div className="flex flex-col gap-6">
+              <p className="font-mono text-[10px] font-semibold tracking-widest text-[var(--text-muted)] uppercase">
+                {t('alsoWorkWith')}
+              </p>
+              <div className="flex flex-col gap-6">
+                {CATEGORY_ORDER.map((cat) => {
+                  const names = secondarySkills.filter((s) => s.category === cat).map((s) => s.name);
+                  const offset = coreSkills.length + CATEGORY_ORDER
+                    .slice(0, CATEGORY_ORDER.indexOf(cat))
+                    .reduce((acc, c) => acc + secondarySkills.filter((s) => s.category === c).length, 0);
+
+                  return (
+                    <SecondaryGroup
+                      key={cat}
+                      label={CATEGORY_LABELS[cat]}
+                      names={names}
+                      inView={isBodyInView}
+                      globalOffset={offset}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
+
+          {/* ── Right: terminal (decorative) ── */}
+          <motion.div
+            ref={terminalRef}
+            variants={fadeUp}
+            initial="hidden"
+            animate={isTerminalInView ? 'visible' : 'hidden'}
+            className="flex justify-center lg:justify-end"
+          >
+            <TerminalBlock />
+          </motion.div>
+
         </div>
 
       </div>

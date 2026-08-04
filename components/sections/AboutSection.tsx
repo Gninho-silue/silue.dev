@@ -1,12 +1,12 @@
 'use client';
 
-import { useRef, useState, type ReactNode } from 'react';
-import Image from 'next/image';
+import { useRef, type ReactNode } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { MapPin, GraduationCap, Award, Globe, MessageSquare, Zap, Layers, Eye } from 'lucide-react';
+import { Zap, Layers, Eye } from 'lucide-react';
 import { social } from '@/content/personal';
 import CVDownloadDropdown from '@/components/ui/CVDownloadDropdown';
+import ProfilePhoto from '@/components/ui/ProfilePhoto';
 
 // ─── Framer variants ────────────────────────────────────────────────────────
 
@@ -30,17 +30,6 @@ const pillVariant: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
 };
 
-// ─── Info row ───────────────────────────────────────────────────────────────
-
-function InfoRow({ icon, text }: { icon: ReactNode; text: string }) {
-  return (
-    <div className="flex items-start gap-3 text-sm">
-      <span className="shrink-0 mt-0.5 text-[var(--text-secondary)]">{icon}</span>
-      <span className="font-mono text-[var(--text-secondary)] leading-snug">{text}</span>
-    </div>
-  );
-}
-
 // ─── Philosophy pill ────────────────────────────────────────────────────────
 
 function Pill({ icon, label }: { icon: ReactNode; label: string }) {
@@ -55,32 +44,6 @@ function Pill({ icon, label }: { icon: ReactNode; label: string }) {
   );
 }
 
-// ─── Profile photo ──────────────────────────────────────────────────────────
-
-function ProfilePhoto() {
-  const [error, setError] = useState(false);
-
-  if (error) {
-    return (
-      <div className="w-12 h-12 rounded-xl bg-[var(--bg-hover)] border border-[var(--border)] flex items-center justify-center shrink-0">
-        <span className="font-mono font-black text-sm text-[var(--accent)]">GS</span>
-      </div>
-    );
-  }
-
-  return (
-    <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-[var(--border)] shrink-0">
-      <Image
-        src="/profile.png"
-        alt="Gninninmaguignon Silué"
-        fill
-        className="object-cover"
-        onError={() => setError(true)}
-      />
-    </div>
-  );
-}
-
 // ─── Main component ─────────────────────────────────────────────────────────
 
 export default function AboutSection() {
@@ -92,14 +55,6 @@ export default function AboutSection() {
     { icon: <Zap size={13} />, label: t('pills.performance') },
     { icon: <Layers size={13} />, label: t('pills.architecture') },
     { icon: <Eye size={13} />, label: t('pills.observability') },
-  ];
-
-  const infoRows = [
-    { icon: <MapPin size={14} />, text: t('card.location') },
-    { icon: <GraduationCap size={14} />, text: t('card.school') },
-    { icon: <Award size={14} />, text: t('card.diploma') },
-    { icon: <Globe size={14} />, text: t('card.openTo') },
-    { icon: <MessageSquare size={14} />, text: t('card.languages') },
   ];
 
   return (
@@ -175,52 +130,14 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* ── Right: info card ── */}
+          {/* ── Right: photo ── */}
           <motion.div
             variants={fadeRight}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="w-full lg:w-80 xl:w-96 shrink-0"
+            className="w-full lg:w-80 xl:w-96 shrink-0 flex justify-center lg:justify-end"
           >
-            <div className="flat-card p-6 flex flex-col gap-5">
-
-              {/* Name + title */}
-              <div className="flex items-center gap-4">
-                <ProfilePhoto />
-                <div className="min-w-0">
-                  <p className="font-mono font-bold text-sm text-[var(--text-primary)] truncate">
-                    {t('card.name')}
-                  </p>
-                  <p className="font-mono text-xs text-[var(--text-secondary)] mt-0.5">
-                    {t('card.title')}
-                  </p>
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="h-px w-full bg-[var(--border)]" />
-
-              {/* Info rows */}
-              <div className="flex flex-col gap-3">
-                {infoRows.map(({ icon, text }) => (
-                  <InfoRow key={text} icon={icon} text={text} />
-                ))}
-              </div>
-
-              {/* Divider */}
-              <div className="h-px w-full bg-[var(--border)]" />
-
-              {/* Availability */}
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2 shrink-0">
-                  <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
-                </span>
-                <span className="font-mono text-xs font-medium text-emerald-400">
-                  {t('card.available')}
-                </span>
-              </div>
-            </div>
+            <ProfilePhoto size={320} />
           </motion.div>
 
         </div>

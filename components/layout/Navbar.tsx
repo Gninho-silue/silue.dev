@@ -59,7 +59,7 @@ export default function Navbar() {
               Silué
             </span>
             <span className="hidden sm:block font-mono text-xs text-[var(--text-secondary)]">
-              {'// backend · cloud · ai'}
+              {'// backend-first · full-stack'}
             </span>
           </button>
 
