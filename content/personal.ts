@@ -5,7 +5,6 @@ export const personal = {
   title: 'Full-Stack Developer',
   email: 'gninninmaguignonsilue@gmail.com',
   location: 'Casablanca, Maroc',
-  availableFrom: '2026-07',
   cv: '/cv-silue.pdf',
 } as const;
 
