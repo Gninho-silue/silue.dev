@@ -101,7 +101,7 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="vertical-align:middle;">
-                    <a href="https://silue.dev" target="_blank" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+                    <a href="https://silue-dev.vercel.app" target="_blank" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
                       <span style="font-family:ui-monospace,'Courier New',monospace;font-size:11px;font-weight:700;color:#888888;letter-spacing:0.15em;">//</span>
                       <span style="font-family:ui-monospace,'Courier New',monospace;font-size:18px;font-weight:900;color:#ffffff;letter-spacing:-0.02em;">silue.dev</span>
                     </a>
@@ -153,7 +153,7 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
           <tr>
             <td class="footer" style="padding:16px 32px 20px;border-top:1px solid #222222;">
               <p style="margin:0;font-size:11px;color:#444444;font-family:ui-monospace,'Courier New',monospace;">
-                Reçu le ${date} &mdash; <a href="https://silue.dev" target="_blank" style="color:#444444;text-decoration:none;">silue.dev</a>
+                Reçu le ${date} &mdash; <a href="https://silue-dev.vercel.app" target="_blank" style="color:#444444;text-decoration:none;">silue-dev.vercel.app</a>
               </p>
             </td>
           </tr>
