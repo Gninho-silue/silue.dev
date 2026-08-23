@@ -162,19 +162,25 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         <div className="project-card-footer flex items-center gap-2 px-5 py-4">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-link inline-flex items-center gap-1.5 text-xs font-medium"
-            aria-label={`GitHub — ${project.id}`}
-          >
-            <GithubIcon />
-            {t('viewCode')}
-          </a>
-          {project.live && (
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link inline-flex items-center gap-1.5 text-xs font-medium"
+              aria-label={`GitHub — ${project.id}`}
+            >
+              <GithubIcon />
+              {t('viewCode')}
+            </a>
+          )}
+          {project.live && project.github && (
             <>
               <span className="project-link-divider mx-1" aria-hidden />
+            </>
+          )}
+          {project.live && (
+            <>
               <a
                 href={project.live}
                 target="_blank"

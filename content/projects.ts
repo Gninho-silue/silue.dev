@@ -5,7 +5,7 @@ export interface Project {
   titleKey: string;
   descriptionKey: string;
   stack: string[];
-  github: string;
+  github?: string;
   live?: string;
   featured: boolean;
   image: string;
@@ -40,6 +40,16 @@ export const projects: Project[] = [
     category: 'ai',
     icon: '🤖',
     year: 2026,
+  },
+  {
+    id: 'cortex',
+    titleKey: 'projects.cortex.title',
+    descriptionKey: 'projects.cortex.description',
+    stack: ['Python', 'FastAPI', 'LangGraph', 'ChromaDB', 'React', 'TypeScript', 'Docker'],
+    live: 'https://cortex-tau-five.vercel.app',
+    featured: true,
+    image: '/projects/cortex.png',
+    category: 'ai',
   },
   {
     id: 'banking-ms',
