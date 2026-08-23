@@ -160,15 +160,17 @@ function FeaturedCard({ project }: { project: Project }) {
           <StackBadges stack={project.stack} />
 
           <div className="flex items-center gap-3 mt-1">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm font-mono"
-            >
-              <GithubIcon />
-              {t('viewCode')}
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm font-mono"
+              >
+                <GithubIcon />
+                {t('viewCode')}
+              </a>
+            )}
             {project.live && (
               <a
                 href={project.live}
@@ -249,18 +251,22 @@ function GridCard({ project, index }: { project: Project; index: number }) {
 
         {/* Links */}
         <div className="flex items-center gap-3 mt-auto pt-2 border-t border-[var(--border)]">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-          >
-            <GithubIcon size={13} />
-            Code
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              <GithubIcon size={13} />
+              Code
+            </a>
+          )}
+          {project.live && project.github && (
+            <span className="text-[var(--text-muted)]">·</span>
+          )}
           {project.live && (
             <>
-              <span className="text-[var(--text-muted)]">·</span>
               <a
                 href={project.live}
                 target="_blank"

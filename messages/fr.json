@@ -95,6 +95,10 @@
       "title": "AgentFlow",
       "description": "Plateforme d'automatisation multi-agents : décrivez une tâche en langage naturel, cinq agents IA spécialisés (Planner, FileAgent, CodeAgent, Reporter, Supervisor) se coordonnent via LangGraph pour l'exécuter. LLM local via Ollama — zéro coût d'API."
     },
+    "cortex": {
+      "title": "Cortex",
+      "description": "Assistant RAG agentique qui répond aux questions sur mon parcours à partir de mes propres documents, avec citations vérifiées à chaque réponse. Agent LangGraph, streaming SSE, garde-fous anti-injection, mémoire conversationnelle. FastAPI + ChromaDB + Docker."
+    },
     "bankingMs": {
       "title": "Banking Microservices",
       "description": "Architecture microservices bancaire complète avec Spring Cloud, Kafka, Kubernetes et Docker. Gestion de comptes, transactions, notifications en temps réel."
