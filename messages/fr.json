@@ -166,7 +166,9 @@
       "java": "Java SE 17 Developer",
       "microservices": "Master Microservices SpringBoot/Docker/K8s",
       "devops": "OCP DevOps Professional",
-      "python": "Python Formation Complète"
+      "python": "Python Formation Complète",
+      "oracleAiFoundations": "Oracle Cloud Infrastructure Certified AI Foundations Associate",
+      "agenticAiFoundations": "Agentic AI Certified Foundations Associate"
     }
   },
   "testimonials": {
