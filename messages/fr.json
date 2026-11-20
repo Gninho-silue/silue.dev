@@ -89,6 +89,7 @@
   "projects": {
     "stackLabel": "Technologies",
     "imageAlt": "Capture d'écran de {title}",
+    "openImage": "Ouvrir l'image en grand",
     "label": "PROJETS",
     "title": "Ce que j'ai construit",
     "subtitle": "Projets personnels, de cours et de stage.",

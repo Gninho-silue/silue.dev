@@ -89,6 +89,7 @@
   "projects": {
     "stackLabel": "Technologies",
     "imageAlt": "Screenshot of {title}",
+    "openImage": "Open full-size image",
     "label": "PROJECTS",
     "title": "Things I've built",
     "subtitle": "Personal, course and internship projects.",

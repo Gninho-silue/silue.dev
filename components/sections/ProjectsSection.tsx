@@ -71,17 +71,34 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="flat-card flex h-full flex-col gap-4 p-4 sm:p-5"
     >
       {/* Screenshot: 2:1 frame, matching most captures (1920x940) */}
-      <div className="relative aspect-[2/1] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-hover)]">
-        <Image
-          src={project.image}
-          alt={t('imageAlt', { title })}
-          fill
-          sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
-          loading={index < 2 ? 'eager' : 'lazy'}
-          fetchPriority={index < 2 ? 'high' : 'auto'}
-          className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover object-top'}
-        />
-      </div>
+      {(() => {
+        const frameClass =
+          'relative block aspect-[2/1] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-hover)]';
+        const image = (
+          <Image
+            src={project.image}
+            alt={t('imageAlt', { title })}
+            fill
+            sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
+            loading={index < 2 ? 'eager' : 'lazy'}
+            fetchPriority={index < 2 ? 'high' : 'auto'}
+            className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover object-top'}
+          />
+        );
+        return project.imageZoom ? (
+          <a
+            href={project.image}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={t('openImage')}
+            className={`${frameClass} cursor-zoom-in transition-colors hover:border-[var(--border-strong)]`}
+          >
+            {image}
+          </a>
+        ) : (
+          <div className={frameClass}>{image}</div>
+        );
+      })()}
 
       {/* Title + year */}
       <header className="flex items-baseline justify-between gap-4">

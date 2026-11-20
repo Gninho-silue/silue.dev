@@ -16,6 +16,8 @@ export interface Project {
   image: string;
   /** "contain" shows the whole image (for images far from 2:1); default "cover". */
   imageFit?: 'cover' | 'contain';
+  /** Clicking the image opens it full size (for diagrams too small to read in the card). */
+  imageZoom?: boolean;
   category: ProjectCategory;
   inProgress?: boolean;
   year?: number;
@@ -29,8 +31,8 @@ export const projects: Project[] = [
     stack: ['Java 21', 'Spring Boot', 'Spring Cloud', 'Kafka', 'MySQL', 'Keycloak', 'Testcontainers'],
     github: 'https://github.com/Gninho-silue/banking-microservices',
     featured: true,
-    image: '/projects/banking-architecture.png',
-    imageFit: 'contain',
+    image: '/projects/banking-architecture-full.png',
+    imageZoom: true,
     category: 'fullstack',
     year: 2026,
   },
