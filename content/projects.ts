@@ -29,7 +29,7 @@ export const projects: Project[] = [
     stack: ['Java 21', 'Spring Boot', 'Spring Cloud', 'Kafka', 'MySQL', 'Keycloak', 'Testcontainers'],
     github: 'https://github.com/Gninho-silue/banking-microservices',
     featured: true,
-    image: '/projects/banking-ms.png',
+    image: '/projects/banking-architecture.png',
     imageFit: 'contain',
     category: 'fullstack',
     year: 2026,
