@@ -20,7 +20,7 @@ export default function ProfilePhoto({ size, rounded = 'rounded-2xl', className 
         className={`${rounded} bg-[var(--bg-hover)] border border-[var(--border)] flex items-center justify-center shrink-0 ${className}`}
       >
         <span
-          className="font-mono font-black text-[var(--accent)]"
+          className="font-semibold text-[var(--accent)]"
           style={{ fontSize: size / 4 }}
         >
           GS

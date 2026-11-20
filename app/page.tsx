@@ -7,7 +7,6 @@ import ProjectsSection from '@/components/sections/ProjectsSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ContactSection from '@/components/sections/ContactSection';
-import JobPilotBanner from '@/components/ui/JobPilotBanner';
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-      <JobPilotBanner />
     </>
   );
 }

@@ -32,7 +32,7 @@ function InfoRow({ icon, text }: { icon: ReactNode; text: string }) {
   return (
     <div className="flex items-start gap-3 text-sm">
       <span className="shrink-0 mt-0.5 text-[var(--text-secondary)]">{icon}</span>
-      <span className="font-mono text-[var(--text-secondary)] leading-snug">{text}</span>
+      <span className="text-[var(--text-secondary)] leading-snug">{text}</span>
     </div>
   );
 }
@@ -56,10 +56,10 @@ function ProfileCard() {
       <div className="flex items-center gap-4">
         <ProfilePhoto size={48} rounded="rounded-xl" />
         <div className="min-w-0">
-          <p className="font-mono font-bold text-sm text-[var(--text-primary)] truncate">
+          <p className="font-bold text-sm text-[var(--text-primary)] truncate">
             {t('card.name')}
           </p>
-          <p className="font-mono text-xs text-[var(--text-secondary)] mt-0.5">
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5">
             {t('card.title')}
           </p>
         </div>
@@ -81,10 +81,10 @@ function ProfileCard() {
       {/* Availability */}
       <div className="flex items-center gap-2">
         <span className="relative flex h-2 w-2 shrink-0">
-          <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
+          <span className="animate-ping absolute h-full w-full rounded-full bg-[var(--success)] opacity-75" />
+          <span className="relative rounded-full h-2 w-2 bg-[var(--success)]" />
         </span>
-        <span className="font-mono text-xs font-medium text-emerald-400">
+        <span className="text-xs font-medium text-[var(--success)]">
           {t('card.available')}
         </span>
       </div>
@@ -118,9 +118,9 @@ export default function HeroSection() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   const stats = [
-    { value: t('stats.repos.value'), label: t('stats.repos.label') },
     { value: t('stats.internships.value'), label: t('stats.internships.label') },
-    { value: t('stats.projects.value'), label: t('stats.projects.label') },
+    { value: t('stats.tests.value'), label: t('stats.tests.label') },
+    { value: t('stats.certification.value'), label: t('stats.certification.label') },
     { value: t('stats.available.value'), label: t('stats.available.label') },
   ];
 
@@ -146,18 +146,18 @@ export default function HeroSection() {
           >
             {/* Available badge */}
             <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono border border-[var(--border)] text-[var(--text-secondary)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-xs border border-[var(--border)] text-[var(--text-secondary)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)]" />
                 {t('available')}
               </span>
             </motion.div>
 
             {/* Name */}
-            <motion.h1 variants={itemVariants} className="font-mono font-black leading-[1.02]">
-              <span className="block" style={{ fontSize: 'clamp(2rem, 10vw, 3.5rem)' }}>
+            <motion.h1 variants={itemVariants} className="font-bold tracking-tight leading-[1.05]">
+              <span className="block" style={{ fontSize: 'clamp(2rem, 9vw, 3.25rem)' }}>
                 {personal.firstName}
               </span>
-              <span className="block" style={{ fontSize: 'clamp(2rem, 10vw, 3.5rem)' }}>
+              <span className="block" style={{ fontSize: 'clamp(2rem, 9vw, 3.25rem)' }}>
                 {personal.lastName.toUpperCase()}.
               </span>
             </motion.h1>
@@ -168,7 +168,7 @@ export default function HeroSection() {
             </motion.p>
 
             {/* Description */}
-            <motion.p variants={itemVariants} className="font-mono text-sm text-[var(--text-secondary)] leading-relaxed max-w-sm">
+            <motion.p variants={itemVariants} className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-sm">
               {t('tagline')}
             </motion.p>
 
@@ -177,14 +177,14 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={() => scrollTo('contact')}
-                className="btn-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-mono"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm"
               >
                 {t('cta.contact')}
               </button>
               <button
                 type="button"
                 onClick={() => scrollTo('projects')}
-                className="btn-secondary inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-mono"
+                className="btn-secondary inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm"
               >
                 {t('cta.projects')}
               </button>
@@ -226,10 +226,10 @@ export default function HeroSection() {
             variants={itemVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap gap-x-4 gap-y-1"
+            className="flex flex-wrap gap-x-4 gap-y-1 font-mono"
           >
             {stats.map(({ value, label }, i) => (
-              <span key={label} className="font-mono text-xs text-[var(--text-secondary)]">
+              <span key={label} className="text-xs text-[var(--text-secondary)] whitespace-nowrap">
                 <span className="text-[var(--text-primary)] font-semibold">{value}</span>
                 {' '}{label}
                 {i < stats.length - 1 && <span className="ml-4 text-[var(--text-muted)]">·</span>}
@@ -249,35 +249,35 @@ export default function HeroSection() {
           >
             {/* Available badge */}
             <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono border border-[var(--border)] text-[var(--text-secondary)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-xs border border-[var(--border)] text-[var(--text-secondary)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)]" />
                 {t('available')}
               </span>
             </motion.div>
 
             {/* Name — huge */}
-            <motion.h1 variants={itemVariants} className="font-mono font-black leading-[1.02]">
+            <motion.h1 variants={itemVariants} className="font-bold tracking-tight leading-[1.05]">
               <span
                 className="block text-[var(--text-primary)]"
-                style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)' }}
+                style={{ fontSize: 'clamp(2.25rem, 4.5vw, 4.25rem)' }}
               >
                 {personal.firstName}
               </span>
               <span
                 className="block text-[var(--text-primary)]"
-                style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)' }}
+                style={{ fontSize: 'clamp(2.25rem, 4.5vw, 4.25rem)' }}
               >
                 {personal.lastName.toUpperCase()}.
               </span>
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p variants={itemVariants} className="font-mono text-lg text-[var(--text-secondary)]">
+            <motion.p variants={itemVariants} className="font-mono text-base text-[var(--text-secondary)]">
               {t('subtitle')}
             </motion.p>
 
             {/* Description */}
-            <motion.p variants={itemVariants} className="font-mono text-base text-[var(--text-secondary)] leading-relaxed max-w-lg">
+            <motion.p variants={itemVariants} className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-[60ch]">
               {t('tagline')}
             </motion.p>
 
@@ -286,25 +286,17 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={() => scrollTo('contact')}
-                className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono"
+                className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm"
               >
                 {t('cta.contact')}
               </button>
               <button
                 type="button"
                 onClick={() => scrollTo('projects')}
-                className="btn-secondary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono"
+                className="btn-secondary inline-flex items-center gap-2 px-5 py-2.5 text-sm"
               >
                 {t('cta.projects')}
               </button>
-              <a
-                href="https://jobpilot-jet.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-accent inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-mono"
-              >
-                jobpilot ↗
-              </a>
             </motion.div>
 
             {/* Social icons */}
@@ -328,9 +320,9 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Stats bar */}
-            <motion.div variants={itemVariants} className="flex items-center gap-4 mt-2">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 font-mono">
               {stats.map(({ value, label }, i) => (
-                <span key={label} className="font-mono text-xs text-[var(--text-secondary)] flex items-center gap-4">
+                <span key={label} className="text-xs text-[var(--text-secondary)] flex items-center gap-4 whitespace-nowrap">
                   <span>
                     <span className="text-[var(--text-primary)] font-semibold">{value}</span>
                     {' '}{label}

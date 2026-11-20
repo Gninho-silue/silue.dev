@@ -24,7 +24,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false);
+      if (window.innerWidth >= 1024) setMobileOpen(false);
     };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
@@ -46,30 +46,27 @@ export default function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 gap-4 flex items-center justify-between">
 
           {/* Logo */}
           <button
             onClick={() => scrollTo('hero')}
-            aria-label="Back to top"
-            className="flex items-center gap-3 group"
+            aria-label={t('backToTop')}
+            className="flex items-center gap-2.5 group shrink-0"
           >
-            <span className="font-mono font-bold text-sm text-[var(--accent)]">&lt;/&gt;</span>
+            <span className="font-mono font-bold text-sm text-[var(--accent-fill)]">&lt;/&gt;</span>
             <span className="font-mono font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors duration-200">
               Silué
-            </span>
-            <span className="hidden sm:block font-mono text-xs text-[var(--text-secondary)]">
-              {'// backend-first · full-stack'}
             </span>
           </button>
 
           {/* Desktop nav links */}
-          <ul className="hidden md:flex items-center gap-1">
+          <ul className="hidden lg:flex items-center gap-0.5">
             {navLinks.map(({ id, label }) => (
               <li key={id}>
                 <button
                   onClick={() => scrollTo(id)}
-                  className={`relative px-3 py-1.5 text-sm font-mono rounded-md transition-colors duration-200 ${
+                  className={`relative whitespace-nowrap px-3 py-1.5 text-sm rounded-md transition-colors duration-200 ${
                     activeSection === id
                       ? 'text-[var(--accent)]'
                       : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -79,7 +76,7 @@ export default function Navbar() {
                   {activeSection === id && (
                     <motion.span
                       layoutId="navbar-indicator"
-                      className="absolute inset-0 rounded-md bg-[#F59E0B]/8"
+                      className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-[var(--accent-fill)]"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -89,19 +86,19 @@ export default function Navbar() {
           </ul>
 
           {/* Right side controls */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <div className="hidden sm:flex items-center gap-2">
               <LanguageToggle />
               <ThemeToggle />
             </div>
-            <CVDownloadDropdown variant="navbar" align="right" className="hidden md:block" />
+            <CVDownloadDropdown variant="navbar" align="right" className="hidden lg:block" />
 
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen((v) => !v)}
-              aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-label={mobileOpen ? t('closeMenu') : t('openMenu')}
               aria-expanded={mobileOpen}
-              className="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-lg hover:bg-[var(--bg-hover)] transition-colors duration-200 gap-1.5"
+              className="lg:hidden flex flex-col justify-center items-center w-9 h-9 rounded-lg hover:bg-[var(--bg-hover)] transition-colors duration-200 gap-1.5"
             >
               <motion.span
                 animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
@@ -131,16 +128,16 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed top-16 left-0 right-0 z-40 md:hidden backdrop-blur-md bg-[var(--bg)]/95 border-b border-[var(--border)]"
+            className="fixed top-16 left-0 right-0 z-40 lg:hidden backdrop-blur-md bg-[var(--bg)]/95 border-b border-[var(--border)]"
           >
-            <nav className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
+            <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
               {navLinks.map(({ id, label }) => (
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
-                  className={`w-full text-left px-4 py-3 rounded-lg text-sm font-mono transition-colors duration-200 ${
+                  className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-colors duration-200 ${
                     activeSection === id
-                      ? 'text-[var(--accent)] bg-[#F59E0B]/8'
+                      ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
                       : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)]'
                   }`}
                 >
@@ -168,7 +165,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-30 md:hidden"
+            className="fixed inset-0 z-30 lg:hidden"
             onClick={() => setMobileOpen(false)}
           />
         )}

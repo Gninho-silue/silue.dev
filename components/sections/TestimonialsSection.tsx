@@ -22,6 +22,8 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
 
   const tKey = testimonial.id
     .replace(/-([a-z])/g, (_: string, c: string) => c.toUpperCase());
+  const role = t(`testimonials.${tKey}.role` as Parameters<typeof t>[0]);
+  const note = t(`testimonials.${tKey}.note` as Parameters<typeof t>[0]);
 
   return (
     <motion.div
@@ -34,20 +36,28 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
     >
       <Quote className="h-5 w-5 text-[var(--accent)] opacity-80" aria-hidden />
 
-      <p className="font-mono text-sm text-[var(--text-secondary)] leading-relaxed italic">
-        &ldquo;{t(`testimonials.${tKey}.quote` as Parameters<typeof t>[0])}&rdquo;
-      </p>
+      <div className="flex flex-col gap-2">
+        <p className="text-sm text-[var(--text-secondary)] leading-relaxed italic">
+          &ldquo;{t(`testimonials.${tKey}.quote` as Parameters<typeof t>[0])}&rdquo;
+        </p>
+        {note && (
+          <p className="text-xs text-[var(--text-muted)]">{note}</p>
+        )}
+      </div>
 
       <div className="flex items-center gap-3 mt-auto pt-4 border-t border-[var(--border)]">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-black font-mono text-sm font-bold">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent-fill)] text-[var(--on-accent)] text-sm font-bold">
           {testimonial.initials}
         </div>
         <div className="min-w-0">
-          <p className="font-mono text-sm font-bold text-[var(--text-primary)] truncate">
+          <p className="text-sm font-bold text-[var(--text-primary)] truncate">
             {testimonial.name}
           </p>
-          <p className="font-mono text-xs text-[var(--text-secondary)] truncate">
-            {testimonial.role}, {testimonial.organization}
+          <p className="text-xs text-[var(--text-secondary)]">
+            {role}
+          </p>
+          <p className="text-xs text-[var(--text-muted)] truncate">
+            {testimonial.organization}
           </p>
         </div>
       </div>
@@ -65,7 +75,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative py-24 md:py-32 bg-[var(--bg)]"
+      className="relative py-16 md:py-24 bg-[var(--bg)]"
     >
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -75,13 +85,13 @@ export default function TestimonialsSection() {
           variants={fadeUp}
           initial="hidden"
           animate={isHeaderInView ? 'visible' : 'hidden'}
-          className="flex flex-col gap-3 mb-14"
+          className="flex flex-col gap-3 mb-12"
         >
           <p className="section-label">{'// '}{t('label')}</p>
-          <h2 className="font-mono font-black text-3xl md:text-4xl text-[var(--text-primary)]">
+          <h2 className="font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
             {t('title')}
           </h2>
-          <p className="font-mono text-sm text-[var(--text-secondary)] max-w-xl leading-relaxed">
+          <p className="text-base text-[var(--text-secondary)] max-w-[65ch] leading-relaxed">
             {t('subtitle')}
           </p>
         </motion.div>

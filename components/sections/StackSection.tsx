@@ -4,19 +4,11 @@ import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { skills, type SkillCategory } from '@/content/skills';
+import { personal } from '@/content/personal';
 
 // ─── Secondary category groups ─────────────────────────────────────────────────
 
-const CATEGORY_LABELS: Record<SkillCategory, string> = {
-  frontend: 'FRONTEND',
-  backend:  'BACKEND',
-  devops:   'CLOUD & DEVOPS',
-  mobile:   'MOBILE',
-  ai:       'AI / ML',
-  tools:    'TOOLS',
-};
-
-const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', 'devops', 'mobile', 'ai', 'tools'];
+const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', 'devops', 'ai', 'tools'];
 
 // ─── Framer variants ──────────────────────────────────────────────────────────
 
@@ -37,6 +29,7 @@ const badgeVariants: Variants = {
 // ─── Terminal block (decorative, moved from Hero) ──────────────────────────────
 
 function TerminalBlock() {
+  const t = useTranslations('stack');
   return (
     <div className="terminal-block w-full max-w-xs p-4 text-xs leading-relaxed">
       {/* Window bar */}
@@ -44,7 +37,7 @@ function TerminalBlock() {
         <span className="w-2 h-2 rounded-full bg-red-500/70" />
         <span className="w-2 h-2 rounded-full bg-yellow-500/70" />
         <span className="w-2 h-2 rounded-full bg-green-500/70" />
-        <span className="ml-3 text-[var(--text-secondary)] text-[10px]">gninho@casablanca</span>
+        <span className="ml-3 text-[var(--text-secondary)] text-[11px]">gninho@casablanca</span>
       </div>
 
       {/* Lines */}
@@ -54,7 +47,7 @@ function TerminalBlock() {
           <span className="text-[var(--text-primary)]">whoami</span>
         </div>
         <div className="pl-2 text-[var(--text-secondary)]">
-          <span className="terminal-prompt">&gt; </span>Backend-First Full-Stack Engineer
+          <span className="terminal-prompt">&gt; </span>{personal.title}
         </div>
 
         <div className="mt-1">
@@ -65,15 +58,15 @@ function TerminalBlock() {
           <span className="terminal-prompt">&gt; </span>Java · Spring · React · Next.js
         </div>
         <div className="pl-2 text-[var(--text-secondary)]">
-          <span className="terminal-prompt">&gt; </span>Docker · K8s · Groq · Kafka
+          <span className="terminal-prompt">&gt; </span>Docker · Kafka · PostgreSQL · LangGraph
         </div>
 
         <div className="mt-1">
           <span className="terminal-prompt">$ </span>
           <span className="text-[var(--text-primary)]">git status</span>
         </div>
-        <div className="pl-2 text-emerald-400">
-          <span className="terminal-prompt">&gt; </span>Available now — Casablanca / Remote
+        <div className="pl-2 text-[var(--success)]">
+          <span className="terminal-prompt">&gt; </span>{t('terminal.status')}
         </div>
       </div>
     </div>
@@ -89,7 +82,7 @@ function CoreBadge({ name, index, inView }: { name: string; index: number; inVie
       variants={badgeVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      className="font-mono text-sm font-semibold px-4 py-2 rounded-lg border border-amber-500/40 bg-amber-500/5 text-[var(--accent)] cursor-default"
+      className="font-mono text-sm font-semibold px-4 py-2 rounded-lg border border-[var(--core-border)] bg-[var(--core-bg)] text-[var(--core-text)] cursor-default"
     >
       {name}
     </motion.span>
@@ -113,7 +106,7 @@ function SecondaryGroup({
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="font-mono text-[10px] font-semibold tracking-widest text-[var(--text-muted)] uppercase">
+      <p className="font-mono text-[11px] font-semibold tracking-widest text-[var(--text-secondary)] uppercase">
         {label}
       </p>
       <div className="flex flex-wrap gap-2">
@@ -124,7 +117,7 @@ function SecondaryGroup({
             variants={badgeVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="font-mono text-xs px-2.5 py-1 rounded border border-[var(--border)] text-[var(--text-secondary)] cursor-default"
+            className="tag text-[13px] px-2.5 py-1 cursor-default"
           >
             {name}
           </motion.span>
@@ -151,7 +144,7 @@ export default function StackSection() {
   return (
     <section
       id="stack"
-      className="relative py-24 md:py-32 bg-[var(--bg)]"
+      className="relative py-16 md:py-24 bg-[var(--bg)]"
     >
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -161,13 +154,13 @@ export default function StackSection() {
           variants={fadeUp}
           initial="hidden"
           animate={isHeaderInView ? 'visible' : 'hidden'}
-          className="flex flex-col gap-3 mb-14"
+          className="flex flex-col gap-3 mb-12"
         >
           <p className="section-label">{'// '}{t('label')}</p>
-          <h2 className="font-mono font-black text-3xl md:text-4xl text-[var(--text-primary)]">
+          <h2 className="font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
             {t('title')}
           </h2>
-          <p className="font-mono text-sm text-[var(--text-secondary)] max-w-xl leading-relaxed">
+          <p className="text-base text-[var(--text-secondary)] max-w-[65ch] leading-relaxed">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -180,7 +173,7 @@ export default function StackSection() {
 
             {/* Level 1 — Core expertise */}
             <div className="flex flex-col gap-3">
-              <p className="font-mono text-[10px] font-semibold tracking-widest text-[var(--text-muted)] uppercase">
+              <p className="font-mono text-[11px] font-semibold tracking-widest text-[var(--text-secondary)] uppercase">
                 {t('coreExpertise')}
               </p>
               <div className="flex flex-wrap gap-2.5">
@@ -192,7 +185,7 @@ export default function StackSection() {
 
             {/* Level 2 — Also work with */}
             <div className="flex flex-col gap-6">
-              <p className="font-mono text-[10px] font-semibold tracking-widest text-[var(--text-muted)] uppercase">
+              <p className="font-mono text-[11px] font-semibold tracking-widest text-[var(--text-secondary)] uppercase">
                 {t('alsoWorkWith')}
               </p>
               <div className="flex flex-col gap-6">
@@ -205,7 +198,7 @@ export default function StackSection() {
                   return (
                     <SecondaryGroup
                       key={cat}
-                      label={CATEGORY_LABELS[cat]}
+                      label={t(`categories.${cat}`)}
                       names={names}
                       inView={isBodyInView}
                       globalOffset={offset}

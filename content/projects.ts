@@ -1,5 +1,8 @@
 export type ProjectCategory = 'fullstack' | 'mobile' | 'ai' | 'devops' | 'saas';
 
+/** Why the source code is not public. Shown as a badge instead of the Code link. */
+export type PrivateCodeReason = 'client' | 'personalData';
+
 export interface Project {
   id: string;
   titleKey: string;
@@ -7,83 +10,31 @@ export interface Project {
   stack: string[];
   github?: string;
   live?: string;
+  privateCode?: PrivateCodeReason;
   featured: boolean;
+  /** Screenshot shown at the top of the card, in a 2:1 frame. */
   image: string;
+  /** "contain" shows the whole image (for images far from 2:1); default "cover". */
+  imageFit?: 'cover' | 'contain';
+  /** Clicking the image opens it full size (for diagrams too small to read in the card). */
+  imageZoom?: boolean;
   category: ProjectCategory;
-  icon?: string;
   inProgress?: boolean;
   year?: number;
 }
 
 export const projects: Project[] = [
   {
-    id: 'devscope',
-    titleKey: 'projects.devscope.title',
-    descriptionKey: 'projects.devscope.description',
-    stack: ['Next.js', 'TypeScript', 'Groq AI', 'Tailwind CSS', 'Vercel'],
-    github: 'https://github.com/Gninho-silue/devscope',
-    live: 'https://devscope-lake.vercel.app',
-    featured: true,
-    image: '/projects/devscope.png',
-    category: 'ai',
-    icon: '🤖',
-    year: 2026,
-  },
-  {
-    id: 'agent-flow',
-    titleKey: 'projects.agentFlow.title',
-    descriptionKey: 'projects.agentFlow.description',
-    stack: ['Python', 'FastAPI', 'LangGraph', 'Ollama', 'React', 'TypeScript', 'Docker'],
-    github: 'https://github.com/Gninho-silue/agentflow',
-    featured: true,
-    image: '/projects/agent-flow.png',
-    category: 'ai',
-    icon: '🤖',
-    year: 2026,
-  },
-  {
-    id: 'cortex',
-    titleKey: 'projects.cortex.title',
-    descriptionKey: 'projects.cortex.description',
-    stack: ['Python', 'FastAPI', 'LangGraph', 'ChromaDB', 'React', 'TypeScript', 'Docker'],
-    live: 'https://cortex-tau-five.vercel.app',
-    featured: true,
-    image: '/projects/cortex.png',
-    category: 'ai',
-  },
-  {
     id: 'banking-ms',
     titleKey: 'projects.bankingMs.title',
     descriptionKey: 'projects.bankingMs.description',
-    stack: ['Java 21', 'Spring Cloud', 'Kafka', 'Kubernetes', 'Docker', 'PostgreSQL'],
+    stack: ['Java 21', 'Spring Boot', 'Spring Cloud', 'Kafka', 'MySQL', 'Keycloak', 'Testcontainers'],
     github: 'https://github.com/Gninho-silue/banking-microservices',
     featured: true,
-    image: '/projects/banking-ms.png',
+    image: '/projects/banking-architecture-full.png',
+    imageZoom: true,
     category: 'fullstack',
-    icon: '🏦',
-    year: 2025,
-  },
-  {
-    id: 'taskpro',
-    titleKey: 'projects.taskpro.title',
-    descriptionKey: 'projects.taskpro.description',
-    stack: ['Spring Boot', 'React', 'PostgreSQL', 'WebSocket', 'JWT'],
-    github: 'https://github.com/Gninho-silue/taskpro',
-    featured: true,
-    image: '/projects/taskpro.png',
-    category: 'fullstack',
-    year: 2024,
-  },
-  {
-    id: 'smartcollab',
-    titleKey: 'projects.smartcollab.title',
-    descriptionKey: 'projects.smartcollab.description',
-    stack: ['Node.js', 'TypeScript', 'React', 'Redis', 'Socket.io'],
-    github: 'https://github.com/Gninho-silue/smartcollab',
-    featured: false,
-    image: '/projects/smartcollab.png',
-    category: 'fullstack',
-    year: 2025,
+    year: 2026,
   },
   {
     id: 'jobpilot',
@@ -95,19 +46,62 @@ export const projects: Project[] = [
     featured: true,
     image: '/projects/jobpilot.png',
     category: 'saas',
-    icon: '✈️',
     year: 2026,
+  },
+  {
+    id: 'cortex',
+    titleKey: 'projects.cortex.title',
+    descriptionKey: 'projects.cortex.description',
+    stack: ['Python', 'FastAPI', 'LangGraph', 'ChromaDB', 'React', 'TypeScript', 'Docker'],
+    live: 'https://cortex-tau-five.vercel.app',
+    privateCode: 'personalData',
+    featured: true,
+    image: '/projects/cortex.png',
+    category: 'ai',
+  },
+  {
+    id: 'devscope',
+    titleKey: 'projects.devscope.title',
+    descriptionKey: 'projects.devscope.description',
+    stack: ['Next.js', 'TypeScript', 'Groq AI', 'Tailwind CSS', 'Vercel'],
+    github: 'https://github.com/Gninho-silue/devscope',
+    live: 'https://devscope-lake.vercel.app',
+    featured: false,
+    image: '/projects/devscope.png',
+    category: 'ai',
+    year: 2026,
+  },
+  {
+    id: 'agent-flow',
+    titleKey: 'projects.agentFlow.title',
+    descriptionKey: 'projects.agentFlow.description',
+    stack: ['Python', 'FastAPI', 'LangGraph', 'Ollama', 'React', 'TypeScript', 'Docker'],
+    github: 'https://github.com/Gninho-silue/agentflow',
+    featured: false,
+    image: '/projects/agent-flow.png',
+    category: 'ai',
+    year: 2026,
+  },
+  {
+    id: 'taskpro',
+    titleKey: 'projects.taskpro.title',
+    descriptionKey: 'projects.taskpro.description',
+    stack: ['Spring Boot', 'React', 'PostgreSQL', 'WebSocket', 'JWT'],
+    github: 'https://github.com/Gninho-silue/taskpro',
+    featured: false,
+    image: '/projects/taskpro.png',
+    category: 'fullstack',
+    year: 2025,
   },
   {
     id: 'pfe-techpal',
     titleKey: 'projects.pfeTechpal.title',
     descriptionKey: 'projects.pfeTechpal.description',
     stack: ['Odoo 17', 'Python', 'Flutter', 'PostgreSQL'],
-    github: 'https://gitlab.com/Abdelhadi_Laassi/techpalecommerce',
+    privateCode: 'client',
     featured: false,
     image: '/projects/pfe-techpal.png',
     category: 'mobile',
-    icon: '📱',
     year: 2026,
   },
   {
@@ -118,8 +112,8 @@ export const projects: Project[] = [
     github: 'https://github.com/Gninho-silue/recommender-system',
     featured: false,
     image: '/projects/recommender-system.png',
+    imageFit: 'contain',
     category: 'ai',
-    icon: '🎬',
     year: 2025,
   },
 ];

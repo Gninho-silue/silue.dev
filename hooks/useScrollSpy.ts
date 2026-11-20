@@ -18,7 +18,9 @@ export function useScrollSpy(sectionIds: string[], offset = 80): string {
 
     const observerOptions: IntersectionObserverInit = {
       rootMargin: `-${offset}px 0px -70% 0px`,
-      threshold: 0.3,
+      // A section is active as soon as it crosses the band below the navbar.
+      // A higher threshold never fires for sections taller than the band.
+      threshold: 0,
     };
 
     sectionIds.forEach((id) => {

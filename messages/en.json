@@ -1,5 +1,9 @@
 {
   "nav": {
+    "cvShort": "CV",
+    "backToTop": "Back to top",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "about": "About",
     "stack": "Stack",
     "projects": "Projects",
@@ -13,30 +17,30 @@
   "hero": {
     "available": "Available Now",
     "subtitle": "Backend-First Full-Stack Engineer // Java · Spring Boot · React",
-    "titles": ["Full-Stack Developer", "Cloud-Native Architect", "AI Enthusiast"],
-    "tagline": "I build high-performance distributed systems and modern web applications.",
+    "titles": ["Backend Java / Spring Boot", "Full-Stack React", "AI agents (RAG, LangGraph)"],
+    "tagline": "I build Java / Spring Boot backends and the React front ends that go with them. ENSA Al Hoceima graduate (June 2026), based in Casablanca.",
     "cta": {
       "contact": "Contact me",
       "projects": "View my work"
     },
     "stats": {
-      "repos": { "value": "28+", "label": "Repositories" },
-      "internships": { "value": "3", "label": "Internships Completed" },
-      "projects": { "value": "5+", "label": "Projects Shipped" },
+      "internships": { "value": "3", "label": "Internships" },
+      "tests": { "value": "205", "label": "Tests (Banking)" },
+      "certification": { "value": "OCP", "label": "Java SE 17" },
       "available": { "value": "Available", "label": "Now" }
     },
     "scrollDown": "Scroll down"
   },
   "about": {
     "label": "ABOUT ME",
-    "title": "Passionate about ",
-    "titleHighlight": "systems that scale",
-    "bio1": "Engineering graduate from ENSA Al Hoceima, I specialize in Cloud-Native architectures and distributed systems. My journey blends academic rigor with real-world experience — from building complex Odoo modules at TechPal to deploying distributed banking systems with Kafka and Kubernetes.",
-    "bio2": "What sets me apart? I don't just code features — I think architecture, scalability, resilience and observability from day one. Available now for a full-time position or international remote opportunity.",
+    "title": "I'd rather a system be tested",
+    "titleHighlight": "before it's pretty.",
+    "bio1": "I did two internships at TechPal on technologies I had never used. With Odoo 17, I shipped an internship-management ERP the HR team still uses. With Odoo and Flutter, a 9-module e-commerce platform and its mobile app.",
+    "bio2": "On the side, I build projects that go past what courses cover: banking microservices with idempotent transfers and 205 tests, a RAG assistant that cites its sources, and JobPilot, a job-search SaaS. I'm looking for a backend or full-stack Java role in Casablanca, hybrid or remote.",
     "pills": {
-      "performance": "Performance First",
-      "architecture": "Clean Architecture",
-      "observability": "Observability Minded"
+      "tests": "205 tests · Testcontainers",
+      "certification": "OCP Java SE 17",
+      "internships": "2 internships at TechPal"
     },
     "cta": {
       "downloadCV": "Download CV",
@@ -48,22 +52,31 @@
       "location": "Casablanca, Morocco",
       "school": "ENSA Al Hoceima — Computer Science",
       "diploma": "Graduated: June 23, 2026",
-      "openTo": "Open to: Remote / Hybrid",
-      "languages": "French (native), English (fluent)",
+      "openTo": "Casablanca (on-site / hybrid) · Remote",
+      "languages": "French (native), English (professional)",
       "available": "Available Now"
     }
   },
   "stack": {
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "devops": "Cloud & DevOps",
+      "ai": "AI / ML",
+      "tools": "Tools"
+    },
+    "terminal": {
+      "status": "Available now · Casablanca / Remote"
+    },
     "label": "TECH STACK",
     "title": "Technologies I work with",
-    "subtitle": "From backend architecture to modern interfaces — each card reflects real-world experience.",
+    "subtitle": "Technologies I've used in an internship or a project.",
     "tabs": {
       "all": "All",
       "backend": "Backend",
       "frontend": "Frontend",
       "devops": "DevOps",
       "database": "Database",
-      "mobile": "Mobile",
       "ai": "AI / ML"
     },
     "levelLabel": "Level",
@@ -74,54 +87,56 @@
     }
   },
   "projects": {
+    "stackLabel": "Technologies",
+    "imageAlt": "Screenshot of {title}",
+    "openImage": "Open full-size image",
     "label": "PROJECTS",
     "title": "Things I've built",
-    "subtitle": "From distributed systems to AI-powered apps",
-    "featured": "Featured Project",
+    "subtitle": "Personal, course and internship projects.",
     "viewAll": "View all projects",
     "viewCode": "Code",
-    "viewLive": "Live demo",
+    "viewLive": "Demo",
     "inProgress": "In progress",
     "moreTech": "+{n} more",
+    "privateCode": {
+      "client": "Private code (client project)",
+      "personalData": "Private code (personal data)"
+    },
     "cta": {
       "title": "Want to see more?",
       "button": "View all on GitHub"
     },
     "devscope": {
       "title": "DevScope",
-      "description": "GitHub profile analyzer powered by Groq AI. Generates detailed reports on a developer's skills, activity and technologies from their GitHub profile."
+      "description": "Enter a GitHub username, get a report: estimated level, stack, strengths, matching roles. Next.js, Llama 3.3 via Groq, 31 Vitest tests, CI through to Vercel deployment."
     },
     "agentFlow": {
       "title": "AgentFlow",
-      "description": "Multi-agent task automation platform: describe any task in natural language and five specialized AI agents (Planner, FileAgent, CodeAgent, Reporter, Supervisor) coordinate via LangGraph to execute it. Local LLM via Ollama — zero API costs."
+      "description": "Five agents (planning, file parsing, Python execution, report writing, supervision) orchestrated with LangGraph. Runs fully locally on Llama 3.2 via Ollama, no paid API."
     },
     "cortex": {
       "title": "Cortex",
-      "description": "Agentic RAG assistant that answers questions about my career from my own documents, with verified citations on every answer. LangGraph agent orchestration, SSE streaming, prompt-injection guardrails, multi-turn conversation memory. FastAPI + ChromaDB + Docker."
+      "description": "Ask about my background: the agent searches my CVs and recommendation letters, cites the source of every answer, or says it doesn't know. LangGraph, FastAPI, ChromaDB, SSE streaming."
     },
     "bankingMs": {
       "title": "Banking Microservices",
-      "description": "Complete banking microservices architecture with Spring Cloud, Kafka, Kubernetes and Docker. Account management, transactions, real-time notifications."
+      "description": "Banking microservices (Spring Cloud, Kafka, Keycloak) built on a course architecture that I extended: idempotent transfers safe against double debits and concurrent access, events published through a transactional outbox, a loan amortization schedule, 205 tests with Testcontainers and GitHub Actions CI."
     },
     "taskpro": {
       "title": "TaskPro",
-      "description": "Collaborative task management application with WebSocket for real-time updates, JWT authentication and modern React interface."
-    },
-    "smartcollab": {
-      "title": "SmartCollab",
-      "description": "Real-time team collaboration platform with Socket.io, Redis for session management and event-driven Node.js architecture."
+      "description": "Team project management: Spring Boot API secured with JWT, real-time updates over WebSocket/STOMP, file uploads, drag-and-drop React board."
     },
     "pfeTechpal": {
       "title": "PFE TechPal",
-      "description": "E-commerce platform built on Odoo 17 with 9 custom Python modules, paired with a cross-platform Flutter mobile application. Final year project."
+      "description": "Final-year project: B2B e-commerce platform on Odoo 17 (9 modules) and a Flutter app connected over JSON-RPC, with a price-confidentiality rule enforced on both web and mobile."
     },
     "recommenderSystem": {
       "title": "MovieLens Recommender",
-      "description": "Movie recommendation system using collaborative filtering with PyTorch. Trained on the MovieLens 1M dataset, deployed on AWS SageMaker with a Streamlit interface."
+      "description": "Course project: collaborative filtering in PyTorch on MovieLens 100K, deployed to an AWS SageMaker endpoint with a Streamlit front end."
     },
     "jobpilot": {
       "title": "JobPilot",
-      "description": "AI-powered job search SaaS — resume tailoring, cover letter generation and interview prep. Stripe payments, Clerk auth, Supabase + Prisma backend."
+      "description": "Job-search SaaS: tailors the CV to each offer, writes cover letters, preps interviews and tracks applications on a kanban board. Clerk auth, Stripe subscription in test mode (card 4242 4242 4242 4242)."
     }
   },
   "experience": {
@@ -133,16 +148,16 @@
     "current": "Current",
     "remote": "Remote",
     "techpal": {
-      "role": "Full-Stack Developer",
-      "description": "Built an ERP internship management system — 11 data models, 30% performance improvement, automated PDF report generation via QWeb."
+      "role": "Full-Stack Developer Intern (PFA)",
+      "description": "Internship-management ERP on Odoo 17: 6-state workflow, 4 roles with record-level permissions, 5 auto-generated PDF report types, tracking dashboard. Optimized PostgreSQL queries across 11 models (−30% load time)."
     },
     "isbMaroc": {
-      "role": "Frontend Developer",
-      "description": "Designed a modern responsive UI with React. REST API integration, reusable component library, and Agile team collaboration."
+      "role": "Frontend Developer Intern",
+      "description": "Responsive React interface: REST API integration, reusable components, Agile teamwork."
     },
     "pfeTechpal": {
       "role": "Full-Stack Developer Intern (Final Year)",
-      "description": "Built an e-commerce platform on Odoo 17 with 9 custom Python modules, paired with a cross-platform Flutter mobile app. Final year project — defended June 23, 2026."
+      "description": "E-commerce platform on Odoo 17 with 9 custom Python modules and a Flutter app connected over JSON-RPC. Final-year project, defended June 23, 2026."
     },
     "education": {
       "title": "Education",
@@ -163,31 +178,35 @@
     },
     "certifications": {
       "title": "Certifications",
-      "java": "Java SE 17 Developer",
-      "microservices": "Master Microservices SpringBoot/Docker/K8s",
-      "devops": "OCP DevOps Professional",
-      "python": "Complete Python Training",
+      "java": "Oracle Certified Professional: Java SE 17 Developer",
+      "devops": "Oracle Cloud Infrastructure DevOps Professional",
       "oracleAiFoundations": "Oracle Cloud Infrastructure Certified AI Foundations Associate",
-      "agenticAiFoundations": "Agentic AI Certified Foundations Associate"
+      "agenticAiFoundations": "Agentic AI Certified Foundations Associate",
+      "hackerrankProblemSolving": "HackerRank — Problem Solving (Intermediate)",
+      "hackerrankSql": "HackerRank — SQL (Intermediate)"
     }
   },
   "testimonials": {
     "label": "RECOMMENDATIONS",
-    "title": "What people say",
-    "subtitle": "Feedback from people I had the chance to work with",
+    "title": "Recommendations",
+    "subtitle": "Excerpts from recommendation letters",
     "abdelhadiLaassi": {
-      "quote": "Despite working with technologies entirely new to him, he acquired a solid understanding and contributed effectively in a short period of time. His ability to translate business requirements into practical technical solutions, and to quickly grasp complex concepts, made him a valuable member of the team."
+      "quote": "Despite this challenge, he demonstrated remarkable adaptability and a strong willingness to learn. In a short period of time, he acquired a solid understanding of both technologies and was able to contribute effectively to the development of our projects.",
+      "role": "Software Developer, internship supervisor",
+      "note": ""
     },
     "tarikBoudaa": {
-      "quote": "He distinguished himself through his seriousness, rigor, and solid technical skills. Curious, committed and particularly motivated, he consistently demonstrated a genuine desire to grow. His analytical mindset, autonomy and ability to solve complex problems are undeniable strengths."
+      "quote": "He demonstrated an excellent command of backend development concepts, particularly Spring Boot, which he applied effectively in the lab work and projects completed during the course. […] I recommend him without reservation for a Full-Stack Engineer or Java Backend role.",
+      "role": "Professor, Java EE (Spring Boot) course",
+      "note": "(translated from French)"
     }
   },
   "contact": {
     "label": "CONTACT",
     "sectionTitle": "Let's work together",
     "title": "Contact",
-    "subtitle": "Available for remote opportunities",
-    "intro": "I'm open to remote work opportunities. Feel free to reach out to discuss your projects.",
+    "subtitle": "Casablanca, hybrid or remote",
+    "intro": "I'm looking for a backend or full-stack Java role. Easiest is email; I reply within 24 hours.",
     "form": {
       "name": "Your name",
       "email": "Your email",
@@ -206,9 +225,9 @@
       "linkedinLabel": "LinkedIn",
       "githubLabel": "GitHub",
       "locationLabel": "Location",
-      "locationValue": "Casablanca, Morocco — Remote friendly",
+      "locationValue": "Casablanca, Morocco (open to remote)",
       "availTitle": "Available now",
-      "openTo": "Open to: Full-time • Remote • International",
+      "openTo": "Full-time · On-site · Hybrid · Remote",
       "responseTime": "I usually respond within 24h"
     },
     "social": {
@@ -218,13 +237,6 @@
     }
   },
   "footer": {
-    "rights": "All rights reserved.",
-    "builtWith": "Built with"
-  },
-  "banner": {
-    "badge": "✈️ My latest project",
-    "subtitle": "AI job search SaaS — resume tailoring, cover letters & interview prep",
-    "cta": "Try it free →",
-    "dismiss": "Close"
+    "rights": "All rights reserved."
   }
 }
