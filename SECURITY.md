@@ -22,8 +22,6 @@
 ### ✅ Environment Variables Policy
 
 - No secrets exposed via `NEXT_PUBLIC_` prefix
-- `ADMIN_PASSWORD` is server-side only (no `NEXT_PUBLIC_` prefix)
-- Admin password check runs in a Next.js server action (`app/admin/stats/actions.ts`)
 - `.env.local` is git-ignored — never committed
 
 ### ✅ Contact Form Security (`app/api/contact/route.ts`)
@@ -37,17 +35,6 @@
   - `message`: 2000 chars max
 - **Email validation**: regex + format check
 - **Generic error messages**: no internal details exposed to client
-
-### ✅ Admin Page Protection (`/admin/stats`)
-
-- Password verified server-side via server action
-- Wrong/missing password → instant redirect to `/`
-- Page marked `noindex, nofollow` via metadata
-
-### ✅ Crawler Protection
-
-- `public/robots.txt` — `Disallow: /admin/`
-- Admin page returns `noindex, nofollow` in HTTP headers
 
 ## Reporting a Vulnerability
 
