@@ -2,7 +2,8 @@
 
 /* ─── Design tokens ─── */
 @theme inline {
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --color-background:  var(--bg);
   --color-surface:     var(--bg-card);
@@ -10,36 +11,61 @@
   --color-foreground:  var(--text-primary);
   --color-muted:       var(--text-secondary);
   --color-subtle:      var(--text-muted);
-  --color-accent:      #F59E0B;
+  --color-accent:      var(--accent);
 }
+
+/*
+ * Palette: near-black with a slight blue tint, cards one step lighter,
+ * blue-grey secondary text. One accent (amber), used for primary buttons,
+ * links and active states only. All text pairs meet WCAG AA.
+ */
 
 /* ─── Dark mode (default) ─── */
 :root {
-  --bg:            #0a0a0a;
-  --bg-card:       #111111;
-  --bg-hover:      #1a1a1a;
-  --border:        #222222;
-  --text-primary:  #ffffff;
-  --text-secondary:#888888;
-  --text-muted:    #444444;
+  --bg:            #0d1117;
+  --bg-card:       #151b23;
+  --bg-hover:      #1c2430;
+  --border:        #262f3b;
+  --border-strong: #3a4554;
+  --text-primary:  #e6edf3;
+  --text-secondary:#9aa6b6;
+  --text-muted:    #7a8698;
+
+  /* Accent as text/border (links, active states) */
   --accent:        #F59E0B;
+  --accent-soft:   rgba(245, 158, 11, 0.10);
+  /* Accent as fill (primary buttons) */
+  --accent-fill:       #F59E0B;
+  --accent-fill-hover: #D97706;
+  --on-accent:         #0d1117;
+
+  --success:       #3fb950;
 
   /* dot grid */
-  --dot-color: #222;
+  --dot-color: #1f2732;
 }
 
 /* ─── Light mode ─── */
 [data-theme="light"] {
   --bg:            #ffffff;
-  --bg-card:       #fafafa;
-  --bg-hover:      #f5f5f5;
-  --border:        #e5e5e5;
-  --text-primary:  #0a0a0a;
-  --text-secondary:#666666;
-  --text-muted:    #aaaaaa;
-  --accent:        #F59E0B;
+  --bg-card:       #f6f8fa;
+  --bg-hover:      #eef1f5;
+  --border:        #dde3ea;
+  --border-strong: #c3ccd7;
+  --text-primary:  #0d1117;
+  --text-secondary:#4b5563;
+  --text-muted:    #5b6678;
 
-  --dot-color: #ddd;
+  /* Amber text on white fails contrast: use a darker amber for text */
+  --accent:        #b45309;
+  --accent-soft:   rgba(180, 83, 9, 0.08);
+  --accent-fill:       #F59E0B;
+  --accent-fill-hover: #D97706;
+  --on-accent:         #0d1117;
+
+  --success:       #1a7f37;
+
+  --dot-color: #e3e8ee;
 }
 
 /* ─── Base styles ─── */
@@ -56,21 +82,30 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text-primary);
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: auto;
 }
 
-a,
-button,
-[role="button"] {
-  cursor: pointer;
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-input,
-textarea,
-select {
-  cursor: text;
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ─── Scrollbar ─── */
@@ -90,7 +125,7 @@ select {
 
 /* ─── Selection ─── */
 ::selection {
-  background-color: rgba(245, 158, 11, 0.25);
+  background-color: var(--accent-soft);
   color: var(--text-primary);
 }
 
@@ -110,11 +145,25 @@ select {
 /* ─── Section label ─── */
 .section-label {
   font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-secondary);
+}
+
+/* ─── Tag (stack technologies, years) ─── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 /* ─── Flat badge ─── */
@@ -128,8 +177,8 @@ select {
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 .flat-badge:hover {
-  border-color: #F59E0B;
-  color: #F59E0B;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* ─── Cards ─── */
@@ -140,7 +189,7 @@ select {
   transition: border-color 0.2s ease;
 }
 .flat-card:hover {
-  border-color: var(--text-muted);
+  border-color: var(--border-strong);
 }
 
 /* ─── Buttons ─── */
@@ -161,21 +210,32 @@ select {
   color: var(--text-primary);
   border-radius: 8px;
   font-weight: 500;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .btn-secondary:hover {
   background: var(--bg-hover);
+  border-color: var(--border-strong);
 }
 
 .btn-accent {
-  background: #F59E0B;
-  color: #000;
+  background: var(--accent-fill);
+  color: var(--on-accent);
   border-radius: 8px;
   font-weight: 500;
   transition: background 0.2s ease;
 }
 .btn-accent:hover {
-  background: #D97706;
+  background: var(--accent-fill-hover);
+}
+
+/* Same footprint as .btn-secondary, but inert (e.g. private source code) */
+.btn-disabled {
+  border: 1px dashed var(--border-strong);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: not-allowed;
 }
 
 /* ─── Terminal block ─── */
@@ -188,7 +248,7 @@ select {
 }
 
 .terminal-prompt {
-  color: #F59E0B;
+  color: var(--accent);
 }
 
 /* ─── Timeline ─── */
@@ -203,8 +263,8 @@ select {
 }
 
 .timeline-dot-active {
-  background: #F59E0B;
-  border-color: #F59E0B;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ─── Contact input ─── */
@@ -213,7 +273,7 @@ select {
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text-primary);
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-family: inherit;
   transition: border-color 0.2s ease;
 }
 .contact-input:focus {
@@ -223,5 +283,5 @@ select {
 
 /* ─── Scroll progress bar ─── */
 #scroll-progress {
-  background: #F59E0B;
+  background: var(--accent);
 }

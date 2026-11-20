@@ -86,7 +86,7 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
       <div
         className={`absolute left-0 top-1.5 w-2 h-2 rounded-full border ${
           exp.current
-            ? 'bg-[#F59E0B] border-[#F59E0B]'
+            ? 'bg-[var(--accent)] border-[var(--accent)]'
             : 'bg-[var(--bg)] border-[var(--text-secondary)]'
         }`}
       />
@@ -98,32 +98,32 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
 
       {/* Company + badges */}
       <div className="flex flex-wrap items-center gap-2 mb-1">
-        <h3 className="font-mono font-bold text-lg text-[var(--text-primary)] leading-tight">
+        <h3 className="font-bold text-lg text-[var(--text-primary)] leading-tight">
           {exp.company}
         </h3>
-        <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
+        <span className="tag">
           {exp.location}
         </span>
         {exp.remote && (
-          <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
+          <span className="tag">
             {t('remote')}
           </span>
         )}
         {exp.current && (
-          <span className="inline-flex items-center gap-1.5 font-mono text-[10px] px-2 py-0.5 rounded border border-emerald-500/30 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="tag gap-1.5 border-[var(--success)]/40 text-[var(--success)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
             {t('current')}
           </span>
         )}
       </div>
 
       {/* Role */}
-      <p className="font-mono font-semibold text-sm text-[var(--accent)] mb-2">
+      <p className="font-semibold text-sm text-[var(--accent)] mb-2">
         {t(`${tKey}.role` as Parameters<typeof t>[0])}
       </p>
 
       {/* Description */}
-      <p className="font-mono text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
+      <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
         {t(`${tKey}.description` as Parameters<typeof t>[0])}
       </p>
 
@@ -132,7 +132,7 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
         {exp.stack.map((tech) => (
           <span
             key={tech}
-            className="font-mono text-[11px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]"
+            className="tag"
           >
             {tech}
           </span>
@@ -173,17 +173,17 @@ function EducationCard({ icon, name, degree, field, note, years, index }: Educat
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h4 className="font-mono font-bold text-sm text-[var(--text-primary)]">{name}</h4>
-            <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[var(--border)] text-[var(--text-secondary)]">
+            <h4 className="font-bold text-sm text-[var(--text-primary)]">{name}</h4>
+            <span className="tag">
               {years}
             </span>
           </div>
-          <p className="font-mono text-xs text-[var(--accent)] font-semibold mt-0.5">{degree}</p>
+          <p className="text-xs text-[var(--accent)] font-semibold mt-0.5">{degree}</p>
         </div>
       </div>
-      <p className="font-mono text-xs text-[var(--text-secondary)] leading-relaxed">{field}</p>
+      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{field}</p>
       {note && (
-        <p className="font-mono text-[11px] text-[var(--text-muted)] mt-2">{note}</p>
+        <p className="text-xs text-[var(--text-muted)] mt-2">{note}</p>
       )}
     </motion.div>
   );
@@ -214,7 +214,7 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative py-24 md:py-32 bg-[var(--bg)]"
+      className="relative py-16 md:py-24 bg-[var(--bg)]"
     >
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -224,10 +224,10 @@ export default function ExperienceSection() {
           variants={fadeUp}
           initial="hidden"
           animate={isHeaderInView ? 'visible' : 'hidden'}
-          className="flex flex-col gap-3 mb-16"
+          className="flex flex-col gap-3 mb-12"
         >
           <p className="section-label">{'// '}{t('label')}</p>
-          <h2 className="font-mono font-black text-3xl md:text-4xl text-[var(--text-primary)]">
+          <h2 className="font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
             {t('sectionTitle')}
           </h2>
         </motion.div>
@@ -261,7 +261,7 @@ export default function ExperienceSection() {
                 variants={fadeUp}
                 initial="hidden"
                 animate={isEduInView ? 'visible' : 'hidden'}
-                className="font-mono font-bold text-base text-[var(--text-primary)] mb-5"
+                className="font-bold text-base text-[var(--text-primary)] mb-5"
               >
                 {t('education.title')}
               </motion.h3>
@@ -293,7 +293,7 @@ export default function ExperienceSection() {
                 variants={fadeUp}
                 initial="hidden"
                 animate={isCertsInView ? 'visible' : 'hidden'}
-                className="font-mono font-bold text-base text-[var(--text-primary)] mb-4"
+                className="font-bold text-base text-[var(--text-primary)] mb-4"
               >
                 {t('certifications.title')}
               </motion.h3>
@@ -308,9 +308,8 @@ export default function ExperienceSection() {
                     variants={certVariants}
                     initial="hidden"
                     animate={isCertsInView ? 'visible' : 'hidden'}
-                    className="inline-flex items-center gap-2 font-mono text-sm px-4 py-2 rounded border border-[var(--border)] text-[var(--text-primary)] bg-[var(--bg-card)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200"
+                    className="inline-flex items-center gap-2 text-sm px-4 py-2 rounded border border-[var(--border)] text-[var(--text-primary)] bg-[var(--bg-card)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200"
                   >
-                    <span>🏅</span>
                     {cert.label}
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="opacity-60 shrink-0">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />

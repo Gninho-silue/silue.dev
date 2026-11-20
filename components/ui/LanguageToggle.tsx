@@ -10,7 +10,7 @@ export default function LanguageToggle() {
       <button
         onClick={() => setLocale('fr')}
         aria-label="Passer en français"
-        className={`px-2.5 py-1 rounded-md text-xs font-mono font-semibold transition-all duration-200 ${
+        className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all duration-200 ${
           locale === 'fr'
             ? 'bg-[var(--text-primary)] text-[var(--bg)]'
             : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -21,7 +21,7 @@ export default function LanguageToggle() {
       <button
         onClick={() => setLocale('en')}
         aria-label="Switch to English"
-        className={`px-2.5 py-1 rounded-md text-xs font-mono font-semibold transition-all duration-200 ${
+        className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all duration-200 ${
           locale === 'en'
             ? 'bg-[var(--text-primary)] text-[var(--bg)]'
             : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'

@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import { Geist, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '@/components/providers/Providers';
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar';
 import './globals.css';
+
+const geistSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
+  display: 'swap',
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -98,7 +104,7 @@ export default function RootLayout({
     <html
       lang="fr"
       suppressHydrationWarning
-      className={jetbrainsMono.variable}
+      className={`${geistSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <script

@@ -1,6 +1,7 @@
 'use client';
 
 import { NextIntlClientProvider } from 'next-intl';
+import { MotionConfig } from 'framer-motion';
 import { useState, useEffect, createContext, useContext } from 'react';
 import type { ReactNode } from 'react';
 
@@ -28,7 +29,9 @@ export function useLocaleContext() {
   return useContext(LocaleContext);
 }
 
-export default function Providers({ children }: { children: ReactNode }) {
+export default function Providers({ children: content }: { children: ReactNode }) {
+  // Respect the OS "reduce motion" setting for every Framer Motion animation.
+  const children = <MotionConfig reducedMotion="user">{content}</MotionConfig>;
   const [locale, setLocaleState] = useState<Locale>('fr');
   const [mounted, setMounted] = useState(false);
 

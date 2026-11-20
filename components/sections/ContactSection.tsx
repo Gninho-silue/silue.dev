@@ -122,7 +122,7 @@ function FlatField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="font-mono text-xs text-[var(--text-secondary)] uppercase tracking-wider"
+        className="text-xs text-[var(--text-secondary)] uppercase tracking-wider"
       >
         {label}
       </label>
@@ -144,7 +144,7 @@ function FlatField({
         `}
       />
       {error && (
-        <p id={`${id}-error`} role="alert" className="font-mono text-xs text-red-400">
+        <p id={`${id}-error`} role="alert" className="text-xs text-red-400">
           {error}
         </p>
       )}
@@ -168,8 +168,8 @@ function InfoCard({ icon, label, value, href, index, inView }: InfoCardProps) {
     <div className="flat-card flex items-center gap-3 px-4 py-3">
       <span className="shrink-0 text-[var(--text-secondary)]">{icon}</span>
       <div className="min-w-0">
-        <p className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest mb-0.5">{label}</p>
-        <p className="font-mono text-sm text-[var(--text-primary)] truncate">{value}</p>
+        <p className="font-mono text-[11px] text-[var(--text-secondary)] uppercase tracking-widest mb-0.5">{label}</p>
+        <p className="text-sm text-[var(--text-primary)] truncate">{value}</p>
       </div>
     </div>
   );
@@ -271,7 +271,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-24 md:py-32 bg-[var(--bg)]"
+      className="relative py-16 md:py-24 bg-[var(--bg)]"
     >
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -281,13 +281,13 @@ export default function ContactSection() {
           variants={fadeUp}
           initial="hidden"
           animate={isHeaderInView ? 'visible' : 'hidden'}
-          className="flex flex-col gap-3 mb-16"
+          className="flex flex-col gap-3 mb-12"
         >
           <p className="section-label">{'// '}{t('label')}</p>
-          <h2 className="font-mono font-black text-3xl md:text-4xl text-[var(--text-primary)]">
+          <h2 className="font-semibold text-3xl md:text-4xl text-[var(--text-primary)]">
             {t('sectionTitle')}
           </h2>
-          <p className="font-mono text-sm text-[var(--text-secondary)] max-w-xl leading-relaxed">
+          <p className="text-base text-[var(--text-secondary)] max-w-[65ch] leading-relaxed">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -352,7 +352,7 @@ export default function ContactSection() {
               />
 
               {submitState === 'error' && serverError && (
-                <p role="alert" className="font-mono text-sm text-red-400 border border-red-500/20 rounded-lg px-4 py-2.5">
+                <p role="alert" className="text-sm text-red-400 border border-red-500/20 rounded-lg px-4 py-2.5">
                   {serverError}
                 </p>
               )}
@@ -360,9 +360,9 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isDisabled}
-                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-mono font-medium transition-all duration-200
+                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200
                   ${submitState === 'success'
-                    ? 'bg-emerald-500 text-white opacity-90'
+                    ? 'bg-[var(--success)] text-white opacity-90'
                     : 'btn-accent'
                   }
                   ${isDisabled ? 'opacity-60 cursor-not-allowed' : ''}
@@ -386,7 +386,7 @@ export default function ContactSection() {
               variants={fadeUp}
               initial="hidden"
               animate={isInfoInView ? 'visible' : 'hidden'}
-              className="font-mono font-bold text-base text-[var(--text-primary)]"
+              className="font-bold text-base text-[var(--text-primary)]"
             >
               {t('info.title')}
             </motion.h3>
@@ -410,21 +410,21 @@ export default function ContactSection() {
               variants={slideRight}
               initial="hidden"
               animate={isInfoInView ? 'visible' : 'hidden'}
-              className="border border-[var(--border)] border-l-4 border-l-emerald-500 rounded-xl p-5 bg-[var(--bg-card)]"
+              className="border border-[var(--border)] border-l-4 border-l-[var(--success)] rounded-xl p-5 bg-[var(--bg-card)]"
             >
               <div className="flex items-center gap-2.5 mb-2">
                 <span className="relative flex w-2 h-2 shrink-0">
-                  <span className="animate-ping absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-50" />
-                  <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-400" />
+                  <span className="animate-ping absolute inline-flex w-full h-full rounded-full bg-[var(--success)] opacity-50" />
+                  <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--success)]" />
                 </span>
-                <span className="font-mono font-bold text-sm text-[var(--text-primary)]">
+                <span className="font-bold text-sm text-[var(--text-primary)]">
                   {t('info.availTitle')}
                 </span>
               </div>
-              <p className="font-mono text-sm text-[var(--text-secondary)] leading-relaxed mb-1">
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-1">
                 {t('info.openTo')}
               </p>
-              <p className="font-mono text-xs text-[var(--text-secondary)] opacity-70">
+              <p className="text-xs text-[var(--text-secondary)] opacity-70">
                 {t('info.responseTime')}
               </p>
             </motion.div>

@@ -26,6 +26,26 @@ function ChevronSvg({ open }: { open: boolean }) {
   );
 }
 
+function DownloadSvg({ size }: { size: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  );
+}
+
 export default function CVDownloadDropdown({ variant = 'navbar', align = 'right', className = '' }: Props) {
   const t = useTranslations('nav');
   const locale = useLocale();
@@ -62,9 +82,12 @@ export default function CVDownloadDropdown({ variant = 'navbar', align = 'right'
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-haspopup="listbox"
-          className="btn-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono"
+          aria-label={t('downloadCV')}
+          title={t('downloadCV')}
+          className="btn-secondary inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-1.5 text-xs"
         >
-          {t('downloadCV')}
+          <DownloadSvg size={13} />
+          {t('cvShort')}
           <ChevronSvg open={open} />
         </button>
       ) : (
@@ -72,23 +95,9 @@ export default function CVDownloadDropdown({ variant = 'navbar', align = 'right'
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-haspopup="listbox"
-          className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono"
+          className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm"
         >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
+          <DownloadSvg size={15} />
           {t('downloadCV')}
           <ChevronSvg open={open} />
         </button>
@@ -112,9 +121,8 @@ export default function CVDownloadDropdown({ variant = 'navbar', align = 'right'
                 role="option"
                 aria-selected={false}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 px-4 py-3 text-sm font-mono text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
+                className="flex items-center gap-2.5 px-4 py-3 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
               >
-                <span aria-hidden="true">📄</span>
                 {opt.label}
               </a>
             ))}

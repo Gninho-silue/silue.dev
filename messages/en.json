@@ -1,5 +1,9 @@
 {
   "nav": {
+    "cvShort": "CV",
+    "backToTop": "Back to top",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "about": "About",
     "stack": "Stack",
     "projects": "Projects",
@@ -54,6 +58,16 @@
     }
   },
   "stack": {
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "devops": "Cloud & DevOps",
+      "ai": "AI / ML",
+      "tools": "Tools"
+    },
+    "terminal": {
+      "status": "Available now · Casablanca / Remote"
+    },
     "label": "TECH STACK",
     "title": "Technologies I work with",
     "subtitle": "Technologies I've used in an internship or a project.",
@@ -73,13 +87,13 @@
     }
   },
   "projects": {
+    "stackLabel": "Technologies",
     "label": "PROJECTS",
     "title": "Things I've built",
     "subtitle": "Personal, course and internship projects.",
-    "featured": "Featured Project",
     "viewAll": "View all projects",
     "viewCode": "Code",
-    "viewLive": "Live demo",
+    "viewLive": "Demo",
     "inProgress": "In progress",
     "moreTech": "+{n} more",
     "privateCode": {
@@ -221,13 +235,6 @@
     }
   },
   "footer": {
-    "rights": "All rights reserved.",
-    "builtWith": "Built with"
-  },
-  "banner": {
-    "badge": "✈️ My latest project",
-    "subtitle": "AI job search SaaS — resume tailoring, cover letters & interview prep",
-    "cta": "Try it free →",
-    "dismiss": "Close"
+    "rights": "All rights reserved."
   }
 }

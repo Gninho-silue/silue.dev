@@ -1,5 +1,9 @@
 {
   "nav": {
+    "cvShort": "CV",
+    "backToTop": "Retour en haut",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
     "about": "À propos",
     "stack": "Stack",
     "projects": "Projets",
@@ -54,6 +58,16 @@
     }
   },
   "stack": {
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "devops": "Cloud & DevOps",
+      "ai": "IA / ML",
+      "tools": "Outils"
+    },
+    "terminal": {
+      "status": "Disponible maintenant · Casablanca / Remote"
+    },
     "label": "STACK TECHNIQUE",
     "title": "Technologies que je maîtrise",
     "subtitle": "Les technologies que j'ai utilisées en stage ou dans un projet.",
@@ -73,13 +87,13 @@
     }
   },
   "projects": {
+    "stackLabel": "Technologies",
     "label": "PROJETS",
     "title": "Ce que j'ai construit",
     "subtitle": "Projets personnels, de cours et de stage.",
-    "featured": "Projet Vedette",
     "viewAll": "Voir tous les projets",
     "viewCode": "Code",
-    "viewLive": "Demo live",
+    "viewLive": "Démo",
     "inProgress": "En cours",
     "moreTech": "+{n} autres",
     "privateCode": {
@@ -221,13 +235,6 @@
     }
   },
   "footer": {
-    "rights": "Tous droits réservés.",
-    "builtWith": "Construit avec"
-  },
-  "banner": {
-    "badge": "✈️ Mon dernier projet",
-    "subtitle": "SaaS IA pour la recherche d'emploi — adaptation de CV, lettres de motivation & entretiens",
-    "cta": "Essayer gratuitement →",
-    "dismiss": "Fermer"
+    "rights": "Tous droits réservés."
   }
 }

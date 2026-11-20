@@ -12,9 +12,7 @@ export interface Project {
   live?: string;
   privateCode?: PrivateCodeReason;
   featured: boolean;
-  image: string;
   category: ProjectCategory;
-  icon?: string;
   inProgress?: boolean;
   year?: number;
 }
@@ -27,9 +25,7 @@ export const projects: Project[] = [
     stack: ['Java 21', 'Spring Boot', 'Spring Cloud', 'Kafka', 'MySQL', 'Keycloak', 'Testcontainers'],
     github: 'https://github.com/Gninho-silue/banking-microservices',
     featured: true,
-    image: '/projects/banking-ms.png',
     category: 'fullstack',
-    icon: '🏦',
     year: 2026,
   },
   {
@@ -40,9 +36,7 @@ export const projects: Project[] = [
     github: 'https://github.com/Gninho-silue/jobpilot',
     live: 'https://jobpilot-jet.vercel.app',
     featured: true,
-    image: '/projects/jobpilot.png',
     category: 'saas',
-    icon: '✈️',
     year: 2026,
   },
   {
@@ -53,7 +47,6 @@ export const projects: Project[] = [
     live: 'https://cortex-tau-five.vercel.app',
     privateCode: 'personalData',
     featured: true,
-    image: '/projects/cortex.png',
     category: 'ai',
   },
   {
@@ -64,9 +57,7 @@ export const projects: Project[] = [
     github: 'https://github.com/Gninho-silue/devscope',
     live: 'https://devscope-lake.vercel.app',
     featured: false,
-    image: '/projects/devscope.png',
     category: 'ai',
-    icon: '🤖',
     year: 2026,
   },
   {
@@ -76,9 +67,7 @@ export const projects: Project[] = [
     stack: ['Python', 'FastAPI', 'LangGraph', 'Ollama', 'React', 'TypeScript', 'Docker'],
     github: 'https://github.com/Gninho-silue/agentflow',
     featured: false,
-    image: '/projects/agent-flow.png',
     category: 'ai',
-    icon: '🤖',
     year: 2026,
   },
   {
@@ -88,7 +77,6 @@ export const projects: Project[] = [
     stack: ['Spring Boot', 'React', 'PostgreSQL', 'WebSocket', 'JWT'],
     github: 'https://github.com/Gninho-silue/taskpro',
     featured: false,
-    image: '/projects/taskpro.png',
     category: 'fullstack',
     year: 2025,
   },
@@ -99,9 +87,7 @@ export const projects: Project[] = [
     stack: ['Odoo 17', 'Python', 'Flutter', 'PostgreSQL'],
     privateCode: 'client',
     featured: false,
-    image: '/projects/pfe-techpal.png',
     category: 'mobile',
-    icon: '📱',
     year: 2026,
   },
   {
@@ -111,9 +97,7 @@ export const projects: Project[] = [
     stack: ['Python', 'PyTorch', 'AWS SageMaker', 'Streamlit'],
     github: 'https://github.com/Gninho-silue/recommender-system',
     featured: false,
-    image: '/projects/recommender-system.png',
     category: 'ai',
-    icon: '🎬',
     year: 2025,
   },
 ];
