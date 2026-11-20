@@ -14,7 +14,7 @@
 - 📊 **Data-driven**: projects, skills, experience and recommendations live in `content/`, all text in `messages/`
 - 🖼️ **Project cards**: one format for every project, screenshot on top, "private code" badge when the source can't be public
 - 📧 **Contact form**: Resend API, validated on client and server, rate limited, HTML + plain-text email
-- 📈 **Analytics**: Vercel Analytics and Speed Insights, hidden dashboard at `/admin/stats`
+- 📈 **Analytics**: Vercel Analytics and Speed Insights, read in the Vercel dashboard
 - 🔒 **Security headers**: HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
 - ♿ **Accessible**: semantic HTML, visible keyboard focus, WCAG AA contrast, `prefers-reduced-motion` respected
 - 📱 **Responsive**: checked at 1920, 1366 and 390 px wide
@@ -83,13 +83,6 @@ Edit `.env.local`:
 ```bash
 # Required: contact form
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
-
-# Required: hidden analytics dashboard
-ADMIN_PASSWORD=your_secret_password
-
-# Optional: live data in the dashboard (Vercel API)
-VERCEL_API_TOKEN=your_vercel_token
-VERCEL_PROJECT_ID=your_project_id
 
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
@@ -183,7 +176,6 @@ silue.dev/
 │   ├── layout.tsx               # Fonts, theme provider, SEO metadata
 │   ├── globals.css              # Design tokens (CSS variables), base styles
 │   ├── sitemap.ts
-│   ├── admin/stats/             # Hidden analytics dashboard
 │   └── api/contact/route.ts     # Contact form API + email template
 ├── components/
 │   ├── layout/                  # Navbar, Footer
@@ -222,7 +214,6 @@ security: security-related change
 
 - **Headers** (`next.config.ts`): HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
 - **Contact form**: 3 requests per IP per hour, HTML stripped and escaped, length limits, validated server-side
-- **Admin page**: server-side password check, redirects to `/` when wrong, `/admin/` disallowed in `robots.txt`
 - **Secrets**: only server-side env vars (no `NEXT_PUBLIC_` secret is read by the code)
 
 See [SECURITY.md](./SECURITY.md) for details.
@@ -231,9 +222,7 @@ See [SECURITY.md](./SECURITY.md) for details.
 
 ## 📊 Analytics
 
-Vercel Analytics: no cookies, GDPR friendly. Enable it in the Vercel project (**Analytics** and **Speed Insights** tabs).
-
-Hidden dashboard: `https://silue-dev.vercel.app/admin/stats?password=YOUR_PASSWORD`
+Vercel Analytics: no cookies, GDPR friendly. Enable it in the Vercel project (**Analytics** and **Speed Insights** tabs) and read the numbers there.
 
 ---
 
