@@ -3,7 +3,7 @@
 import { useRef, type ReactNode } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Zap, Layers, Eye } from 'lucide-react';
+import { FlaskConical, Award, Briefcase } from 'lucide-react';
 import { social } from '@/content/personal';
 import CVDownloadDropdown from '@/components/ui/CVDownloadDropdown';
 import ProfilePhoto from '@/components/ui/ProfilePhoto';
@@ -52,9 +52,9 @@ export default function AboutSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   const pills = [
-    { icon: <Zap size={13} />, label: t('pills.performance') },
-    { icon: <Layers size={13} />, label: t('pills.architecture') },
-    { icon: <Eye size={13} />, label: t('pills.observability') },
+    { icon: <FlaskConical size={13} />, label: t('pills.tests') },
+    { icon: <Award size={13} />, label: t('pills.certification') },
+    { icon: <Briefcase size={13} />, label: t('pills.internships') },
   ];
 
   return (

@@ -14,7 +14,7 @@
     "available": "Disponible maintenant",
     "subtitle": "Ingénieur Full-Stack Backend-First // Java · Spring Boot · React",
     "titles": ["Backend Java / Spring Boot", "Full-Stack React", "Agents IA (RAG, LangGraph)"],
-    "tagline": "Je construis des systèmes distribués performants et des applications web modernes.",
+    "tagline": "Je développe des backends Java / Spring Boot et les interfaces React qui vont avec. Diplômé de l'ENSA Al Hoceima en juin 2026, basé à Casablanca.",
     "cta": {
       "contact": "Me contacter",
       "projects": "Voir mes projets"
@@ -29,14 +29,14 @@
   },
   "about": {
     "label": "À PROPOS",
-    "title": "Passionné par les systèmes qui  à ",
-    "titleHighlight": "passent à l'échelle",
-    "bio1": "Ingénieur diplômé de l'ENSA Al Hoceima, je me spécialise dans la conception d'architectures Cloud-Native et de systèmes distribués. Mon parcours mêle rigueur académique et expérience terrain — de la conception de modules Odoo complexes chez TechPal à la mise en production de systèmes bancaires distribués avec Kafka et Kubernetes.",
-    "bio2": "Ce qui me différencie ? Je ne me contente pas de coder des features — je pense architecture, scalabilité, résilience et observabilité dès le départ. Disponible immédiatement pour un poste full-time ou une opportunité remote internationale.",
+    "title": "Je préfère un système testé",
+    "titleHighlight": "avant qu'il soit joli.",
+    "bio1": "J'ai fait deux stages chez TechPal sur des technologies que je n'avais jamais utilisées. Avec Odoo 17, j'ai livré un ERP de gestion des stages que l'équipe RH utilise encore. Avec Odoo et Flutter, une plateforme e-commerce de 9 modules et son application mobile.",
+    "bio2": "À côté, je construis des projets pour aller plus loin que les cours : des microservices bancaires avec virements idempotents et 205 tests, un assistant RAG qui cite ses sources, et JobPilot, un SaaS de recherche d'emploi. Je cherche un poste backend ou full-stack Java à Casablanca, en hybride ou en remote.",
     "pills": {
-      "performance": "Performance First",
-      "architecture": "Clean Architecture",
-      "observability": "Observability Minded"
+      "tests": "205 tests · Testcontainers",
+      "certification": "OCP Java SE 17",
+      "internships": "2 stages chez TechPal"
     },
     "cta": {
       "downloadCV": "Télécharger le CV",
@@ -56,7 +56,7 @@
   "stack": {
     "label": "STACK TECHNIQUE",
     "title": "Technologies que je maîtrise",
-    "subtitle": "De l'architecture backend aux interfaces modernes — chaque carte reflète une expérience réelle.",
+    "subtitle": "Les technologies que j'ai utilisées en stage ou dans un projet.",
     "tabs": {
       "all": "Tout",
       "backend": "Backend",
@@ -75,7 +75,7 @@
   "projects": {
     "label": "PROJETS",
     "title": "Ce que j'ai construit",
-    "subtitle": "Des systèmes distribués aux applications propulsées par l'IA",
+    "subtitle": "Projets personnels, de cours et de stage.",
     "featured": "Projet Vedette",
     "viewAll": "Voir tous les projets",
     "viewCode": "Code",
@@ -92,31 +92,31 @@
     },
     "devscope": {
       "title": "DevScope",
-      "description": "Analyseur de profils GitHub propulsé par l'IA Groq. Génère des rapports détaillés sur les compétences, l'activité et les technologies d'un développeur à partir de son profil GitHub."
+      "description": "Entrez un pseudo GitHub, obtenez un rapport : niveau estimé, stack, points forts, rôles adaptés. Next.js, Llama 3.3 via Groq, 31 tests Vitest, CI jusqu'au déploiement Vercel."
     },
     "agentFlow": {
       "title": "AgentFlow",
-      "description": "Plateforme d'automatisation multi-agents : décrivez une tâche en langage naturel, cinq agents IA spécialisés (Planner, FileAgent, CodeAgent, Reporter, Supervisor) se coordonnent via LangGraph pour l'exécuter. LLM local via Ollama — zéro coût d'API."
+      "description": "Cinq agents (planification, lecture de fichiers, exécution de Python, rédaction du rapport, supervision) orchestrés avec LangGraph. Tourne entièrement en local avec Llama 3.2 via Ollama, sans API payante."
     },
     "cortex": {
       "title": "Cortex",
-      "description": "Assistant RAG agentique qui répond aux questions sur mon parcours à partir de mes propres documents, avec citations vérifiées à chaque réponse. Agent LangGraph, streaming SSE, garde-fous anti-injection, mémoire conversationnelle. FastAPI + ChromaDB + Docker."
+      "description": "Posez une question sur mon parcours : l'agent cherche dans mes CV et lettres de recommandation, cite la source de chaque réponse, ou dit qu'il ne sait pas. LangGraph, FastAPI, ChromaDB, streaming SSE."
     },
     "bankingMs": {
       "title": "Banking Microservices",
-      "description": "Architecture microservices bancaire complète avec Spring Cloud, Kafka, Kubernetes et Docker. Gestion de comptes, transactions, notifications en temps réel."
+      "description": "Microservices bancaires (Spring Cloud, Kafka, Keycloak) partis de l'architecture d'un cours, que j'ai étendus : virements idempotents protégés contre les doubles débits et les accès concurrents, événements publiés via un outbox transactionnel, échéancier de prêt, 205 tests avec Testcontainers et CI GitHub Actions."
     },
     "taskpro": {
       "title": "TaskPro",
-      "description": "Application de gestion de tâches collaborative avec WebSocket pour les mises à jour en temps réel, authentification JWT et interface React moderne."
+      "description": "Gestion de projets en équipe : API Spring Boot sécurisée par JWT, mises à jour en temps réel via WebSocket/STOMP, upload de fichiers, tableau React en drag-and-drop."
     },
     "pfeTechpal": {
       "title": "PFE TechPal",
-      "description": "Plateforme e-commerce développée sur Odoo 17 avec 9 modules Python personnalisés, couplée à une application mobile Flutter cross-platform. Projet de fin d'études."
+      "description": "Projet de fin d'études : plateforme e-commerce B2B sur Odoo 17 (9 modules) et application Flutter connectée en JSON-RPC, avec une règle de confidentialité des prix appliquée côté web et mobile."
     },
     "recommenderSystem": {
       "title": "MovieLens Recommender",
-      "description": "Système de recommandation de films basé sur le filtrage collaboratif avec PyTorch. Entraîné sur le dataset MovieLens 100K, déployé sur AWS SageMaker avec une interface Streamlit."
+      "description": "Projet de cours : filtrage collaboratif en PyTorch sur MovieLens 100K, déployé sur un endpoint AWS SageMaker avec une interface Streamlit."
     },
     "jobpilot": {
       "title": "JobPilot",
@@ -133,15 +133,15 @@
     "remote": "Remote",
     "techpal": {
       "role": "Stagiaire Développeur Full-Stack (PFA)",
-      "description": "Développement et maintenance d'un système ERP de gestion des stages — 11 modèles de données, amélioration des performances de 30 %, génération automatisée de rapports PDF via QWeb."
+      "description": "ERP de gestion des stages sur Odoo 17 : workflow en 6 états, 4 rôles avec droits par enregistrement, 5 types de rapports PDF générés automatiquement, tableau de bord de suivi. Requêtes PostgreSQL optimisées sur 11 modèles (temps de chargement −30 %)."
     },
     "isbMaroc": {
       "role": "Stagiaire Développeur Frontend",
-      "description": "Conception d'une interface utilisateur moderne et responsive avec React. Intégration d'APIs REST, mise en place de composants réutilisables et collaboration en méthodologie Agile."
+      "description": "Interface React responsive : intégration d'API REST, composants réutilisables, travail en équipe Agile."
     },
     "pfeTechpal": {
       "role": "Stagiaire Développeur Full-Stack (PFE)",
-      "description": "Développement d'une plateforme e-commerce sur Odoo 17 avec 9 modules personnalisés en Python, couplée à une application mobile Flutter cross-platform. Projet de fin d'études — soutenu le 23 juin 2026."
+      "description": "Plateforme e-commerce sur Odoo 17 avec 9 modules Python personnalisés et une application Flutter connectée en JSON-RPC. Projet de fin d'études soutenu le 23 juin 2026."
     },
     "education": {
       "title": "Formation",
@@ -172,13 +172,17 @@
   },
   "testimonials": {
     "label": "RECOMMANDATIONS",
-    "title": "Ce qu'ils disent",
-    "subtitle": "Retours de ceux avec qui j'ai eu la chance de collaborer",
+    "title": "Ils m'ont recommandé",
+    "subtitle": "Extraits de lettres de recommandation",
     "abdelhadiLaassi": {
-      "quote": "Malgré des technologies entièrement nouvelles pour lui, il a acquis une solide maîtrise et contribué efficacement en peu de temps. Sa capacité à traduire les besoins métier en solutions techniques concrètes, et à assimiler rapidement des concepts complexes, en a fait un membre précieux de l'équipe."
+      "quote": "Malgré cette difficulté, il a fait preuve d'une remarquable capacité d'adaptation et d'une forte volonté d'apprendre. En peu de temps, il a acquis une solide compréhension des deux technologies et a pu contribuer efficacement au développement de nos projets.",
+      "role": "Software Developer, encadrant de stage",
+      "note": "(traduit de l'anglais)"
     },
     "tarikBoudaa": {
-      "quote": "Il s'est distingué par son sérieux, sa rigueur et ses solides compétences techniques. Curieux, impliqué et particulièrement motivé, il a constamment fait preuve d'une réelle volonté de progresser. Son esprit d'analyse, son autonomie et sa capacité à résoudre des problèmes complexes constituent des atouts indéniables."
+      "quote": "Il a démontré une excellente maîtrise des concepts du développement backend, notamment avec Spring Boot, qu'il a su mettre en œuvre avec efficacité dans les travaux pratiques et les projets réalisés durant le module. […] Je le recommande sans réserve pour un poste d'Ingénieur Full-Stack ou Backend Java.",
+      "role": "Enseignant-chercheur, module Java EE (Spring Boot)",
+      "note": ""
     }
   },
   "contact": {

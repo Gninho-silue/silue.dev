@@ -22,6 +22,8 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
 
   const tKey = testimonial.id
     .replace(/-([a-z])/g, (_: string, c: string) => c.toUpperCase());
+  const role = t(`testimonials.${tKey}.role` as Parameters<typeof t>[0]);
+  const note = t(`testimonials.${tKey}.note` as Parameters<typeof t>[0]);
 
   return (
     <motion.div
@@ -34,9 +36,14 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
     >
       <Quote className="h-5 w-5 text-[var(--accent)] opacity-80" aria-hidden />
 
-      <p className="font-mono text-sm text-[var(--text-secondary)] leading-relaxed italic">
-        &ldquo;{t(`testimonials.${tKey}.quote` as Parameters<typeof t>[0])}&rdquo;
-      </p>
+      <div className="flex flex-col gap-2">
+        <p className="font-mono text-sm text-[var(--text-secondary)] leading-relaxed italic">
+          &ldquo;{t(`testimonials.${tKey}.quote` as Parameters<typeof t>[0])}&rdquo;
+        </p>
+        {note && (
+          <p className="font-mono text-xs text-[var(--text-muted)]">{note}</p>
+        )}
+      </div>
 
       <div className="flex items-center gap-3 mt-auto pt-4 border-t border-[var(--border)]">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-black font-mono text-sm font-bold">
@@ -46,8 +53,11 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
           <p className="font-mono text-sm font-bold text-[var(--text-primary)] truncate">
             {testimonial.name}
           </p>
-          <p className="font-mono text-xs text-[var(--text-secondary)] truncate">
-            {testimonial.role}, {testimonial.organization}
+          <p className="font-mono text-xs text-[var(--text-secondary)]">
+            {role}
+          </p>
+          <p className="font-mono text-xs text-[var(--text-muted)] truncate">
+            {testimonial.organization}
           </p>
         </div>
       </div>
