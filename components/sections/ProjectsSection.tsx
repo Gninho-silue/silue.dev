@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useInView, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { projects, type Project } from '@/content/projects';
@@ -67,8 +68,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       transition={{ delay: (index % 2) * 0.06 }}
-      className="flat-card flex h-full flex-col gap-4 p-6"
+      className="flat-card flex h-full flex-col gap-4 p-4 sm:p-5"
     >
+      {/* Screenshot: fixed 16:10, cropped from the top */}
+      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-hover)]">
+        <Image
+          src={project.image}
+          alt={t('imageAlt', { title })}
+          fill
+          sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
+          loading={index < 2 ? 'eager' : 'lazy'}
+          fetchPriority={index < 2 ? 'high' : 'auto'}
+          className="object-cover"
+          style={{ objectPosition: project.imagePosition ?? 'top' }}
+        />
+      </div>
+
       {/* Title + year */}
       <header className="flex items-baseline justify-between gap-4">
         <h3 className="text-lg font-semibold text-[var(--text-primary)]">{title}</h3>
@@ -79,7 +94,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       {/* Description */}
       <p
-        className="line-clamp-3 text-sm leading-relaxed text-[var(--text-secondary)]"
+        className="line-clamp-2 text-sm leading-relaxed text-[var(--text-secondary)]"
         title={description}
       >
         {description}
