@@ -118,7 +118,7 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
       </div>
 
       {/* Role */}
-      <p className="font-semibold text-sm text-[var(--accent)] mb-2">
+      <p className="font-semibold text-sm text-[var(--text-primary)] mb-2">
         {t(`${tKey}.role` as Parameters<typeof t>[0])}
       </p>
 
@@ -178,7 +178,7 @@ function EducationCard({ icon, name, degree, field, note, years, index }: Educat
               {years}
             </span>
           </div>
-          <p className="text-xs text-[var(--accent)] font-semibold mt-0.5">{degree}</p>
+          <p className="text-xs text-[var(--text-primary)] font-semibold mt-0.5">{degree}</p>
         </div>
       </div>
       <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{field}</p>

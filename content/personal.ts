@@ -5,7 +5,7 @@ export const personal = {
   title: 'Backend-First Full-Stack Engineer',
   email: 'gninninmaguignonsilue@gmail.com',
   location: 'Casablanca, Maroc',
-  cv: '/cv-silue.pdf',
+  cv: '/cv-silue-fr.pdf',
 } as const;
 
 export const social = {

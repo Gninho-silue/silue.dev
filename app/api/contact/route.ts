@@ -61,6 +61,23 @@ function validate(body: unknown): body is ContactPayload {
 }
 
 // ─── Email template ───────────────────────────────────────────────────────────
+// Same palette as the site (app/globals.css, dark theme). Email clients ignore
+// CSS variables and web fonts, so colors are inlined and fonts are system stacks.
+
+const SITE_URL = 'https://silue-dev.vercel.app';
+const C = {
+  bg: '#0d1117',
+  card: '#151b23',
+  inset: '#0d1117',
+  border: '#262f3b',
+  text: '#e6edf3',
+  secondary: '#9aa6b6',
+  muted: '#7a8698',
+  accent: '#F59E0B',
+  onAccent: '#0d1117',
+};
+const SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+const MONO = "ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace";
 
 function buildHtml({ name, email, subject, message }: ContactPayload): string {
   const date = new Date().toLocaleString('fr-FR', {
@@ -70,47 +87,53 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
   });
 
   const safe = (str: string) =>
-    str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+
+  const label = (text: string) =>
+    `<p style="margin:0 0 8px;font-family:${MONO};font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:${C.secondary};">${text}</p>`;
+
+  const replyHref = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(`Re: ${subject}`)}`;
 
   return `<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nouveau message — silue.dev</title>
+  <meta name="color-scheme" content="dark" />
+  <meta name="supported-color-schemes" content="dark" />
+  <title>Nouveau message de ${safe(name)}</title>
   <style>
     @media only screen and (max-width: 600px) {
-      .wrapper { padding: 16px !important; }
-      .card { border-radius: 12px !important; }
-      .header, .body, .footer { padding-left: 20px !important; padding-right: 20px !important; }
-      .header { padding-top: 20px !important; padding-bottom: 20px !important; }
-      .body { padding-top: 20px !important; padding-bottom: 20px !important; }
-      .subject-text { font-size: 15px !important; }
+      .wrapper { padding: 16px 8px !important; }
+      .pad { padding-left: 20px !important; padding-right: 20px !important; }
     }
   </style>
 </head>
-<body style="margin:0;padding:0;background:#0a0a0a;font-family:ui-monospace,'Courier New',Courier,monospace;">
-  <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="background:#0a0a0a;padding:32px 16px;">
+<body style="margin:0;padding:0;background:${C.bg};font-family:${SANS};">
+  <!-- Preheader: shown in the inbox list, hidden in the body -->
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${safe(name)} : ${safe(subject)}</div>
+
+  <table role="presentation" class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="background:${C.bg};padding:32px 16px;">
     <tr>
       <td align="center">
-        <table class="card" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#111111;border:1px solid #222222;border-radius:16px;overflow:hidden;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:${C.card};border:1px solid ${C.border};border-radius:12px;">
 
           <!-- Header -->
           <tr>
-            <td class="header" style="padding:24px 32px;border-bottom:1px solid #222222;">
-              <table width="100%" cellpadding="0" cellspacing="0">
+            <td class="pad" style="padding:22px 32px;border-bottom:1px solid ${C.border};">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="vertical-align:middle;">
-                    <a href="https://silue-dev.vercel.app" target="_blank" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
-                      <span style="font-family:ui-monospace,'Courier New',monospace;font-size:11px;font-weight:700;color:#888888;letter-spacing:0.15em;">//</span>
-                      <span style="font-family:ui-monospace,'Courier New',monospace;font-size:18px;font-weight:900;color:#ffffff;letter-spacing:-0.02em;">silue.dev</span>
+                    <a href="${SITE_URL}" target="_blank" style="text-decoration:none;font-family:${MONO};font-size:16px;font-weight:700;">
+                      <span style="color:${C.accent};">&lt;/&gt;</span>&nbsp;<span style="color:${C.text};">Silué</span>
                     </a>
-                    <p style="margin:6px 0 0;font-size:12px;color:#888888;font-family:ui-monospace,'Courier New',monospace;line-height:1.4;">
-                      Nouveau message via le formulaire de contact
-                    </p>
                   </td>
-                  <td align="right" style="vertical-align:top;padding-left:12px;">
-                    <span style="display:inline-block;background:#F59E0B;color:#000000;font-family:ui-monospace,'Courier New',monospace;font-size:10px;font-weight:700;letter-spacing:0.1em;padding:4px 10px;border-radius:6px;">NEW</span>
+                  <td align="right" style="vertical-align:middle;font-family:${MONO};font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${C.secondary};">
+                    // contact
                   </td>
                 </tr>
               </table>
@@ -119,29 +142,28 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
 
           <!-- Body -->
           <tr>
-            <td class="body" style="padding:28px 32px;">
+            <td class="pad" style="padding:28px 32px;">
 
-              <!-- From -->
-              <p style="margin:0 0 6px;font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:0.15em;font-family:ui-monospace,'Courier New',monospace;">De</p>
-              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+              <h1 style="margin:0 0 24px;font-family:${SANS};font-size:20px;line-height:1.3;font-weight:600;color:${C.text};">${safe(subject)}</h1>
+
+              ${label('De')}
+              <p style="margin:0 0 2px;font-size:15px;font-weight:600;color:${C.text};">${safe(name)}</p>
+              <p style="margin:0 0 24px;font-size:14px;"><a href="mailto:${safe(email)}" style="color:${C.secondary};text-decoration:underline;">${safe(email)}</a></p>
+
+              ${label('Message')}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
                 <tr>
-                  <td style="background:#0a0a0a;border:1px solid #222222;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:14px 16px;">
-                    <p style="margin:0 0 3px;font-size:14px;font-weight:700;color:#ffffff;font-family:ui-monospace,'Courier New',monospace;">${safe(name)}</p>
-                    <a href="mailto:${safe(email)}" style="font-size:12px;color:#F59E0B;text-decoration:none;font-family:ui-monospace,'Courier New',monospace;">${safe(email)}</a>
+                  <td style="background:${C.inset};border:1px solid ${C.border};border-radius:8px;padding:16px 18px;">
+                    <p style="margin:0;font-size:15px;line-height:1.6;color:${C.text};white-space:pre-wrap;word-break:break-word;">${safe(message)}</p>
                   </td>
                 </tr>
               </table>
 
-              <!-- Subject -->
-              <p style="margin:0 0 6px;font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:0.15em;font-family:ui-monospace,'Courier New',monospace;">Sujet</p>
-              <p class="subject-text" style="margin:0 0 24px;font-size:16px;font-weight:600;color:#ffffff;font-family:ui-monospace,'Courier New',monospace;line-height:1.4;">${safe(subject)}</p>
-
-              <!-- Message -->
-              <p style="margin:0 0 8px;font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:0.15em;font-family:ui-monospace,'Courier New',monospace;">Message</p>
-              <table width="100%" cellpadding="0" cellspacing="0">
+              <!-- Reply button -->
+              <table role="presentation" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="background:#0a0a0a;border:1px solid #222222;border-radius:8px;padding:16px 18px;">
-                    <p style="margin:0;font-size:13px;color:#888888;line-height:1.75;white-space:pre-wrap;font-family:ui-monospace,'Courier New',monospace;word-break:break-word;">${safe(message)}</p>
+                  <td style="background:${C.accent};border-radius:8px;">
+                    <a href="${replyHref}" style="display:inline-block;padding:11px 20px;font-family:${SANS};font-size:14px;font-weight:600;color:${C.onAccent};text-decoration:none;">Répondre à ${safe(name)}</a>
                   </td>
                 </tr>
               </table>
@@ -151,9 +173,9 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
 
           <!-- Footer -->
           <tr>
-            <td class="footer" style="padding:16px 32px 20px;border-top:1px solid #222222;">
-              <p style="margin:0;font-size:11px;color:#444444;font-family:ui-monospace,'Courier New',monospace;">
-                Reçu le ${date} &mdash; <a href="https://silue-dev.vercel.app" target="_blank" style="color:#444444;text-decoration:none;">silue-dev.vercel.app</a>
+            <td class="pad" style="padding:16px 32px 20px;border-top:1px solid ${C.border};">
+              <p style="margin:0;font-size:12px;line-height:1.5;color:${C.muted};">
+                Reçu le ${date} via le formulaire de <a href="${SITE_URL}" target="_blank" style="color:${C.muted};">silue-dev.vercel.app</a>.
               </p>
             </td>
           </tr>
@@ -164,6 +186,10 @@ function buildHtml({ name, email, subject, message }: ContactPayload): string {
   </table>
 </body>
 </html>`.trim();
+}
+
+function buildText({ name, email, subject, message }: ContactPayload): string {
+  return `Nouveau message via ${SITE_URL}\n\nDe : ${name} <${email}>\nSujet : ${subject}\n\n${message}\n`;
 }
 
 // ─── Route handler ────────────────────────────────────────────────────────────
@@ -215,13 +241,20 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(apiKey);
 
   try {
-    await resend.emails.send({
-      from: 'Contact silue.dev <onboarding@resend.dev>',
+    // Resend reports API failures in the result, it does not throw.
+    const { error } = await resend.emails.send({
+      from: 'Portfolio Silué <onboarding@resend.dev>',
       to: 'gninninmaguignonsilue@gmail.com',
       replyTo: payload.email,
-      subject: `[silue.dev] ${payload.subject} — from ${payload.name}`,
+      subject: `[Portfolio] ${payload.subject} (${payload.name})`,
       html: buildHtml(payload),
+      text: buildText(payload),
     });
+
+    if (error) {
+      console.error('[contact] Resend error:', error);
+      return NextResponse.json({ error: 'Failed to send message. Please try again.' }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {

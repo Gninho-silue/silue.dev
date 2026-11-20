@@ -19,25 +19,28 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const BASE_URL = 'https://silue.dev';
+const BASE_URL = 'https://silue-dev.vercel.app';
+
+const TITLE = 'Gninninmaguignon Silué — Backend-First Full-Stack Engineer';
+const DESCRIPTION =
+  'Java / Spring Boot backends and React front ends. ENSA Al Hoceima engineering graduate (June 2026), based in Casablanca, open to hybrid or remote roles.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Gninninmaguignon Silué — Full-Stack Developer',
+    default: TITLE,
     template: '%s | Gninninmaguignon Silué',
   },
-  description:
-    'Backend-First Full-Stack Engineer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available now for remote opportunities.',
+  description: DESCRIPTION,
   keywords: [
+    'Backend Developer',
     'Full-Stack Developer',
-    'Java Spring Boot',
-    'React',
-    'Node.js',
+    'Java',
+    'Spring Boot',
     'Microservices',
-    'Cloud-Native',
+    'React',
+    'Kafka',
     'Casablanca',
-    'Remote',
     'Morocco',
   ],
   authors: [{ name: 'Gninninmaguignon Silué' }],
@@ -51,23 +54,21 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: BASE_URL,
     siteName: 'Gninninmaguignon Silué',
-    title: 'Gninninmaguignon Silué — Full-Stack Developer',
-    description:
-      'Backend-First Full-Stack Engineer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available now for remote opportunities.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Gninninmaguignon Silué — Full-Stack Developer',
+        alt: TITLE,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gninninmaguignon Silué — Full-Stack Developer',
-    description:
-      'Backend-First Full-Stack Engineer specializing in Cloud-Native architectures, Java Spring Boot, React and Node.js. Available now for remote opportunities.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: ['/og-image.png'],
   },
   robots: {
@@ -87,7 +88,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Gninninmaguignon Silué',
-  jobTitle: 'Full-Stack Developer',
+  jobTitle: 'Backend-First Full-Stack Engineer',
   url: BASE_URL,
   sameAs: [
     'https://github.com/Gninho-silue',
