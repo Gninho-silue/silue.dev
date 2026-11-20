@@ -82,7 +82,7 @@ function CoreBadge({ name, index, inView }: { name: string; index: number; inVie
       variants={badgeVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      className="font-mono text-sm font-semibold px-4 py-2 rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-soft)] text-[var(--accent)] cursor-default"
+      className="font-mono text-sm font-semibold px-4 py-2 rounded-lg border border-[var(--core-border)] bg-[var(--core-bg)] text-[var(--core-text)] cursor-default"
     >
       {name}
     </motion.span>

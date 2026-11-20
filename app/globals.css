@@ -41,6 +41,12 @@
 
   --success:       #3fb950;
 
+  /* Core-skill badges and terminal prompt */
+  --core-text:     #F59E0B;
+  --core-border:   rgba(245, 158, 11, 0.40);
+  --core-bg:       rgba(245, 158, 11, 0.06);
+  --terminal-prompt: #F59E0B;
+
   /* dot grid */
   --dot-color: #1f2732;
 }
@@ -56,14 +62,20 @@
   --text-secondary:#4b5563;
   --text-muted:    #5b6678;
 
-  /* Amber text on white fails contrast: use a darker amber for text */
-  --accent:        #b45309;
-  --accent-soft:   rgba(180, 83, 9, 0.08);
+  /* Light theme stays neutral: amber only as a fill (buttons, nav underline,
+     progress bar). Amber text on white fails contrast and dark amber looks brown. */
+  --accent:        #0d1117;
+  --accent-soft:   rgba(13, 17, 23, 0.05);
   --accent-fill:       #F59E0B;
   --accent-fill-hover: #D97706;
   --on-accent:         #0d1117;
 
   --success:       #1a7f37;
+
+  --core-text:     #0d1117;
+  --core-border:   #c3ccd7;
+  --core-bg:       #f6f8fa;
+  --terminal-prompt: #5b6678;
 
   --dot-color: #e3e8ee;
 }
@@ -248,7 +260,7 @@ h3 {
 }
 
 .terminal-prompt {
-  color: var(--accent);
+  color: var(--terminal-prompt);
 }
 
 /* ─── Timeline ─── */
@@ -263,8 +275,8 @@ h3 {
 }
 
 .timeline-dot-active {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--accent-fill);
+  border-color: var(--accent-fill);
 }
 
 /* ─── Contact input ─── */
@@ -283,5 +295,5 @@ h3 {
 
 /* ─── Scroll progress bar ─── */
 #scroll-progress {
-  background: var(--accent);
+  background: var(--accent-fill);
 }

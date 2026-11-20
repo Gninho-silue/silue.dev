@@ -54,7 +54,7 @@ export default function Navbar() {
             aria-label={t('backToTop')}
             className="flex items-center gap-2.5 group shrink-0"
           >
-            <span className="font-mono font-bold text-sm text-[var(--accent)]">&lt;/&gt;</span>
+            <span className="font-mono font-bold text-sm text-[var(--accent-fill)]">&lt;/&gt;</span>
             <span className="font-mono font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors duration-200">
               Silué
             </span>
@@ -76,7 +76,7 @@ export default function Navbar() {
                   {activeSection === id && (
                     <motion.span
                       layoutId="navbar-indicator"
-                      className="absolute inset-0 rounded-md bg-[var(--accent-soft)]"
+                      className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-[var(--accent-fill)]"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}

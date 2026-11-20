@@ -86,7 +86,7 @@ function TimelineEntry({ exp, index }: { exp: Experience; index: number }) {
       <div
         className={`absolute left-0 top-1.5 w-2 h-2 rounded-full border ${
           exp.current
-            ? 'bg-[var(--accent)] border-[var(--accent)]'
+            ? 'bg-[var(--accent-fill)] border-[var(--accent-fill)]'
             : 'bg-[var(--bg)] border-[var(--text-secondary)]'
         }`}
       />
