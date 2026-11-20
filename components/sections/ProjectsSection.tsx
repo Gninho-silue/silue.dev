@@ -70,8 +70,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       transition={{ delay: (index % 2) * 0.06 }}
       className="flat-card flex h-full flex-col gap-4 p-4 sm:p-5"
     >
-      {/* Screenshot: fixed 16:10, cropped from the top */}
-      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-hover)]">
+      {/* Screenshot: 2:1 frame, matching most captures (1920x940) */}
+      <div className="relative aspect-[2/1] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg-hover)]">
         <Image
           src={project.image}
           alt={t('imageAlt', { title })}
@@ -79,8 +79,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
           loading={index < 2 ? 'eager' : 'lazy'}
           fetchPriority={index < 2 ? 'high' : 'auto'}
-          className="object-cover"
-          style={{ objectPosition: project.imagePosition ?? 'top' }}
+          className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover object-top'}
         />
       </div>
 

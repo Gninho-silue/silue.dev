@@ -12,10 +12,10 @@ export interface Project {
   live?: string;
   privateCode?: PrivateCodeReason;
   featured: boolean;
-  /** Screenshot shown at the top of the card (16:10, cropped from the top). */
+  /** Screenshot shown at the top of the card, in a 2:1 frame. */
   image: string;
-  /** CSS object-position for the crop; defaults to "top". */
-  imagePosition?: string;
+  /** "contain" shows the whole image (for images far from 2:1); default "cover". */
+  imageFit?: 'cover' | 'contain';
   category: ProjectCategory;
   inProgress?: boolean;
   year?: number;
@@ -30,7 +30,7 @@ export const projects: Project[] = [
     github: 'https://github.com/Gninho-silue/banking-microservices',
     featured: true,
     image: '/projects/banking-ms.png',
-    imagePosition: '45% 50%',
+    imageFit: 'contain',
     category: 'fullstack',
     year: 2026,
   },
@@ -110,6 +110,7 @@ export const projects: Project[] = [
     github: 'https://github.com/Gninho-silue/recommender-system',
     featured: false,
     image: '/projects/recommender-system.png',
+    imageFit: 'contain',
     category: 'ai',
     year: 2025,
   },
