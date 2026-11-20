@@ -118,9 +118,9 @@ export default function HeroSection() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   const stats = [
-    { value: t('stats.repos.value'), label: t('stats.repos.label') },
     { value: t('stats.internships.value'), label: t('stats.internships.label') },
-    { value: t('stats.projects.value'), label: t('stats.projects.label') },
+    { value: t('stats.tests.value'), label: t('stats.tests.label') },
+    { value: t('stats.certification.value'), label: t('stats.certification.label') },
     { value: t('stats.available.value'), label: t('stats.available.label') },
   ];
 

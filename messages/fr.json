@@ -13,16 +13,16 @@
   "hero": {
     "available": "Disponible maintenant",
     "subtitle": "Ingénieur Full-Stack Backend-First // Java · Spring Boot · React",
-    "titles": ["Développeur Full-Stack", "Architecte Cloud-Native", "Passionné d'IA"],
+    "titles": ["Backend Java / Spring Boot", "Full-Stack React", "Agents IA (RAG, LangGraph)"],
     "tagline": "Je construis des systèmes distribués performants et des applications web modernes.",
     "cta": {
       "contact": "Me contacter",
       "projects": "Voir mes projets"
     },
     "stats": {
-      "repos": { "value": "28+", "label": "Repositories" },
-      "internships": { "value": "3", "label": "Stages effectués" },
-      "projects": { "value": "5+", "label": "Projets livrés" },
+      "internships": { "value": "3", "label": "Stages" },
+      "tests": { "value": "205", "label": "Tests (Banking)" },
+      "certification": { "value": "OCP", "label": "Java SE 17" },
       "available": { "value": "Disponible", "label": "maintenant" }
     },
     "scrollDown": "Défiler"
@@ -48,8 +48,8 @@
       "location": "Casablanca, Maroc",
       "school": "ENSA Al Hoceima — Génie Informatique",
       "diploma": "Diplômé: 23 juin 2026",
-      "openTo": "Open to: Remote / Hybride",
-      "languages": "Français (natif), Anglais (courant)",
+      "openTo": "Casablanca (sur site / hybride) · Remote",
+      "languages": "Français (natif), Anglais (professionnel)",
       "available": "Disponible maintenant"
     }
   },
@@ -63,7 +63,6 @@
       "frontend": "Frontend",
       "devops": "DevOps",
       "database": "Base de données",
-      "mobile": "Mobile",
       "ai": "IA / ML"
     },
     "levelLabel": "Niveau",
@@ -83,6 +82,10 @@
     "viewLive": "Demo live",
     "inProgress": "En cours",
     "moreTech": "+{n} autres",
+    "privateCode": {
+      "client": "Code privé (projet client)",
+      "personalData": "Code privé (données personnelles)"
+    },
     "cta": {
       "title": "Voir plus ?",
       "button": "Voir tout sur GitHub"
@@ -107,21 +110,17 @@
       "title": "TaskPro",
       "description": "Application de gestion de tâches collaborative avec WebSocket pour les mises à jour en temps réel, authentification JWT et interface React moderne."
     },
-    "smartcollab": {
-      "title": "SmartCollab",
-      "description": "Plateforme de collaboration d'équipe en temps réel avec Socket.io, Redis pour la gestion des sessions et architecture event-driven Node.js."
-    },
     "pfeTechpal": {
       "title": "PFE TechPal",
       "description": "Plateforme e-commerce développée sur Odoo 17 avec 9 modules Python personnalisés, couplée à une application mobile Flutter cross-platform. Projet de fin d'études."
     },
     "recommenderSystem": {
       "title": "MovieLens Recommender",
-      "description": "Système de recommandation de films basé sur le filtrage collaboratif avec PyTorch. Entraîné sur le dataset MovieLens 1M, déployé sur AWS SageMaker avec une interface Streamlit."
+      "description": "Système de recommandation de films basé sur le filtrage collaboratif avec PyTorch. Entraîné sur le dataset MovieLens 100K, déployé sur AWS SageMaker avec une interface Streamlit."
     },
     "jobpilot": {
       "title": "JobPilot",
-      "description": "SaaS IA pour la recherche d'emploi — adaptation de CV, génération de lettres de motivation et préparation aux entretiens. Paiement Stripe, auth Clerk, backend Supabase + Prisma."
+      "description": "SaaS de recherche d'emploi : adaptation du CV à chaque offre, lettres de motivation, préparation aux entretiens et suivi des candidatures en kanban. Auth Clerk, abonnement Stripe en mode test (carte 4242 4242 4242 4242)."
     }
   },
   "experience": {
@@ -133,11 +132,11 @@
     "current": "En cours",
     "remote": "Remote",
     "techpal": {
-      "role": "Développeur Full-Stack",
+      "role": "Stagiaire Développeur Full-Stack (PFA)",
       "description": "Développement et maintenance d'un système ERP de gestion des stages — 11 modèles de données, amélioration des performances de 30 %, génération automatisée de rapports PDF via QWeb."
     },
     "isbMaroc": {
-      "role": "Développeur Frontend",
+      "role": "Stagiaire Développeur Frontend",
       "description": "Conception d'une interface utilisateur moderne et responsive avec React. Intégration d'APIs REST, mise en place de composants réutilisables et collaboration en méthodologie Agile."
     },
     "pfeTechpal": {
@@ -163,12 +162,12 @@
     },
     "certifications": {
       "title": "Certifications",
-      "java": "Java SE 17 Developer",
-      "microservices": "Master Microservices SpringBoot/Docker/K8s",
-      "devops": "OCP DevOps Professional",
-      "python": "Python Formation Complète",
+      "java": "Oracle Certified Professional: Java SE 17 Developer",
+      "devops": "Oracle Cloud Infrastructure DevOps Professional",
       "oracleAiFoundations": "Oracle Cloud Infrastructure Certified AI Foundations Associate",
-      "agenticAiFoundations": "Agentic AI Certified Foundations Associate"
+      "agenticAiFoundations": "Agentic AI Certified Foundations Associate",
+      "hackerrankProblemSolving": "HackerRank — Problem Solving (Intermediate)",
+      "hackerrankSql": "HackerRank — SQL (Intermediate)"
     }
   },
   "testimonials": {
@@ -186,8 +185,8 @@
     "label": "CONTACT",
     "sectionTitle": "Travaillons ensemble",
     "title": "Contact",
-    "subtitle": "Disponible pour des opportunités remote",
-    "intro": "Je suis ouvert aux opportunités de travail remote. N'hésitez pas à me contacter pour discuter de vos projets.",
+    "subtitle": "Casablanca, hybride ou remote",
+    "intro": "Je cherche un poste backend ou full-stack Java. Le plus simple : un email, je réponds sous 24 h.",
     "form": {
       "name": "Votre nom",
       "email": "Votre email",
@@ -206,9 +205,9 @@
       "linkedinLabel": "LinkedIn",
       "githubLabel": "GitHub",
       "locationLabel": "Localisation",
-      "locationValue": "Casablanca, Maroc — Remote friendly",
+      "locationValue": "Casablanca, Maroc (ouvert au remote)",
       "availTitle": "Disponible immédiatement",
-      "openTo": "Open to: Full-time • Remote • International",
+      "openTo": "Temps plein · Sur site · Hybride · Remote",
       "responseTime": "Je réponds généralement sous 24h"
     },
     "social": {

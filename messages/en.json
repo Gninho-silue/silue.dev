@@ -13,16 +13,16 @@
   "hero": {
     "available": "Available Now",
     "subtitle": "Backend-First Full-Stack Engineer // Java · Spring Boot · React",
-    "titles": ["Full-Stack Developer", "Cloud-Native Architect", "AI Enthusiast"],
+    "titles": ["Backend Java / Spring Boot", "Full-Stack React", "AI agents (RAG, LangGraph)"],
     "tagline": "I build high-performance distributed systems and modern web applications.",
     "cta": {
       "contact": "Contact me",
       "projects": "View my work"
     },
     "stats": {
-      "repos": { "value": "28+", "label": "Repositories" },
-      "internships": { "value": "3", "label": "Internships Completed" },
-      "projects": { "value": "5+", "label": "Projects Shipped" },
+      "internships": { "value": "3", "label": "Internships" },
+      "tests": { "value": "205", "label": "Tests (Banking)" },
+      "certification": { "value": "OCP", "label": "Java SE 17" },
       "available": { "value": "Available", "label": "Now" }
     },
     "scrollDown": "Scroll down"
@@ -48,8 +48,8 @@
       "location": "Casablanca, Morocco",
       "school": "ENSA Al Hoceima — Computer Science",
       "diploma": "Graduated: June 23, 2026",
-      "openTo": "Open to: Remote / Hybrid",
-      "languages": "French (native), English (fluent)",
+      "openTo": "Casablanca (on-site / hybrid) · Remote",
+      "languages": "French (native), English (professional)",
       "available": "Available Now"
     }
   },
@@ -63,7 +63,6 @@
       "frontend": "Frontend",
       "devops": "DevOps",
       "database": "Database",
-      "mobile": "Mobile",
       "ai": "AI / ML"
     },
     "levelLabel": "Level",
@@ -83,6 +82,10 @@
     "viewLive": "Live demo",
     "inProgress": "In progress",
     "moreTech": "+{n} more",
+    "privateCode": {
+      "client": "Private code (client project)",
+      "personalData": "Private code (personal data)"
+    },
     "cta": {
       "title": "Want to see more?",
       "button": "View all on GitHub"
@@ -107,21 +110,17 @@
       "title": "TaskPro",
       "description": "Collaborative task management application with WebSocket for real-time updates, JWT authentication and modern React interface."
     },
-    "smartcollab": {
-      "title": "SmartCollab",
-      "description": "Real-time team collaboration platform with Socket.io, Redis for session management and event-driven Node.js architecture."
-    },
     "pfeTechpal": {
       "title": "PFE TechPal",
       "description": "E-commerce platform built on Odoo 17 with 9 custom Python modules, paired with a cross-platform Flutter mobile application. Final year project."
     },
     "recommenderSystem": {
       "title": "MovieLens Recommender",
-      "description": "Movie recommendation system using collaborative filtering with PyTorch. Trained on the MovieLens 1M dataset, deployed on AWS SageMaker with a Streamlit interface."
+      "description": "Movie recommendation system using collaborative filtering with PyTorch. Trained on the MovieLens 100K dataset, deployed on AWS SageMaker with a Streamlit interface."
     },
     "jobpilot": {
       "title": "JobPilot",
-      "description": "AI-powered job search SaaS — resume tailoring, cover letter generation and interview prep. Stripe payments, Clerk auth, Supabase + Prisma backend."
+      "description": "Job-search SaaS: tailors the CV to each offer, writes cover letters, preps interviews and tracks applications on a kanban board. Clerk auth, Stripe subscription in test mode (card 4242 4242 4242 4242)."
     }
   },
   "experience": {
@@ -133,11 +132,11 @@
     "current": "Current",
     "remote": "Remote",
     "techpal": {
-      "role": "Full-Stack Developer",
+      "role": "Full-Stack Developer Intern (PFA)",
       "description": "Built an ERP internship management system — 11 data models, 30% performance improvement, automated PDF report generation via QWeb."
     },
     "isbMaroc": {
-      "role": "Frontend Developer",
+      "role": "Frontend Developer Intern",
       "description": "Designed a modern responsive UI with React. REST API integration, reusable component library, and Agile team collaboration."
     },
     "pfeTechpal": {
@@ -163,12 +162,12 @@
     },
     "certifications": {
       "title": "Certifications",
-      "java": "Java SE 17 Developer",
-      "microservices": "Master Microservices SpringBoot/Docker/K8s",
-      "devops": "OCP DevOps Professional",
-      "python": "Complete Python Training",
+      "java": "Oracle Certified Professional: Java SE 17 Developer",
+      "devops": "Oracle Cloud Infrastructure DevOps Professional",
       "oracleAiFoundations": "Oracle Cloud Infrastructure Certified AI Foundations Associate",
-      "agenticAiFoundations": "Agentic AI Certified Foundations Associate"
+      "agenticAiFoundations": "Agentic AI Certified Foundations Associate",
+      "hackerrankProblemSolving": "HackerRank — Problem Solving (Intermediate)",
+      "hackerrankSql": "HackerRank — SQL (Intermediate)"
     }
   },
   "testimonials": {
@@ -186,8 +185,8 @@
     "label": "CONTACT",
     "sectionTitle": "Let's work together",
     "title": "Contact",
-    "subtitle": "Available for remote opportunities",
-    "intro": "I'm open to remote work opportunities. Feel free to reach out to discuss your projects.",
+    "subtitle": "Casablanca, hybrid or remote",
+    "intro": "I'm looking for a backend or full-stack Java role. Easiest is email; I reply within 24 hours.",
     "form": {
       "name": "Your name",
       "email": "Your email",
@@ -206,9 +205,9 @@
       "linkedinLabel": "LinkedIn",
       "githubLabel": "GitHub",
       "locationLabel": "Location",
-      "locationValue": "Casablanca, Morocco — Remote friendly",
+      "locationValue": "Casablanca, Morocco (open to remote)",
       "availTitle": "Available now",
-      "openTo": "Open to: Full-time • Remote • International",
+      "openTo": "Full-time · On-site · Hybrid · Remote",
       "responseTime": "I usually respond within 24h"
     },
     "social": {

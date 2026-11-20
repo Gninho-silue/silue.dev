@@ -11,12 +11,11 @@ const CATEGORY_LABELS: Record<SkillCategory, string> = {
   frontend: 'FRONTEND',
   backend:  'BACKEND',
   devops:   'CLOUD & DEVOPS',
-  mobile:   'MOBILE',
   ai:       'AI / ML',
   tools:    'TOOLS',
 };
 
-const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', 'devops', 'mobile', 'ai', 'tools'];
+const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', 'devops', 'ai', 'tools'];
 
 // ─── Framer variants ──────────────────────────────────────────────────────────
 
@@ -65,7 +64,7 @@ function TerminalBlock() {
           <span className="terminal-prompt">&gt; </span>Java · Spring · React · Next.js
         </div>
         <div className="pl-2 text-[var(--text-secondary)]">
-          <span className="terminal-prompt">&gt; </span>Docker · K8s · Groq · Kafka
+          <span className="terminal-prompt">&gt; </span>Docker · Kafka · PostgreSQL · LangGraph
         </div>
 
         <div className="mt-1">

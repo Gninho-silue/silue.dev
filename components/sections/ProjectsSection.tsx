@@ -59,6 +59,33 @@ function StackBadges({ stack }: { stack: string[] }) {
   );
 }
 
+// ─── Private code badge ───────────────────────────────────────────────────────
+
+function LockIcon({ size = 13 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  );
+}
+
+function PrivateCodeBadge({ reason, compact = false }: { reason: NonNullable<Project['privateCode']>; compact?: boolean }) {
+  const t = useTranslations('projects');
+  return (
+    <span
+      className={
+        compact
+          ? 'inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-mono text-[var(--text-muted)] cursor-default'
+          : 'inline-flex items-center gap-2 whitespace-nowrap px-4 py-2 text-sm font-mono rounded border border-[var(--border)] text-[var(--text-muted)] cursor-default'
+      }
+    >
+      <LockIcon size={compact ? 12 : 14} />
+      {t(`privateCode.${reason}`)}
+    </span>
+  );
+}
+
 // ─── Project image ────────────────────────────────────────────────────────────
 
 function ProjectImage({ image, alt, aspectVideo = false }: { image: string; alt: string; aspectVideo?: boolean }) {
@@ -159,7 +186,7 @@ function FeaturedCard({ project }: { project: Project }) {
 
           <StackBadges stack={project.stack} />
 
-          <div className="flex items-center gap-3 mt-1">
+          <div className="flex flex-wrap items-center gap-3 mt-1">
             {project.github && (
               <a
                 href={project.github}
@@ -171,6 +198,7 @@ function FeaturedCard({ project }: { project: Project }) {
                 {t('viewCode')}
               </a>
             )}
+            {project.privateCode && <PrivateCodeBadge reason={project.privateCode} />}
             {project.live && (
               <a
                 href={project.live}
@@ -262,7 +290,8 @@ function GridCard({ project, index }: { project: Project; index: number }) {
               Code
             </a>
           )}
-          {project.live && project.github && (
+          {project.privateCode && <PrivateCodeBadge reason={project.privateCode} compact />}
+          {project.live && (project.github || project.privateCode) && (
             <span className="text-[var(--text-muted)]">·</span>
           )}
           {project.live && (

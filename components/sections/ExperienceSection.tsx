@@ -205,10 +205,10 @@ export default function ExperienceSection() {
   const CERTIFICATIONS = [
     { label: t('certifications.java'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=08148E3935971C0D94F8E7D936FA5745C536501EAD5E71D8B4A2A43E26701652' },
     { label: t('certifications.devops'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=7756CF268916D8C00461D202FFE10C2F2809155FA680B71D3ABFE5EC1640A496' },
-    { label: t('certifications.microservices'), url: 'https://www.udemy.com/certificate/UC-3503917e-f06a-4cce-b66d-981da289c5ba/' },
-    { label: t('certifications.python'), url: 'https://www.udemy.com/certificate/UC-a60a7f26-5f31-4386-85b3-75d73d346e3b/' },
     { label: t('certifications.oracleAiFoundations'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=1F3DA54B03E0927725AEF37BFA141A7A7F536BBE87E4D634A0E0EB9A5ECDF51E' },
     { label: t('certifications.agenticAiFoundations'), url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=E304A30CFF9308350881713EEB50CD638C650B7AF5696DB33AC262BB64B16B12' },
+    { label: t('certifications.hackerrankProblemSolving'), url: 'https://www.hackerrank.com/certificates/190789d49010' },
+    { label: t('certifications.hackerrankSql'), url: 'https://www.hackerrank.com/certificates/13f8574f010d' },
   ];
 
   return (
