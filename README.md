@@ -1,7 +1,7 @@
 # silue.dev — Personal Website
 
-> Professional portfolio & personal website of **Gninninmaguignon Silué** — Full-Stack Developer.  
-> Bilingual (FR/EN) · Dark/Light mode · Production-grade · CI/CD automated
+> Portfolio of **Gninninmaguignon Silué**, Backend-First Full-Stack Engineer (Java / Spring Boot, React).
+> Bilingual (FR/EN) · Dark/Light mode · Content in data files · CI on every push
 
 🌐 **Live:** [silue-dev.vercel.app](https://silue-dev.vercel.app)
 
@@ -9,29 +9,37 @@
 
 ## ✨ Features
 
-- 🌍 **Bilingual** — French & English, instant switch, no page reload
-- 🌗 **Dark / Light mode** — smooth transition, system preference detected
-- 🖱️ **Custom cursor** — animated circle following the mouse
-- 📊 **Data-driven** — add projects, skills or experience by editing one file
-- 📧 **Contact form** — powered by Resend API with rate limiting
-- 📈 **Analytics** — Vercel Analytics (hidden dashboard at `/admin/stats`)
-- 🔒 **Security hardened** — security headers, input sanitization, server-side secrets
-- ♿ **Accessible** — semantic HTML, keyboard navigable
-- 📱 **Mobile-first** — fully responsive on all devices
-- ⚡ **Performance** — Lighthouse 90+ on all metrics
+- 🌍 **Bilingual**: French and English, instant switch, no page reload, choice saved in `localStorage`
+- 🌗 **Dark / Light mode**: follows the system preference, toggle in the navbar
+- 📊 **Data-driven**: projects, skills, experience and recommendations live in `content/`, all text in `messages/`
+- 🖼️ **Project cards**: one format for every project, screenshot on top, "private code" badge when the source can't be public
+- 📧 **Contact form**: Resend API, validated on client and server, rate limited, HTML + plain-text email
+- 📈 **Analytics**: Vercel Analytics and Speed Insights, hidden dashboard at `/admin/stats`
+- 🔒 **Security headers**: HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
+- ♿ **Accessible**: semantic HTML, visible keyboard focus, WCAG AA contrast, `prefers-reduced-motion` respected
+- 📱 **Responsive**: checked at 1920, 1366 and 390 px wide
 
 ---
 
 ## 🗂️ Sections
 
-| Section        | Description                                               |
-| -------------- | --------------------------------------------------------- |
-| **Hero**       | Name, animated title, availability badge, stats           |
-| **About**      | Story, philosophy pills, info card                        |
-| **Stack**      | Core expertise with progress bars + tech tags by category |
-| **Projects**   | Featured project + grid with 3D tilt cards                |
-| **Experience** | Animated timeline + education + certifications            |
-| **Contact**    | Form with Resend API + social links                       |
+| Section             | Description                                                                 |
+| ------------------- | --------------------------------------------------------------------------- |
+| **Hero**            | Name, rotating title, tagline, key facts (internships, tests, certification) |
+| **About**           | Short bio, fact pills, profile card, CV download (FR / EN)                  |
+| **Stack**           | Core skills, other skills by category, terminal block                       |
+| **Projects**        | Uniform cards: screenshot, year, description, stack tags, Code / Demo links |
+| **Experience**      | Timeline, education, certifications with verification links                 |
+| **Recommendations** | Verbatim excerpts from recommendation letters                               |
+| **Contact**         | Form (Resend) and direct links                                              |
+
+---
+
+## 🎨 Design
+
+- **Palette**: near-black with a blue tint (`#0d1117`), cards one step lighter (`#151b23`), blue-grey secondary text. One accent, amber `#F59E0B`, used for primary buttons, the active nav item and links. All colors are CSS variables in `app/globals.css`, with a light theme that stays neutral.
+- **Type**: Geist for text and headings, JetBrains Mono for labels, stack tags and the terminal block.
+- **Motion**: short fades only; disabled when the OS asks for reduced motion.
 
 ---
 
@@ -39,16 +47,16 @@
 
 | Layer      | Technology                        |
 | ---------- | --------------------------------- |
-| Framework  | Next.js 14 (App Router)           |
+| Framework  | Next.js 16 (App Router), React 19 |
 | Language   | TypeScript (strict)               |
-| Styling    | Tailwind CSS                      |
+| Styling    | Tailwind CSS 4                    |
 | Animations | Framer Motion                     |
 | i18n       | next-intl                         |
 | Dark/Light | next-themes                       |
 | Contact    | Resend API                        |
 | Analytics  | Vercel Analytics + Speed Insights |
 | Deployment | Vercel                            |
-| CI/CD      | GitHub Actions                    |
+| CI         | GitHub Actions                    |
 
 ---
 
@@ -56,20 +64,15 @@
 
 ### Prerequisites
 
-- Node.js 18+
-- A [Resend API key](https://resend.com) (free — 100 emails/day)
+- Node.js 20+
+- A [Resend API key](https://resend.com) (free tier: 100 emails/day)
 
 ### Installation
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/Gninho-silue/silue.dev.git
 cd silue.dev
-
-# 2. Install dependencies
 npm install
-
-# 3. Setup environment variables
 cp .env.example .env.local
 ```
 
@@ -78,13 +81,13 @@ cp .env.example .env.local
 Edit `.env.local`:
 
 ```bash
-# Required — get it free at resend.com
+# Required: contact form
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
 
-# Required — for hidden analytics dashboard
+# Required: hidden analytics dashboard
 ADMIN_PASSWORD=your_secret_password
 
-# Optional — Vercel Analytics API (for live dashboard data)
+# Optional: live data in the dashboard (Vercel API)
 VERCEL_API_TOKEN=your_vercel_token
 VERCEL_PROJECT_ID=your_project_id
 
@@ -94,73 +97,78 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ### Run Locally
 
 ```bash
-npm run dev
-# → http://localhost:3000
+npm run dev      # http://localhost:3000
+npm run lint
+npm run build    # stop `npm run dev` first: both write to .next/
 ```
 
 ---
 
 ## 📦 How to Update Content
 
-Everything lives in the `content/` folder — **no need to touch components**.
+Data lives in `content/`, text in `messages/fr.json` and `messages/en.json`. Every key must exist in **both** files.
 
-### ➕ Add a new project
+### ➕ Add a project
 
-Edit `content/projects.ts`:
+1. Add an entry to `content/projects.ts`:
 
 ```ts
 {
-  id: "my-new-project",
-  titleKey: "projects.myNewProject.title",
-  descriptionKey: "projects.myNewProject.description",
-  stack: ["React", "Node.js", "PostgreSQL"],
-  github: "https://github.com/Gninho-silue/my-new-project",
-  live: "https://my-new-project.vercel.app",
-  featured: false,
-  image: "/projects/my-new-project.png",
-  category: "fullstack"
+  id: 'my-new-project',
+  titleKey: 'projects.myNewProject.title',
+  descriptionKey: 'projects.myNewProject.description',
+  stack: ['Spring Boot', 'React', 'PostgreSQL'],   // first 4 are shown, then "+N"
+  github: 'https://github.com/Gninho-silue/my-new-project',
+  live: 'https://my-new-project.vercel.app',      // optional
+  // privateCode: 'client' | 'personalData',      // instead of github when the code is private
+  featured: false,                                // featured projects are listed first
+  image: '/projects/my-new-project.png',
+  // imageFit: 'contain',                          // show the whole image if it is far from 2:1
+  // imageZoom: true,                              // click opens the image full size (diagrams)
+  category: 'fullstack',                          // fullstack | mobile | ai | devops | saas
+  year: 2026,
 }
 ```
 
-Then add translations in `messages/fr.json` and `messages/en.json`:
+2. Add the screenshot to `public/projects/`. The card frame is **2:1**: a 1920×960 capture fits without cropping.
+3. Add the texts (the key is the `id` in camelCase):
 
 ```json
-{
-  "projects": {
-    "myNewProject": {
-      "title": "Mon Projet",
-      "description": "Description..."
-    }
+"projects": {
+  "myNewProject": {
+    "title": "My New Project",
+    "description": "Two lines are shown in the card; the full text appears on hover."
   }
 }
 ```
 
-### ➕ Add a new skill
+### ➕ Add a skill
 
-Edit `content/skills.ts`:
+Edit `content/skills.ts`. Only list what a repo or an internship proves.
 
 ```ts
-{ name: "My Skill", level: 75, category: "backend" }
+{ name: 'My Skill', category: 'backend' }              // "also work with"
+{ name: 'My Core Skill', category: 'backend', core: true } // "core expertise"
 ```
 
-Categories: `backend` | `frontend` | `devops` | `database` | `mobile` | `ai`
+Categories: `backend` | `frontend` | `devops` | `ai` | `tools`
 
-### ➕ Add a new experience
+### ➕ Add an experience
 
-Edit `content/experience.ts`:
+Edit `content/experience.ts`, then add `experience.<companySlug>.role` and `.description` to both message files:
 
 ```ts
 {
-  id: "company-slug",
-  company: "Company Name",
-  roleKey: "experience.companySlug.role",
-  descriptionKey: "experience.companySlug.description",
-  startDate: "2026-07",
-  endDate: null,
+  id: 'company-slug',
+  company: 'Company Name',
+  roleKey: 'experience.companySlug.role',
+  descriptionKey: 'experience.companySlug.description',
+  startDate: '2026-09',
+  endDate: null,          // null while it is ongoing
   current: true,
-  location: "Casablanca, Maroc",
-  remote: true,
-  stack: ["Java", "Spring Boot"]
+  location: 'Casablanca, Maroc',
+  remote: false,
+  stack: ['Java', 'Spring Boot'],
 }
 ```
 
@@ -171,138 +179,95 @@ Edit `content/experience.ts`:
 ```
 silue.dev/
 ├── app/
-│   ├── page.tsx                    # Main page — all sections
-│   ├── layout.tsx                  # Root layout, fonts, metadata
-│   ├── globals.css                 # CSS variables, cursor, base
-│   ├── admin/stats/                # Hidden analytics dashboard
-│   └── api/contact/                # Contact form API route
+│   ├── page.tsx                 # Single page, all sections
+│   ├── layout.tsx               # Fonts, theme provider, SEO metadata
+│   ├── globals.css              # Design tokens (CSS variables), base styles
+│   ├── sitemap.ts
+│   ├── admin/stats/             # Hidden analytics dashboard
+│   └── api/contact/route.ts     # Contact form API + email template
 ├── components/
-│   ├── layout/                     # Navbar, Footer
-│   ├── sections/                   # Hero, About, Stack, Projects, Experience, Contact
-│   └── ui/                         # CustomCursor, ThemeToggle, LanguageToggle
-├── content/                        # ← UPDATE THIS to add projects/skills/experience
-│   ├── projects.ts
-│   ├── experience.ts
-│   ├── skills.ts
-│   └── personal.ts
-├── messages/
-│   ├── fr.json                     # French translations
-│   └── en.json                     # English translations
-├── hooks/
-│   ├── useScrollSpy.ts
-│   └── useTilt.ts
+│   ├── layout/                  # Navbar, Footer
+│   ├── sections/                # Hero, About, Stack, Projects, Experience, Testimonials, Contact
+│   ├── ui/                      # ThemeToggle, LanguageToggle, CVDownloadDropdown, ProfilePhoto…
+│   └── providers/               # Locale + next-intl + reduced-motion config
+├── content/                     # ← projects, skills, experience, testimonials, personal info
+├── messages/                    # fr.json, en.json
+├── hooks/useScrollSpy.ts        # Active section in the navbar
 └── public/
-    ├── projects/                   # Project screenshots
-    └── cv-silue.pdf                # Downloadable CV
+    ├── projects/                # Project screenshots (2:1)
+    ├── cv-silue-fr.pdf
+    ├── cv-silue-en.pdf
+    └── og-image.png             # Link preview (1200×630)
 ```
 
 ---
 
 ## 🌿 Git Workflow
 
-This project follows **GitHub Flow** with Conventional Commits.  
-Every feature is developed on its own branch and merged via Pull Request.  
-Direct commits to `main` are not allowed.
+GitHub Flow with Conventional Commits. Work happens on a branch; each push gets a Vercel preview, and `main` is only updated by merging a reviewed branch.
 
 ```
-main                        # Production — always deployable
-  └── feat/hero-section
-  └── feat/about-section
-  └── feat/stack-section
-  └── feat/projects-section
-  └── feat/experience-timeline
-  └── feat/contact-form
-  └── feat/analytics-dashboard
-  └── chore/security-audit
-  └── chore/seo-metadata
-  └── chore/ci-cd
-```
-
-**Commit convention:**
-
-```
-feat: add new section or feature
-fix: bug fix
-chore: config, tooling, CI/CD
-docs: README or CLAUDE.md
-refactor: code change, no feature
-content: update projects/skills/experience data
-security: security-related changes
+feat:     new section or feature
+fix:      bug fix
+style:    visual change only
+content:  projects / skills / experience data
+docs:     README or CLAUDE.md
+chore:    config, tooling, CI
+security: security-related change
 ```
 
 ---
 
 ## 🔒 Security
 
-- **Security headers** — X-Frame-Options, HSTS, XSS Protection, CSP
-- **Admin page** — password protected, server-side only, `noindex`
-- **Contact form** — rate limited (3 req/IP/hour), input sanitized
-- **No secrets in client** — all env vars without `NEXT_PUBLIC_` stay server-side
-- **robots.txt** — `/admin/` blocked from indexing
+- **Headers** (`next.config.ts`): HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
+- **Contact form**: 3 requests per IP per hour, HTML stripped and escaped, length limits, validated server-side
+- **Admin page**: server-side password check, redirects to `/` when wrong, `/admin/` disallowed in `robots.txt`
+- **Secrets**: only server-side env vars (no `NEXT_PUBLIC_` secret is read by the code)
 
-See [SECURITY.md](./SECURITY.md) for full details.
+See [SECURITY.md](./SECURITY.md) for details.
 
 ---
 
 ## 📊 Analytics
 
-Powered by **Vercel Analytics** — no cookies, GDPR compliant, free.
+Vercel Analytics: no cookies, GDPR friendly. Enable it in the Vercel project (**Analytics** and **Speed Insights** tabs).
 
-**Hidden dashboard:** `https://silue-dev.vercel.app/admin/stats?password=YOUR_PASSWORD`
-
-Enable in Vercel:
-
-- Project → **Analytics** tab → Enable
-- Project → **Speed Insights** tab → Enable
+Hidden dashboard: `https://silue-dev.vercel.app/admin/stats?password=YOUR_PASSWORD`
 
 ---
 
 ## 🚢 Deployment
 
-Deployed on **Vercel** with automated CI/CD via GitHub Actions.
+Vercel builds every branch:
 
 ```
-Push to feature branch  →  CI: lint + typecheck + build ✅
-Merge to main           →  Auto deploy to production 🚀
+Push to a branch   →  CI (lint, type check, build) + Vercel preview URL
+Merge into main    →  Production deployment
 ```
 
-### Manual deploy
-
-```bash
-npx vercel --prod
-```
-
-### GitHub Secrets required
-
-| Secret              | Description                         |
-| ------------------- | ----------------------------------- |
-| `VERCEL_TOKEN`      | From vercel.com → Settings → Tokens |
-| `VERCEL_ORG_ID`     | From `.vercel/project.json`         |
-| `VERCEL_PROJECT_ID` | From `.vercel/project.json`         |
-| `RESEND_API_KEY`    | From resend.com                     |
-| `ADMIN_PASSWORD`    | Your chosen admin password          |
+Rollback: in Vercel, **Promote to Production** on the previous deployment.
 
 ---
 
 ## 👤 Author
 
-**Gninninmaguignon Silué** — Full-Stack Developer
+**Gninninmaguignon Silué**, Backend-First Full-Stack Engineer
 
 |              |                                                                        |
 | ------------ | ---------------------------------------------------------------------- |
 | 🌐 Website   | [silue-dev.vercel.app](https://silue-dev.vercel.app)                   |
 | 💼 LinkedIn  | [linkedin.com/in/gninema-silue](https://linkedin.com/in/gninema-silue) |
 | 🐙 GitHub    | [github.com/Gninho-silue](https://github.com/Gninho-silue)             |
-| 🚀 DevScope  | [devscope-lake.vercel.app](https://devscope-lake.vercel.app)           |
 | 📧 Email     | gninninmaguignonsilue@gmail.com                                        |
-| 📍 Location  | Casablanca, Maroc — Open to Remote                                     |
-| 📅 Available | July 2026                                                              |
+| 📍 Location  | Casablanca, Morocco: on-site, hybrid or remote                         |
+| 📅 Available | Now                                                                    |
 
 ---
 
 ## 📄 License
 
-MIT — free to use, fork, and build upon.
+MIT
 
 ---
 
