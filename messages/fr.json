@@ -137,7 +137,7 @@
     },
     "jobpilot": {
       "title": "JobPilot",
-      "description": "Assistant de recherche d'emploi qui adapte ton CV et ta lettre à chaque offre, puis vérifie chaque affirmation par rapport au CV d'origine avec un vérificateur déterministe. Rien d'inventé n'arrive chez le recruteur.",
+      "description": "Assistant de recherche d'emploi qui adapte votre CV et votre lettre à chaque offre, puis signale avant l'export tout ce que votre CV d'origine ne prouve pas, grâce à un vérificateur déterministe.",
       "liveLabel": "Essayer la démo (sans inscription)"
     }
   },

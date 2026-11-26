@@ -137,7 +137,7 @@
     },
     "jobpilot": {
       "title": "JobPilot",
-      "description": "AI job-search assistant that tailors your CV and cover letter to each offer, then checks every claim against your original CV with a deterministic fact-checker, so nothing invented reaches a recruiter.",
+      "description": "AI job-search assistant that tailors your CV and cover letter to each offer, then flags anything your original CV doesn't back up before you export, using a deterministic fact-checker.",
       "liveLabel": "Try the demo (no sign-up)"
     }
   },
