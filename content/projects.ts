@@ -63,7 +63,7 @@ export const projects: Project[] = [
     id: 'devscope',
     titleKey: 'projects.devscope.title',
     descriptionKey: 'projects.devscope.description',
-    stack: ['Next.js', 'TypeScript', 'Groq AI', 'Tailwind CSS', 'Vercel'],
+    stack: ['Next.js', 'TypeScript', 'Groq', 'Vitest', 'Tailwind CSS', 'Vercel'],
     github: 'https://github.com/Gninho-silue/devscope',
     live: 'https://devscope-lake.vercel.app',
     featured: false,

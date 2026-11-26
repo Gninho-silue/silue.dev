@@ -108,7 +108,7 @@
     },
     "devscope": {
       "title": "DevScope",
-      "description": "Enter a GitHub username, get a report: estimated level, stack, strengths, matching roles. Next.js, Llama 3.3 via Groq, 31 Vitest tests, CI through to Vercel deployment."
+      "description": "Enter a GitHub username, get a report: estimated level, stack, strengths, matching roles. Next.js 16, gpt-oss-120b via Groq, Vitest tests, GitHub Actions CI and Vercel deployment."
     },
     "agentFlow": {
       "title": "AgentFlow",
