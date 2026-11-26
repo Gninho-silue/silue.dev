@@ -108,7 +108,7 @@
     },
     "devscope": {
       "title": "DevScope",
-      "description": "Entrez un pseudo GitHub, obtenez un rapport : niveau estimé, stack, points forts, rôles adaptés. Next.js, Llama 3.3 via Groq, 31 tests Vitest, CI jusqu'au déploiement Vercel."
+      "description": "Entrez un pseudo GitHub, obtenez un rapport : niveau estimé, stack, points forts, rôles adaptés. Next.js 16, gpt-oss-120b via Groq, tests Vitest, CI GitHub Actions et déploiement sur Vercel."
     },
     "agentFlow": {
       "title": "AgentFlow",
