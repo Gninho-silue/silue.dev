@@ -191,7 +191,7 @@
   "testimonials": {
     "label": "RECOMMANDATIONS",
     "title": "Ils m'ont recommandé",
-    "subtitle": "Extraits de lettres de recommandation",
+    "subtitle": "Extraits de recommandations",
     "abdelhadiLaassi": {
       "quote": "Malgré cette difficulté, il a fait preuve d'une remarquable capacité d'adaptation et d'une forte volonté d'apprendre. En peu de temps, il a acquis une solide compréhension des deux technologies et a pu contribuer efficacement au développement de nos projets.",
       "role": "Software Developer, encadrant de stage",
@@ -200,6 +200,11 @@
     "tarikBoudaa": {
       "quote": "Il a démontré une excellente maîtrise des concepts du développement backend, notamment avec Spring Boot, qu'il a su mettre en œuvre avec efficacité dans les travaux pratiques et les projets réalisés durant le module. […] Je le recommande sans réserve pour un poste d'Ingénieur Full-Stack ou Backend Java.",
       "role": "Enseignant-chercheur, module Java EE (Spring Boot)",
+      "note": ""
+    },
+    "nadaTassi": {
+      "quote": "Il a su apprendre rapidement et travailler avec autonomie et rigueur pour réaliser un projet complet et bien organisé. Sérieux, méthodique et réactif lors de nos échanges, il a fait preuve d’une grande implication tout au long de son projet. Je le recommande vivement pour la suite de son parcours professionnel.",
+      "role": "Ph.D. Mathématiques appliquées · Encadrement académique du PFE",
       "note": ""
     }
   },

@@ -191,7 +191,7 @@
   "testimonials": {
     "label": "RECOMMENDATIONS",
     "title": "Recommendations",
-    "subtitle": "Excerpts from recommendation letters",
+    "subtitle": "Excerpts from recommendations",
     "abdelhadiLaassi": {
       "quote": "Despite this challenge, he demonstrated remarkable adaptability and a strong willingness to learn. In a short period of time, he acquired a solid understanding of both technologies and was able to contribute effectively to the development of our projects.",
       "role": "Software Developer, internship supervisor",
@@ -200,6 +200,11 @@
     "tarikBoudaa": {
       "quote": "He demonstrated an excellent command of backend development concepts, particularly Spring Boot, which he applied effectively in the lab work and projects completed during the course. […] I recommend him without reservation for a Full-Stack Engineer or Java Backend role.",
       "role": "Professor, Java EE (Spring Boot) course",
+      "note": "(translated from French)"
+    },
+    "nadaTassi": {
+      "quote": "He learned quickly and worked with autonomy and rigor to deliver a complete, well-organized project. Serious, methodical and responsive in our exchanges, he showed strong commitment throughout his project. I highly recommend him for the rest of his professional career.",
+      "role": "Ph.D. Applied Mathematics · Academic supervisor, final-year project",
       "note": "(translated from French)"
     }
   },

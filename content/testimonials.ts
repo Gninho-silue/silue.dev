@@ -22,4 +22,11 @@ export const testimonials: Testimonial[] = [
     quoteKey: 'testimonials.tarikBoudaa.quote',
     initials: 'TB',
   },
+  {
+    id: 'nada-tassi',
+    name: 'Dr. Nada Tassi',
+    organization: 'ENSA Al Hoceima',
+    quoteKey: 'testimonials.nadaTassi.quote',
+    initials: 'NT',
+  },
 ];
