@@ -112,7 +112,8 @@
     },
     "agentFlow": {
       "title": "AgentFlow",
-      "description": "Five agents (planning, file parsing, Python execution, report writing, supervision) orchestrated with LangGraph. Runs fully locally on Llama 3.2 via Ollama, no paid API."
+      "description": "Five LangGraph agents analyze a data file and write a report. The Python they generate runs in an isolated subprocess and fixes its own errors, up to 3 attempts. A deterministic checker compares the report with the figures actually computed, and each visitor sees only their own tasks. Ollama locally, Groq for the live demo.",
+      "liveLabel": "Live demo"
     },
     "cortex": {
       "title": "Cortex",
@@ -136,7 +137,8 @@
     },
     "jobpilot": {
       "title": "JobPilot",
-      "description": "Job-search SaaS: tailors the CV to each offer, writes cover letters, preps interviews and tracks applications on a kanban board. Clerk auth, Stripe subscription in test mode (card 4242 4242 4242 4242)."
+      "description": "AI job-search assistant that tailors your CV and cover letter to each offer, then checks every claim against your original CV with a deterministic fact-checker, so nothing invented reaches a recruiter.",
+      "liveLabel": "Try the demo (no sign-up)"
     }
   },
   "experience": {

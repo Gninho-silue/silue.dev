@@ -145,7 +145,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {project.live && (
           <a href={project.live} target="_blank" rel="noopener noreferrer" className={`btn-secondary ${linkClass}`}>
             <ExternalIcon />
-            {t('viewLive')}
+            {/* A project can name its demo button (e.g. "Try the demo (no sign-up)") */}
+            {t.has(`${tKey}.liveLabel` as Parameters<typeof t>[0])
+              ? t(`${tKey}.liveLabel` as Parameters<typeof t>[0])
+              : t('viewLive')}
           </a>
         )}
       </footer>
