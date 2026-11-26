@@ -88,7 +88,7 @@
   },
   "projects": {
     "stackLabel": "Technologies",
-    "imageAlt": "Capture d'écran de {title}",
+    "imageAlt": "Capture d'écran du projet {title}",
     "openImage": "Ouvrir l'image en grand",
     "label": "PROJETS",
     "title": "Ce que j'ai construit",
@@ -112,7 +112,8 @@
     },
     "agentFlow": {
       "title": "AgentFlow",
-      "description": "Cinq agents (planification, lecture de fichiers, exécution de Python, rédaction du rapport, supervision) orchestrés avec LangGraph. Tourne entièrement en local avec Llama 3.2 via Ollama, sans API payante."
+      "description": "Cinq agents LangGraph analysent un fichier de données et rédigent un rapport. Le Python qu'ils génèrent tourne dans un sous-processus isolé et corrige ses propres erreurs, en 3 tentatives au plus. Un vérificateur déterministe confronte le rapport aux chiffres réellement calculés, et chaque visiteur ne voit que ses propres tâches. Ollama en local, Groq pour la démo en ligne.",
+      "liveLabel": "Démo en ligne"
     },
     "cortex": {
       "title": "Cortex",
@@ -136,7 +137,8 @@
     },
     "jobpilot": {
       "title": "JobPilot",
-      "description": "SaaS de recherche d'emploi : adaptation du CV à chaque offre, lettres de motivation, préparation aux entretiens et suivi des candidatures en kanban. Auth Clerk, abonnement Stripe en mode test (carte 4242 4242 4242 4242)."
+      "description": "Assistant de recherche d'emploi qui adapte ton CV et ta lettre à chaque offre, puis vérifie chaque affirmation par rapport au CV d'origine avec un vérificateur déterministe. Rien d'inventé n'arrive chez le recruteur.",
+      "liveLabel": "Essayer la démo (sans inscription)"
     }
   },
   "experience": {
